@@ -1,6 +1,6 @@
 local options = {
     -- ui & general editor options
-    cmdheight = 0,             -- hide the command line unless needed
+    cmdheight = 1,             -- command line height -> 0 hides the command line unless its being used
     guicursor = "",            -- fat vim cursor at all times
     cursorline = true,         -- highlight the current line
     showmode = false,          -- show things like -- INSERT --
@@ -58,8 +58,9 @@ local options = {
     completeopt = { "menu", "menuone", "noselect" }, -- Options for insert mode completion
 
     -- appearance
-    termguicolors = true, -- set term gui colors (most terminals support this)
-    conceallevel = 0,     -- so that `` is visible in markdown files
+    termguicolors = true,      -- set term gui colors (most terminals support this)
+    background = "dark",        -- or "light" for light mode
+    conceallevel = 0,          -- so that `` is visible in markdown files
     guifont = "monospace:h20", -- the font used in graphical neovim applications
     -- signcolumn = "yes",   -- always show the sign column, otherwise it would shift the text each time
 
@@ -81,7 +82,7 @@ for setting, value in pairs(options) do
     vim.opt[setting] = value
 end
 
-for setting, value in pairs (global) do
+for setting, value in pairs(global) do
     vim.g[setting] = value
 end
 

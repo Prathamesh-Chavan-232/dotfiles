@@ -22,6 +22,7 @@ require("lazy").setup({
 
   -- Editor Feature plugins
   -- Navigation plugins
+  { 'christoomey/vim-tmux-navigator' },
   {
     'nvim-telescope/telescope.nvim', -- Fuzzy Finder (files, lsp, etc)
     tag = '0.1.2',
@@ -62,13 +63,13 @@ require("lazy").setup({
   { "ahmedkhalf/project.nvim" },     -- easily move through projects
   { "norcalli/nvim-colorizer.lua" }, -- highlight colors
 
-  -- Display open buffers
   {
-    'akinsho/bufferline.nvim',
+    'akinsho/bufferline.nvim', -- Display open buffers
     dependencies = 'nvim-tree/nvim-web-devicons'
   },
+  { "nvim-lualine/lualine.nvim" },   -- lualine (Statusline)
   { "nvim-tree/nvim-web-devicons" }, -- file icons
-  { "nvim-lualine/lualine.nvim" }, -- lualine (Statusline)
+
   -- Colorschemes
   { "ellisonleao/gruvbox.nvim" },
   { "folke/tokyonight.nvim" },
@@ -80,6 +81,13 @@ require("lazy").setup({
       vim.cmd.colorscheme 'onedark'
     end,
   },
+  {
+    'dracula/vim', -- dracula colorscheme
+    lazy = false,
+  },
+  { 'rebelot/kanagawa.nvim' },
+  { 'bluz71/vim-nightfly-colors' },
+  { 'rose-pine/neovim',          name = 'rose-pine' },
 
   -- Syntax highlighting plugins
   {
