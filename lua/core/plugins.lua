@@ -16,56 +16,63 @@ require("lazy").setup({
   -- Plugins
 
   -- Git plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-  'lewis6991/gitsigns.nvim', --  Adds git releated signs to the gutter, as well as utilities for managing changes
+  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-rhubarb' },
+  { 'lewis6991/gitsigns.nvim' }, --  Adds git releated signs to the gutter, as well as utilities for managing changes
 
   -- Editor Feature plugins
   -- Navigation plugins
   {
     'nvim-telescope/telescope.nvim', -- Fuzzy Finder (files, lsp, etc)
     tag = '0.1.2',
-    -- or                            , branch = '0.1.x',
     dependencies = { { 'nvim-lua/plenary.nvim' } }
   },
 
-  "nvim-tree/nvim-tree.lua",                               --  Nvim tree (File Explorer)
-  'ThePrimeagen/harpoon',                                  --  Harpoon (Quick switcher)
-  "lewis6991/impatient.nvim",                              -- Faster loading times
-  'tpope/vim-sleuth',                                      --  Detect tabstop and shiftwidth automatically
-  { 'akinsho/toggleterm.nvim', version = "*", opts = {} }, -- Integrated Terminals
-  'mbbill/undotree',                                       -- Undotree (View branches in changes)
-  { 'numToStr/Comment.nvim',   opts = {} },                -- "gcc" to comment visual regions/lines
-  "JoosepAlviste/nvim-ts-context-commentstring",
+  { "nvim-tree/nvim-tree.lua" }, --  Nvim tree (File Explorer)
   {
-    -- Add indentation guides even on blank lines
+    'stevearc/oil.nvim',         -- turns file tree into an editable file
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  'ThePrimeagen/harpoon', --  Harpoon (Quick switcher)
+
+  -- Editor features
+  { 'tpope/vim-sleuth' },
+  { "lewis6991/impatient.nvim" },                                             -- Faster loading times
+  { 'akinsho/toggleterm.nvim',                    version = "*", opts = {} }, -- Integrated Terminals
+  { 'mbbill/undotree' },                                                      -- Undotree (View branches in changes)
+  { 'numToStr/Comment.nvim',                      opts = {} },                -- "gcc" to comment visual regions/lines
+  { "JoosepAlviste/nvim-ts-context-commentstring" },
+  {
     'lukas-reineke/indent-blankline.nvim', -- Indent guidelines
     opts = {
       char = '┊',
       show_trailing_blankline_indent = true
     },
   },
-  "windwp/nvim-autopairs",        -- Add closing brackets, parenthesis & quotes automatically
-  'terryma/vim-multiple-cursors', -- Multi cursors plugins
+  { 'tpope/vim-surround' },           -- surrond text with "", '', {}, etc
+  { "windwp/nvim-ts-autotag" },       -- auto close html, jsx tags
+  { "windwp/nvim-autopairs" },        -- Add closing brackets, parenthesis & quotes automatically
+  { 'terryma/vim-multiple-cursors' }, -- Multi cursors plugins
 
 
   -- Appearance
-  "goolord/alpha-nvim",          -- Start screen
-  "moll/vim-bbye",               --
-  "ahmedkhalf/project.nvim",     --
-  "norcalli/nvim-colorizer.lua",
+  { "goolord/alpha-nvim" },          -- Start screen
+  { "moll/vim-bbye" },               --
+  { "ahmedkhalf/project.nvim" },     -- easily move through projects
+  { "norcalli/nvim-colorizer.lua" }, -- highlight colors
 
   -- Display open buffers
   {
-        'akinsho/bufferline.nvim',
-        dependencies = 'nvim-tree/nvim-web-devicons'
+    'akinsho/bufferline.nvim',
+    dependencies = 'nvim-tree/nvim-web-devicons'
   },
-  "nvim-tree/nvim-web-devicons", -- file icons
-  "nvim-lualine/lualine.nvim",   -- lualine (Statusline)
+  { "nvim-tree/nvim-web-devicons" }, -- file icons
+  { "nvim-lualine/lualine.nvim" }, -- lualine (Statusline)
   -- Colorschemes
-  "ellisonleao/gruvbox.nvim",
-  "folke/tokyonight.nvim",
-  "lunarvim/darkplus.nvim",
+  { "ellisonleao/gruvbox.nvim" },
+  { "folke/tokyonight.nvim" },
+  { "lunarvim/darkplus.nvim" },
   {
     'navarasu/onedark.nvim', -- Theme inspired by Atom
     priority = 1000,
@@ -82,9 +89,10 @@ require("lazy").setup({
     },
     build = ':TSUpdate',
   },
-  'nvim-treesitter/playground', -- Playground (For Syntax Highlight weights - useful for writing plugins)
+  { 'nvim-treesitter/playground' }, -- Playground (For Syntax Highlight weights - useful for writing plugins)
 
   --  Autocompletion
+  { 'mattn/emmet-vim' },  -- vscode like html/css completion
   { 'hrsh7th/nvim-cmp' }, -- Cmp plugin
   { 'hrsh7th/cmp-buffer' },
   { 'hrsh7th/cmp-path' },
@@ -92,8 +100,10 @@ require("lazy").setup({
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-nvim-lua' },
   --  Snippets
-  { 'L3MON4D3/LuaSnip' },
-  { 'rafamadriz/friendly-snippets' },
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+  },
 
   -- LSP & Autocompletion plugins
   -- LSP zero

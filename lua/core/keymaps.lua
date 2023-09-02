@@ -1,20 +1,12 @@
--- [[ Custom Keymaps ]]
--- Leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
-
-local opts = { noremap = true, silent = true }
-
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.keymap.set
 
---Remap space as leader key
+-- [[ Custom Keymaps ]]
+-- Leader key
+local opts = { noremap = true, silent = true }
 keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+
+local term_opts = { silent = true }
 
 -- Modes
 --   normal_mode = "n",
@@ -26,10 +18,10 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Ctrl S to save
-keymap("n","<C-s>",vim.cmd.write,opts)
+keymap("n", "<C-s>", vim.cmd.write, opts)
 -- Close buffer
 
-keymap("n","<leader>x",vim.cmd.bd,opts)
+keymap("n", "<leader>x", vim.cmd.bd, opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -103,10 +95,10 @@ keymap("x", "J", ":m '>+1<CR>gv=gv", opts)
 
 -- Terminal --
 -- Better terminal navigation
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
+keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
+keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- switch tmux sessions
 keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
@@ -120,11 +112,11 @@ keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- yank to system clipboard
-keymap({"n", "v"}, "<leader>y", [["+y]], opts)
+keymap({ "n", "v" }, "<leader>y", [["+y]], opts)
 keymap("n", "<leader>Y", [["+Y]], opts)
 
 -- delete losing previous yank
-keymap({"n", "v"}, "<leader>d", [["_d]], opts)
+keymap({ "n", "v" }, "<leader>d", [["_d]], opts)
 
 -- paste over something without losing it
 keymap("x", "<leader>p", [["_dP]], opts)
