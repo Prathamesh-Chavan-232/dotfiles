@@ -9,7 +9,7 @@ local options = {
     laststatus = 3,            -- global statusline
     clipboard = "unnamedplus", -- neovim uses the system clipboard
     virtualedit = "block",     -- allow going past end of line in visual block mode
-    mouse = "",                -- "" disables mouse
+    mouse = "a",                -- "" disables mouse
     history = 100,             -- number of commands to remember in a history table
 
     -- scrolling & text wrap
