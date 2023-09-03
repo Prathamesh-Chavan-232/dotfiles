@@ -30,7 +30,7 @@ require("lazy").setup({
   },
 
   { "nvim-tree/nvim-tree.lua" }, --  Nvim tree (File Explorer)
-  'ThePrimeagen/harpoon', --  Harpoon (Quick switcher)
+  'ThePrimeagen/harpoon',        --  Harpoon (Quick switcher)
 
   -- Editor features
   { 'tpope/vim-sleuth' },
