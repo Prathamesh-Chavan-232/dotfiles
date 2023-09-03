@@ -20,7 +20,6 @@ local term_opts = { silent = true }
 -- Ctrl S to save
 keymap("n", "<C-s>", vim.cmd.write, opts)
 -- Close buffer
-
 keymap("n", "<leader>x", vim.cmd.bd, opts)
 
 -- Better window navigation
@@ -42,7 +41,6 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
 
 -- Keep cursor at same place on J
 keymap("n", "J", "mzJ`z", opts)
@@ -68,6 +66,15 @@ keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 -- make bash script executable
 keymap("n", "<leader>\\", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
 
+-- switch tmux sessions
+keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+
+-- yank to system clipboard
+keymap({ "n", "v" }, "<leader>y", [["+y]], opts)
+keymap("n", "<leader>Y", [["+Y]], opts)
+-- delete losing previous yank
+keymap({ "n", "v" }, "<leader>d", [["_d]], opts)
+
 -- Insert --
 -- Press jk fast to exit insert mode
 keymap("i", "jk", "<ESC>", opts)
@@ -83,15 +90,9 @@ keymap("v", ">", ">gv^", opts)
 -- Paste in visual mode
 keymap("v", "p", '"_dP', opts)
 
--- Move text up and down
-keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
-
 -- Visual Block --
--- Move lines up & down like Vscode
-keymap("x", "K", ":m '<-2<CR>gv=gv", opts)
-keymap("x", "J", ":m '>+1<CR>gv=gv", opts)
-
+-- paste over something without losing it
+keymap("x", "<leader>p", [["_dP]], opts)
 
 -- Terminal --
 -- Better terminal navigation
@@ -100,36 +101,12 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- switch tmux sessions
-keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
-
-
 -- Mixed --
 -- Move lines up & down like Vscode
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
--- yank to system clipboard
-keymap({ "n", "v" }, "<leader>y", [["+y]], opts)
-keymap("n", "<leader>Y", [["+Y]], opts)
-
--- delete losing previous yank
-keymap({ "n", "v" }, "<leader>d", [["_d]], opts)
-
--- paste over something without losing it
-keymap("x", "<leader>p", [["_dP]], opts)
-
--- separate cut & delete
-
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})

@@ -76,6 +76,14 @@ require('rose-pine').setup({
 		Search = { bg = 'gold', inherit = false },
 	}
 })
+-- catppuccin
+require("catppuccin").setup({
+  style = "night",
+  transparent = true,
+  styles = {
+    floats = "transparent", -- style for floating windows
+  },
+})
 -- onedark
 require('onedark').setup {
 	style = 'darker',
@@ -83,6 +91,5 @@ require('onedark').setup {
 }
 require('onedark').load()
 
-
 -- Set colorscheme after options
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme catppuccin')

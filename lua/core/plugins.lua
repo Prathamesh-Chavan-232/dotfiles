@@ -88,6 +88,10 @@ require("lazy").setup({
   { 'rebelot/kanagawa.nvim' },
   { 'bluz71/vim-nightfly-colors' },
   { 'rose-pine/neovim',          name = 'rose-pine' },
+  {
+    "catppuccin/nvim",
+  },
+
 
   -- Syntax highlighting plugins
   {
