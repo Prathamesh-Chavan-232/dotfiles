@@ -139,7 +139,6 @@ alias update="sudo pacman -Syu --nocombinedupgrade"
 
 # Tmux
 alias tmux-n="tmux new -t"
-alias tmux-a="tmux attach",
 alias tmux-l="tmux list-sessions"
 alias tmux-kill="tmux kill-session -t"
 alias tmux-k="tmux kill-session -t"
@@ -147,6 +146,8 @@ alias tmux-k="tmux kill-session -t"
 alias tx-ns="tmuxifier new-session"
 alias tx-ls="tmuxifier load-session"
 alias tx-es="tmuxifier edit-session"
+alias tx-list="tmuxifier list"
+alias tx-l="tmuxifier list"
 alias tx-layouts="cd ~/.tmuxifier/layouts/"
 
 # VM
@@ -246,12 +247,11 @@ alias nvlazy="NVIM_APPNAME=LazyVim nvim"
 alias nvastro="NVIM_APPNAME=AstroNvim nvim"
 alias nvchad="NVIM_APPNAME=NvChad nvim"
 # custom
-alias nvred="NVIM_APPNAME=RedVim nvim"
 alias nvcode="NVIM_APPNAME=Nvcode nvim"
 alias nvnoice="NVIM_APPNAME=NoiceVim nvim"
 
 function nvims() {
-  items=("LazyVim" "NvChad" "AstroNvim" "NoiceVim" "Nvcode" "RedVim")
+  items=("LazyVim" "NvChad" "AstroNvim" "NoiceVim" "Nvcode")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config - " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
