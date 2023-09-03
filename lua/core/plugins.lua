@@ -30,11 +30,6 @@ require("lazy").setup({
   },
 
   { "nvim-tree/nvim-tree.lua" }, --  Nvim tree (File Explorer)
-  {
-    'stevearc/oil.nvim',         -- turns file tree into an editable file
-    opts = {},
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
   'ThePrimeagen/harpoon', --  Harpoon (Quick switcher)
 
   -- Editor features
