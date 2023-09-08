@@ -67,7 +67,7 @@ keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 keymap("n", "<leader>\\", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
 
 -- switch tmux sessions
-keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+-- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
 
 -- yank to system clipboard
 keymap({ "n", "v" }, "<leader>y", [["+y]], opts)

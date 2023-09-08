@@ -85,7 +85,7 @@ require("lazy").setup({
   { 'rose-pine/neovim',          name = 'rose-pine' },
   {
     "catppuccin/nvim",
-  },
+  }, { 'datsfilipe/min-theme.nvim' },
 
 
   -- Syntax highlighting plugins
