@@ -102,6 +102,10 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Mixed --
+-- Copy to system clipboard
+keymap("n", "<leader>y",'"+y', opts)
+keymap("n", "<leader>Y",'"+Y', opts)
+
 -- Move lines up & down like Vscode
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
