@@ -1,10 +1,11 @@
 /*
+/tmux/plugins/
 
 # Folders
 !alacritty/
 !neofetch/
 !layouts/
-!tmux/tmux.conf
+!tmux/
 
 # Files
 !.zshrc
