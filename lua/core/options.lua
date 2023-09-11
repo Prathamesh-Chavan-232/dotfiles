@@ -1,16 +1,16 @@
 local options = {
     -- ui & general editor options
-    cmdheight = 1,             -- command line height -> 0 hides the command line unless its being used
-    guicursor = "",            -- fat vim cursor at all times
-    cursorline = true,         -- highlight the current line
-    showmode = false,          -- show things like -- INSERT --
-    showtabline = 2,           -- always show tabs
-    pumheight = 10,            -- height of the pop up menu
-    laststatus = 3,            -- global statusline
+    cmdheight = 1,         -- command line height -> 0 hides the command line unless its being used
+    guicursor = "",        -- fat vim cursor at all times
+    cursorline = true,     -- highlight the current line
+    showmode = false,      -- show things like -- INSERT --
+    showtabline = 2,       -- always show tabs
+    pumheight = 10,        -- height of the pop up menu
+    laststatus = 3,        -- global statusline
     -- clipboard = "unnamedplus", -- neovim uses the system clipboard
-    virtualedit = "block",     -- allow going past end of line in visual block mode
-    mouse = "a",                -- "" disables mouse
-    history = 100,             -- number of commands to remember in a history table
+    virtualedit = "block", -- allow going past end of line in visual block mode
+    mouse = "a",           -- "" disables mouse
+    history = 100,         -- number of commands to remember in a history table
 
     -- scrolling & text wrap
     -- sidescroll = 8, -- set to 0 or a large value keeps cursor centered on long lines
@@ -59,7 +59,7 @@ local options = {
 
     -- appearance
     termguicolors = true,      -- set term gui colors (most terminals support this)
-    background = "dark",        -- or "light" for light mode
+    background = "dark",       -- or "light" for light mode
     conceallevel = 0,          -- so that `` is visible in markdown files
     guifont = "monospace:h20", -- the font used in graphical neovim applications
     -- signcolumn = "yes",   -- always show the sign column, otherwise it would shift the text each time

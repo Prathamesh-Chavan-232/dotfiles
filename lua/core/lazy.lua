@@ -16,14 +16,13 @@ require("lazy").setup({
   -- Plugins
 
   -- Git plugins
-  { 'tpope/vim-fugitive'
-},
+  { 'tpope/vim-fugitive' },
   { 'tpope/vim-rhubarb' },
   { 'lewis6991/gitsigns.nvim' }, --  Adds git releated signs to the gutter, as well as utilities for managing changes
 
   -- Editor Feature plugins
   -- Navigation plugins
-  { 'christoomey/vim-tmux-navigator' },
+  { 'alexghergh/nvim-tmux-navigation' },
   {
     'nvim-telescope/telescope.nvim', -- Fuzzy Finder (files, lsp, etc)
     tag = '0.1.2',
