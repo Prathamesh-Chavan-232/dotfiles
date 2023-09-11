@@ -3,8 +3,8 @@
 # Folders
 !alacritty/
 !neofetch/
-!tmux/tmux.conf
 !layouts/
+!tmux/tmux.conf
 
 # Files
 !.zshrc
