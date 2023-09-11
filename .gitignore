@@ -3,6 +3,7 @@
 # Folders
 !alacritty/
 !neofetch/
+!tmux/
 
 # Files
 !.zshrc
