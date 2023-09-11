@@ -17,7 +17,7 @@ require("nvim-tree").setup({
     update_cwd = true,
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
   },
   diagnostics = {
     enable = true,

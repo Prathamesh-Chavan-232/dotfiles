@@ -12,6 +12,7 @@ require "core/plugins/gitsigns"
 require "core/plugins/impatient"  -- fuzzy finder
 -- navigation
 require "core/plugins/telescope"  -- fuzzy finder
+require "core/plugins/tmux-navigation"  -- fuzzy finder
 require "core/plugins/nvim-tree"  -- file tree
 require "core/plugins/harpoon"    -- quick switcher
 -- editor features
