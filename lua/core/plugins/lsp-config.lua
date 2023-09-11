@@ -48,8 +48,6 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
   -- Show Documentation
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set("n", '<C-k>', function() vim.lsp.buf.signature_help() end, opts)
-  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   -- Search Symbols
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)

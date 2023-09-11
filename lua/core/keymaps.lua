@@ -23,9 +23,9 @@ keymap("n", "<C-s>", vim.cmd.write, opts)
 keymap("n", "<leader>x", vim.cmd.bd, opts)
 
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Remap for dealing with word wrap
