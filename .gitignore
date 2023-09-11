@@ -4,6 +4,7 @@
 !alacritty/
 !neofetch/
 !tmux/
+!layouts/
 
 # Files
 !.zshrc
