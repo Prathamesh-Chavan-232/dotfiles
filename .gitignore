@@ -3,7 +3,7 @@
 # Folders
 !alacritty/
 !neofetch/
-!tmux/
+!tmux/tmux.conf
 !layouts/
 
 # Files
