@@ -17,7 +17,7 @@ require("nvim-tree").setup({
     update_cwd = true,
   },
   filters = {
-    dotfiles = false,
+    dotfiles = true,
   },
   diagnostics = {
     enable = true,
@@ -29,5 +29,5 @@ require("nvim-tree").setup({
   },
 })
 
-vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>')
+-- vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>')
 vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>')

@@ -27,7 +27,8 @@ local actions = require "telescope.actions"
 
 require("telescope").setup {
 	defaults = {
-
+		previewer = false,
+		shorten_path = true,
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
