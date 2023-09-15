@@ -51,8 +51,10 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
 -- format code (requires lsp)
-keymap("n", "<leader>f", vim.lsp.buf.format, opts)
 keymap("n", "<A-F>", vim.lsp.buf.format, opts)
+-- toggle text wrap
+keymap("n", "<A-z>", ":set wrap!<CR>", opts)
+
 
 -- quick fix list
 keymap("n", "<leader-K>", "<cmd>cnext<CR>zz", opts)
