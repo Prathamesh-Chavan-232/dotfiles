@@ -1,5 +1,5 @@
 -- plugin manager
-require "core/lazy"
+require "core/plugins-setup"
 -- keymaps, options, auto commands
 require "core/options"
 require "core/keymaps"

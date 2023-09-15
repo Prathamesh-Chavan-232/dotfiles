@@ -1,42 +1,43 @@
 local options = {
     -- ui & general editor options
-    cmdheight = 1,         -- command line height -> 0 hides the command line unless its being used
-    guicursor = "",        -- fat vim cursor at all times
-    cursorline = true,     -- highlight the current line
-    showmode = false,      -- show things like -- INSERT --
-    showtabline = 2,       -- always show tabs
+    cmdheight = 0,         -- set command line height -> 0 hides the command line unless its being used
+    guicursor = "",        -- change cursor style, "" keeps a fat cursor at all times
+    cursorline = true,     -- set highlight on the current line
+    showmode = false,      -- set mode visibility on command line e.g. -- INSERT --
     pumheight = 10,        -- height of the pop up menu
     laststatus = 3,        -- global statusline
-    -- clipboard = "unnamedplus", -- neovim uses the system clipboard
     virtualedit = "block", -- allow going past end of line in visual block mode
-    mouse = "a",           -- "" disables mouse
+    mouse = "a",           -- set mouse usuage "" disables mouse
     history = 100,         -- number of commands to remember in a history table
+    -- clipboard = "unnamedplus", -- make neovim use the system clipboard
 
     -- scrolling & text wrap
-    -- sidescroll = 8, -- set to 0 or a large value keeps cursor centered on long lines
-    sidescrolloff = 8, -- number of columns to keep at the sides of the cursor
     scrolloff = 8,     -- number of lines to keep above and below the cursor
-    wrap = false,
+    sidescrolloff = 8, -- number of columns to keep at the sides of the cursor
+    wrap = true,      -- set text wrap (disregrads the previous setting)
 
     -- line numbers
     number = true,         -- set numbered lines
     relativenumber = true, -- set relative line numbers
-    numberwidth = 4,       -- set number column {default 4}
+    numberwidth = 2,       -- set number column {default 4}
 
-    writebackup = false,   -- handle files that are edited by another program simulatenously
-    backup = false,        -- set backup file
-    swapfile = false,      -- set swapfile
+    -- swap and backup
+    writebackup = false, -- handle files that are edited by another program simulatenously
+    backup = false,      -- set backup file
+    swapfile = false,    -- set swapfile
 
     -- indents, tabs & spaces
+    tabstop = 4,        -- tabspace = 2 spaces
+    shiftwidth = 4,     -- number of space inserted for indentation
     linebreak = true,   -- wrap lines at 'breakat'
     breakindent = true, -- wrap indent to match line start
     copyindent = true,  -- copy the previous indentation on autoindenting
-    tabstop = 2,        -- tabspace = 2 spaces
-    shiftwidth = 4,     -- number of space inserted for indentation
+    autoindent = true,  -- set auto indenting
     expandtab = true,   -- convert spaces to tabs
     smartindent = true, -- make indenting smarter again
 
-    -- splits
+    -- buffers,tabs & splits
+    showtabline = 2,       -- always show tabs
     splitbelow = true, -- force all horizontal splits to go below current window
     splitright = true, -- force all vertical splits to go to the right of current window
 

@@ -1,3 +1,4 @@
 layouts/*
+lazy-lock.json
 
 !layouts/new-website.session.sh
