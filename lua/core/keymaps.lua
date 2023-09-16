@@ -17,9 +17,7 @@ local term_opts = { silent = true }
 --   command_mode = "c",
 
 -- Buffers
--- Normal --
--- Buffers
--- ctrl S to save
+-- ctrl s to save
 keymap("n", "<C-s>", vim.cmd.write, opts)
 -- close buffer
 keymap("n", "<leader>x", vim.cmd.bd, opts)
@@ -39,60 +37,22 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Better editor experience
+-- Tabs
+keymap("n", "<T-l>", ":bnext<CR>", opts)
+keymap("n", "<T-h>", ":bprevious<CR>", opts)
+
+-- Switch tmux sessions (requires tmux-sessionizer)
+-- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+
+-- Code Formatting (requires lsp)
+keymap("n", "<A-F>", vim.lsp.buf.format, opts)
+
+-- Text Wrap
+-- toggle text wrap
+keymap("n", "<A-z>", ":set wrap!<CR>", opts)
 -- remap for dealing with word wrap
 keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
--- keep cursor at same place on J
-keymap("n", "J", "mzJ`z", opts)
--- eep cursor centered while moving
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
-keymap("n", "n", "nzzzv", opts)
-keymap("n", "N", "Nzzzv", opts)
--- format code (requires lsp)
-keymap("n", "<A-F>", vim.lsp.buf.format, opts)
--- toggle text wrap
-keymap("n", "<A-z>", ":set wrap!<CR>", opts)
-
-
--- quick fix list
-keymap("n", "<leader-K>", "<cmd>cnext<CR>zz", opts)
-keymap("n", "<leader-J>", "<cmd>cprev<CR>zz", opts)
-keymap("n", "<leader>k", "<cmd>lnext<CR>zz", opts)
-keymap("n", "<leader>j", "<cmd>lprev<CR>zz", opts)
-
--- make bash script executable
-keymap("n", "<leader>\\", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
-
--- switch tmux sessions
--- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
-
--- Insert --
--- Press jk fast to exit insert mode
-keymap("i", "jk", "<ESC>", opts)
-keymap("i", "kj", "<ESC>", opts)
-
--- make <C-c> exit from multi-cursor edits
-keymap("i", "<C-c>", "<Esc>")
-
--- Visual --
--- Stay in visual mode while indenting
-keymap("v", "<", "<gv^", opts)
-keymap("v", ">", ">gv^", opts)
-
--- Mixed --
--- yank,delete,paste,find & replace
--- replace current word
-keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
-keymap({ "n", "v" }, "<leader>y", '"+y', opts)
-keymap({ "n", "v" }, "<leader>Y", '"+Y', opts)
--- paste over something without losing it
-keymap("x", "<leader>p", [["_dP]], opts)
--- delete losing previous yank
-keymap({ "n", "v" }, "<leader>d", [["_d]], opts)
--- Paste in visual mode
-keymap("v", "p", '"_dP', opts)
 
 -- Move lines up & down like Vscode
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
@@ -100,9 +60,53 @@ keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 keymap({ "v", "x" }, "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap({ "v", "x" }, "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
--- Terminal --
+-- Cursor
+-- keep cursor at same place on J
+keymap("n", "J", "mzJ`z", opts)
+-- keep cursor centered while moving
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "n", "nzzzv", opts)
+keymap("n", "N", "Nzzzv", opts)
+
+-- Quick fix list
+keymap("n", "<leader-K>", "<cmd>cnext<CR>zz", opts)
+keymap("n", "<leader-J>", "<cmd>cprev<CR>zz", opts)
+keymap("n", "<leader>k", "<cmd>lnext<CR>zz", opts)
+keymap("n", "<leader>j", "<cmd>lprev<CR>zz", opts)
+
+-- Commands
+-- make bash script executable
+keymap("n", "<leader>\\", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
+
+-- Insert Mode --
+-- Press jk fast to exit insert mode
+keymap("i", "jk", "<ESC>", opts)
+keymap("i", "kj", "<ESC>", opts)
+-- make <C-c> exit from multi-cursor edits
+keymap("i", "<C-c>", "<Esc>")
+
+-- Stay in visual mode while indenting
+keymap("v", "<", "<gv^", opts)
+keymap("v", ">", ">gv^", opts)
+
+-- Yank,delete,paste, find & replace
+-- replace current word
+keymap("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
+-- Yank to system clipboard
+keymap({ "n", "v" }, "<leader>y", '"+y', opts)
+keymap({ "n", "v" }, "<leader>Y", '"+Y', opts)
+-- paste over something without losing it
+keymap("x", "<leader>p", [["_dP]], opts)
+-- Paste in visual mode
+keymap("v", "p", '"_dP', opts)
+-- delete losing previous yank
+keymap({ "n", "v" }, "<leader>d", [["_d]], opts)
+
+-- Terminal Mode --
 -- Better terminal navigation
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
+keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
+keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+

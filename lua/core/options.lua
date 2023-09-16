@@ -1,6 +1,6 @@
 local options = {
     -- ui & general editor options
-    cmdheight = 0,         -- set command line height -> 0 hides the command line unless its being used
+    cmdheight = 1,         -- set command line height -> 0 hides the command line unless its being used
     guicursor = "",        -- change cursor style, "" keeps a fat cursor at all times
     cursorline = true,     -- set highlight on the current line
     showmode = false,      -- set mode visibility on command line e.g. -- INSERT --
@@ -61,22 +61,15 @@ local options = {
     -- appearance
     termguicolors = true,      -- set term gui colors (most terminals support this)
     background = "dark",       -- or "light" for light mode
-    conceallevel = 0,          -- so that `` is visible in markdown files
     guifont = "monospace:h20", -- the font used in graphical neovim applications
     signcolumn = "yes",        -- always show the sign column, otherwise it would shift the text each time
-
-    -- nvim-ufo
-    fillchars = { eob = " " },                              -- disable `~` on nonexistent lines
-    foldenable = true,                                      -- enable fold for nvim-ufo
-    foldlevel = 99,                                         -- set high foldlevel for nvim-ufo
-    foldlevelstart = 99,                                    -- start with all code unfolded
-    foldcolumn = vim.fn.has "nvim-0.9" == 1 and "1" or nil, -- show foldcolumn in nvim 0.9
+    conceallevel = 0,          -- so that `` is visible in markdown files
+    fillchars = { eob = " " }, -- disable `~` on nonexistent lines
 }
 
 local global = {
     mapleader = " ",
     maplocalleader = " ",
-
 }
 
 for setting, value in pairs(options) do
