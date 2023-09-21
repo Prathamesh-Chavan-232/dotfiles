@@ -8,6 +8,6 @@
 !tmux/
 
 # Files
-!.zshrc
+!my_settings.zsh
 !.gitignore
 
