@@ -3,9 +3,44 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'tsserver',
+  -- vimscript
+  'vimls',
+  -- lua
   'lua_ls',
-  'rust_analyzer',
+  'stylua',
+  -- typescript & frameworks
+  'tsserver',
+  'astro',
+  'svelte',
+  'volar',
+  'angularls',
+  -- css & frameworks
+  'cssls',
+  'stylelint_lsp',
+  'tailwindcss',
+  'cssmodules_ls',
+  -- emmet & html
+  'emmet_ls',
+  'emmet_language_server',
+  'html',
+  -- prisma & sql
+  'prismals',
+  'sqlls',
+ -- low level
+  'bashls',
+  'cmake',
+  'clangd',
+  -- python
+  'pylsp',
+  -- docker
+  'dockerls',
+  'docker_compose_langauge_service',
+  -- misc
+  'solidity', -- blockchain
+  'rust_analyzer', --rust
+  'arduino_language_server', -- arduino IDE (embedded C)
+  'grammarly', -- Text
+  'yamlls', -- yaml configs
 })
 
 lsp.nvim_workspace()
