@@ -158,14 +158,12 @@ alias vm-off="sudo systemctl stop libvirtd.service"
 alias musica="ncmpcpp"
 
 # cd easily & multiple times
-alias ...='cd ../../../'
-alias .3='cd ../../../'
 
-alias ....='cd ../../../../'
-alias .4='cd ../../../../'
+alias ....='cd ../../'
+alias .4='cd ../../'
 
-alias .....='cd ../../../../'
-alias .5='cd ../../../../..'
+alias .....='cd ../../../'
+alias .5='cd ../../../'
 
 # cd into projects easily
 alias coding-practicce="cd ~/keep-coding/programming/"
@@ -197,9 +195,8 @@ alias su='sudo -i'
 # Add flags to existing aliases.
 alias tmux='tmux -u'
 alias tree='tree -a -I .git'
-alias ls="${aliases[ls]:-ls} -A"
-alias ls='lsd -a --group-directories-first'
-alias ll='lsd -la --group-directories-first'
+alias ls='lsd --group-directories-first'
+alias ll='lsd --group-directories-first -l'
 # Networking
 # Stop after sending count ECHO_REQUEST packets #
 alias ping='ping -c 5'
@@ -269,4 +266,20 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
 # Startup
 neofetch
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/falconcodes/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/falconcodes/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/falconcodes/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/falconcodes/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
