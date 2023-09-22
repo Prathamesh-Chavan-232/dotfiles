@@ -7,7 +7,6 @@ lsp.ensure_installed({
   'vimls',
   -- lua
   'lua_ls',
-  'stylua',
   -- typescript & frameworks
   'tsserver',
   'astro',
@@ -34,7 +33,6 @@ lsp.ensure_installed({
   'pylsp',
   -- docker
   'dockerls',
-  'docker_compose_langauge_service',
   -- misc
   'solidity', -- blockchain
   'rust_analyzer', --rust
