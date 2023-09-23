@@ -1,6 +1,6 @@
 import:
-  - ~/.config/alacritty/colors.yml
-  - ~/.config/alacritty/dracula.yml
+  - ~/.config/alacritty/themes/dracula.yml
+  - ~/.config/alacritty/fonts.yml
 
 window:
   decorations: none
@@ -11,60 +11,6 @@ window:
     x: 12
     y: 12
 
-# Font configuration
-font:
-  normal:
-    family: jetBrainsMono Nerd Font
-    style: Regular
-  bold:
-    family: jetBrainsMono Nerd Font
-    style: Bold
-
-  italic:
-    family: jetBrainsMono Nerd Font
-    style: Italic
-  bold_italic:
-    family: jetBrainsMono Nerd Font
-    style: Bold Italic
-  size: 18
-theme: Catppuccin
-
-# Terminal Colors
-colors:
-  # Default colors
-  primary:
-    background: "0x1E1D2F"
-    foreground: "0xD9E0EE"
-
-  cursor:
-    text: "0x1E1D2F"
-    cursor: "0xF5E0DC"
-
-  # Normal colors
-  normal:
-    black: "0x6E6C7E"
-    red: "0xF28FAD"
-    green: "0xABE9B3"
-    yellow: "0xFAE3B0"
-    blue: "0x96CDFB"
-    magenta: "0xF5C2E7"
-    cyan: "0x89DCEB"
-    white: "0xD9E0EE"
-
-  # Bright colors
-  bright:
-    black: "0x988BA2"
-    red: "0xF28FAD"
-    green: "0xABE9B3"
-    yellow: "0xFAE3B0"
-    blue: "0x96CDFB"
-    magenta: "0xF5C2E7"
-    cyan: "0x89DCEB"
-    white: "0xD9E0EE"
-
-  indexed_colors:
-    - { index: 16, color: "0xF8BD96" }
-    - { index: 17, color: "0xF5E0DC" }
 #
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 # Import additional configuration files
