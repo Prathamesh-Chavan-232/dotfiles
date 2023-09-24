@@ -9,6 +9,7 @@ local options = {
     virtualedit = "block", -- allow going past end of line in visual block mode
     mouse = "a",           -- set mouse usuage "" disables mouse
     history = 100,         -- number of commands to remember in a history table
+    backspace = "indent,eol,start",
     -- clipboard = "unnamedplus", -- make neovim use the system clipboard
 
     -- scrolling & text wrap

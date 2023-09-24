@@ -102,14 +102,15 @@ require("lazy").setup({
   { 'mattn/emmet-vim' },  -- vscode like html/css completion
   { 'hrsh7th/nvim-cmp' }, -- Cmp plugin
   { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' },
+  { 'hrsh7th/cmp-path' }, -- path completion
+  { 'hrsh7th/cmp-cmdline' }, -- path completion
   { 'saadparwaiz1/cmp_luasnip' },
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-nvim-lua' },
   --  Snippets
   {
-    "L3MON4D3/LuaSnip",
-    dependencies = { "rafamadriz/friendly-snippets" },
+    "L3MON4D3/LuaSnip", -- snippet Engine
+    dependencies = { "rafamadriz/friendly-snippets" }, -- a bunch of snippets for various languages
   },
 
   -- LSP & Autocompletion plugins

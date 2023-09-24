@@ -91,6 +91,7 @@ require('onedark').setup {
 }
 require('onedark').load()
 -- min-theme
+
 require('min-theme').setup({
 	theme = 'dark',   -- String: 'dark' or 'light', determines the colorscheme used (obs: if your config sets vim.o.background, this will do nothing)
 	transparent = false, -- Boolean: Sets the background to transparent
@@ -105,4 +106,4 @@ require('min-theme').setup({
 })
 
 -- Set colorscheme after options
-vim.cmd('colorscheme catppuccin')
+vim.cmd('colorscheme onedark')
