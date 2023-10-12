@@ -30,32 +30,26 @@ require("lazy").setup({
   },
 
   { "nvim-tree/nvim-tree.lua" }, --  Nvim tree (File Explorer)
-  'ThePrimeagen/harpoon',        --  Harpoon (Quick switcher)
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  'metakirby5/codi.vim', -- Interactive code runner -- python
 
   -- Editor features
-  { 'tpope/vim-sleuth' },
-  { "lewis6991/impatient.nvim" },                                             -- Faster loading times
   { 'akinsho/toggleterm.nvim',                    version = "*", opts = {} }, -- Integrated Terminals
   { 'mbbill/undotree' },                                                      -- Undotree (View branches in changes)
   { 'numToStr/Comment.nvim',                      opts = {} },                -- "gcc" to comment visual regions/lines
-  { "JoosepAlviste/nvim-ts-context-commentstring" },
-  {
-    'lukas-reineke/indent-blankline.nvim', -- Indent guidelines
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = true
-    },
-  },
-  { 'tpope/vim-surround' },           -- surrond text with "", '', {}, etc
-  { "windwp/nvim-ts-autotag" },       -- auto close html, jsx tags
-  { "windwp/nvim-autopairs" },        -- Add closing brackets, parenthesis & quotes automatically
-  { 'terryma/vim-multiple-cursors' }, -- Multi cursors plugins
-
+  { "JoosepAlviste/nvim-ts-context-commentstring" },                          -- better comments
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }, -- indent lines
+  { 'tpope/vim-surround' },     -- surrond text with "", '', {}, etc
+  { "windwp/nvim-ts-autotag" }, -- auto close html, jsx tags
+  { "windwp/nvim-autopairs" },  -- Add closing brackets, parenthesis & quotes automatically
 
   -- Appearance
   { "goolord/alpha-nvim" },          -- Start screen
-  { "moll/vim-bbye" },               --
-  { "ahmedkhalf/project.nvim" },     -- easily move through projects
   { "norcalli/nvim-colorizer.lua" }, -- highlight colors
 
   {
@@ -68,7 +62,6 @@ require("lazy").setup({
   -- Colorschemes
   { "ellisonleao/gruvbox.nvim" },
   { "folke/tokyonight.nvim" },
-  { "lunarvim/darkplus.nvim" },
   {
     'navarasu/onedark.nvim', -- Theme inspired by Atom
     priority = 1000,
@@ -85,7 +78,7 @@ require("lazy").setup({
   { 'rose-pine/neovim',          name = 'rose-pine' },
   {
     "catppuccin/nvim",
-  }, { 'datsfilipe/min-theme.nvim' },
+  },
 
 
   -- Syntax highlighting plugins
@@ -99,17 +92,16 @@ require("lazy").setup({
   { 'nvim-treesitter/playground' }, -- Playground (For Syntax Highlight weights - useful for writing plugins)
 
   --  Autocompletion
-  { 'mattn/emmet-vim' },  -- vscode like html/css completion
-  { 'hrsh7th/nvim-cmp' }, -- Cmp plugin
+  { 'hrsh7th/nvim-cmp' },    -- Cmp plugin
   { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' }, -- path completion
+  { 'hrsh7th/cmp-path' },    -- path completion
   { 'hrsh7th/cmp-cmdline' }, -- path completion
   { 'saadparwaiz1/cmp_luasnip' },
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-nvim-lua' },
   --  Snippets
   {
-    "L3MON4D3/LuaSnip", -- snippet Engine
+    "L3MON4D3/LuaSnip",                                -- snippet Engine
     dependencies = { "rafamadriz/friendly-snippets" }, -- a bunch of snippets for various languages
   },
 

@@ -28,6 +28,5 @@ require("nvim-tree").setup({
     timeout = 500,
   },
 })
-
--- vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>')
+-- open file tree
 vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>')

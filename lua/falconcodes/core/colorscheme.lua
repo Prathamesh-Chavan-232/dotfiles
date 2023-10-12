@@ -92,18 +92,5 @@ require('onedark').setup {
 require('onedark').load()
 -- min-theme
 
-require('min-theme').setup({
-	theme = 'dark',   -- String: 'dark' or 'light', determines the colorscheme used (obs: if your config sets vim.o.background, this will do nothing)
-	transparent = false, -- Boolean: Sets the background to transparent
-	italic = {
-		comments = true, -- Boolean: Italicizes comments
-		keywords = true, -- Boolean: Italicizes keywords
-		functions = true, -- Boolean: Italicizes functions
-		strings = true, -- Boolean: Italicizes strings
-		variables = true, -- Boolean: Italicizes variables
-	},
-	overrides = {},   -- A dictionary of group names, can be a function returning a dictionary or a table.
-})
-
 -- Set colorscheme after options
 vim.cmd('colorscheme onedark')

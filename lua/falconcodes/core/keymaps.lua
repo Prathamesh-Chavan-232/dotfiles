@@ -27,7 +27,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Splits
-keymap('n', "<leader>_", "<C-w>h")
+keymap('n', "<leader>_", "<C-w>s")
 keymap('n', "<leader>|", "<C-w>v")
 -- better window navigation
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -77,7 +77,7 @@ keymap("n", "<leader>j", "<cmd>lprev<CR>zz", opts)
 
 -- Yank, delete, paste, find & replace
 -- replace current word
-keymap("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
+keymap("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
 -- Yank to system clipboard
 keymap({ "n", "v" }, "<leader>y", '"+y', opts)
 keymap({ "n", "v" }, "<leader>Y", '"+Y', opts)
@@ -108,8 +108,9 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Commands
 -- make bash script executable
-keymap("n", "<leader>\\", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
+keymap("n", "<leader>=", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
 
 -- Plugin Keymaps
+
 -- Switch tmux sessions (requires tmux-sessionizer)
 -- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
