@@ -1,16 +1,17 @@
 local options = {
-    -- ui & general editor options
-    cmdheight = 1,         -- set command line height -> 0 hides the command line unless its being used
-    guicursor = "",        -- change cursor style, "" keeps a fat cursor at all times
-    cursorline = true,     -- set highlight on the current line
-    showmode = false,      -- set mode visibility on command line e.g. -- INSERT --
-    pumheight = 10,        -- height of the pop up menu
-    laststatus = 3,        -- global statusline
+    -- general editor options
     virtualedit = "block", -- allow going past end of line in visual block mode
-    mouse = "a",           -- set mouse usuage "" disables mouse
     history = 100,         -- number of commands to remember in a history table
-    backspace = "indent,eol,start",
+    backspace = "indent,eol,start", -- makes backspace work properly
     -- clipboard = "unnamedplus", -- make neovim use the system clipboard
+    -- UI features
+    laststatus = 3,        -- global statusline
+    mouse = "a",           -- set mouse usuage "" disables mouse
+    showmode = false,      -- set mode visibility on command line e.g. -- INSERT --
+    guicursor = "",        -- change cursor style, "" keeps a fat cursor at all times
+    cmdheight = 1,         -- set command line height -> 0 hides the command line unless its being used
+    cursorline = true,     -- set highlight on the current line
+    pumheight = 10,        -- height of the pop up menu
 
     -- scrolling & text wrap
     scrolloff = 8,     -- number of lines to keep above and below the cursor
