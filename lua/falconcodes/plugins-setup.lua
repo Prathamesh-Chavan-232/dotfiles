@@ -43,7 +43,7 @@ require("lazy").setup({
   { 'mbbill/undotree' },                                                      -- Undotree (View branches in changes)
   { 'numToStr/Comment.nvim',                      opts = {} },                -- "gcc" to comment visual regions/lines
   { "JoosepAlviste/nvim-ts-context-commentstring" },                          -- better comments
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }, -- indent lines
+  -- { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }, -- indent lines
   { 'tpope/vim-surround' },     -- surrond text with "", '', {}, etc
   { "windwp/nvim-ts-autotag" }, -- auto close html, jsx tags
   { "windwp/nvim-autopairs" },  -- Add closing brackets, parenthesis & quotes automatically

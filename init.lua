@@ -23,7 +23,6 @@ require "falconcodes/plugins/toggleterm"       -- enter terminal without closing
 require "falconcodes/plugins/lualine"          -- statusline
 require "falconcodes/plugins/bufferline"       -- shows open buffers like an IDE
 require "falconcodes/plugins/colorizer"        -- highlight colors
-require "falconcodes/plugins/indent-blankline" -- indent guidelines
 -- syntax highlighting, auto completion, LSP
 require "falconcodes/plugins/treesitter"       -- syntax highlighting
 require "falconcodes/plugins/lsp-config"       -- auto completion & lsp
