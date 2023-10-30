@@ -1,3 +1,5 @@
+# Export to Path
+export PATH="$PATH:/home/falconcodes/flutter/bin"
 # EDITOR
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
@@ -145,10 +147,6 @@ function nvims() {
   NVIM_APPNAME=$config nvim $@
 }
 bindkey -s "^a" "nvims\n"
-
-# Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
-setopt glob_dots     # no special treatment for file names with a leading dot
-setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
 # Startup
 neofetch
