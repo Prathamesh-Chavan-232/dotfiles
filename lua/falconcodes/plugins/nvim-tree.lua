@@ -1,7 +1,17 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+-- open file tree
+vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>')
 
-require("nvim-tree").setup({
+return {
+  "nvim-tree/nvim-tree.lua",
+  version = "*",
+  lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+  config = function()
+    require("nvim-tree").setup({
   view = {
     adaptive_size = true,
     side = "left",
@@ -28,5 +38,5 @@ require("nvim-tree").setup({
     timeout = 500,
   },
 })
--- open file tree
-vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>')
+  end,
+}

@@ -7,9 +7,9 @@ local options = {
     -- UI features
     laststatus = 3,        -- global statusline
     mouse = "a",           -- set mouse usuage "" disables mouse
-    showmode = false,      -- set mode visibility on command line e.g. -- INSERT --
+    showmode = true,       -- set mode visibility on command line e.g. -- INSERT --
     guicursor = "",        -- change cursor style, "" keeps a fat cursor at all times
-    cmdheight = 1,         -- set command line height -> 0 hides the command line unless its being used
+    cmdheight = 2,         -- set command line height -> 0 hides the command line unless its being used
     cursorline = true,     -- set highlight on the current line
     pumheight = 10,        -- height of the pop up menu
 
