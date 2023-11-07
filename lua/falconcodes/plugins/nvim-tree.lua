@@ -1,8 +1,8 @@
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
--- open file tree
-vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>')
+-- open file tree keymap
+local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>',opts)
 
+-- open file tree plugin
 return {
   "nvim-tree/nvim-tree.lua",
   version = "*",
@@ -12,30 +12,13 @@ return {
   },
   config = function()
     require("nvim-tree").setup({
-  view = {
-    adaptive_size = true,
-    side = "left",
-  },
-  update_cwd = true,
-  actions = {
-    open_file = {
-      resize_window = true,
-    },
-  },
-  update_focused_file = {
-    enable = true,
-    update_cwd = true,
-  },
-  filters = {
-    dotfiles = false,
-  },
-  diagnostics = {
-    enable = true,
-  },
   git = {
     enable = true,
     ignore = false,
     timeout = 500,
+  },
+  filters = {
+    dotfiles = false,
   },
 })
   end,

@@ -16,7 +16,6 @@ local term_opts = { silent = true }
 --   term_mode = "t",
 --   command_mode = "c",
 
--- Normal Mode --
 -- Buffers
 -- ctrl s to save
 keymap("n", "<C-s>", vim.cmd.write, opts)
@@ -27,8 +26,11 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Splits
-keymap('n', "<leader>_", "<C-w>s")
-keymap('n', "<leader>|", "<C-w>v")
+keymap('n', "<leader>_", ":vsp<CR>",opts)
+keymap('n', "<leader>|", ":sp<CR>",opts)
+keymap('n', "<leader>sv", ":vsp<CR>",opts)
+keymap('n', "<leader>sh", ":sp<CR>",opts)
+keymap('n', "<leader>sm", ":MaximizerToggle<CR>",opts)
 -- better window navigation
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
@@ -92,14 +94,12 @@ keymap("v", "p", '"_dP', opts)
 keymap("v", "<", "<gv^", opts)
 keymap("v", ">", ">gv^", opts)
 
--- Insert Mode --
 -- Press jk fast to exit insert mode
 keymap("i", "jk", "<ESC>", opts)
 keymap("i", "kj", "<ESC>", opts)
 -- make <C-c> exit from multi-cursor edits
 keymap("i", "<C-c>", "<Esc>")
 
--- Terminal Mode --
 -- Better terminal navigation
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
@@ -111,6 +111,5 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 keymap("n", "<leader>=", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
 
 -- Plugin Keymaps
-
 -- Switch tmux sessions (requires tmux-sessionizer)
 -- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
