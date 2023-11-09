@@ -40,7 +40,6 @@ local temp = {
     'akinsho/bufferline.nvim', -- Display open buffers
     dependencies = 'nvim-tree/nvim-web-devicons'
   },
-  { "nvim-lualine/lualine.nvim" },   -- lualine (Statusline)
   { "nvim-tree/nvim-web-devicons" }, -- file icons
 
   -- Colorschemes

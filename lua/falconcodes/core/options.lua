@@ -6,7 +6,7 @@ local global = {
 local options = {
 
     -- UI features --
-    cmdheight = 2,         -- set command line height -> 0 hides the command line unless its being used
+    cmdheight = 3,         -- set command line height -> 0 hides the command line unless its being used
     pumheight = 10,        -- height of the pop up menu
     laststatus = 3,        -- global statusline
     guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175", -- blinking cursor, change cursor style, "" keeps a fat cursor at all times
