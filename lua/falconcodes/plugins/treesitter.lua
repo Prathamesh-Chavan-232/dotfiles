@@ -39,7 +39,7 @@ local config = function()
     "vue",
     "solidity",
   },
-		auto_install = true,
+		auto_install = true, -- Automatically Install missing parsers
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = true,

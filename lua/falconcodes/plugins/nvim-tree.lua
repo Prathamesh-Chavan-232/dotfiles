@@ -1,6 +1,6 @@
 -- open file tree keymap
 local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>',opts)
+vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>', opts)
 
 local config = function()
     require("nvim-tree").setup({

@@ -8,9 +8,10 @@ local options = {
     -- UI features --
     cmdheight = 3,         -- set command line height -> 0 hides the command line unless its being used
     pumheight = 10,        -- height of the pop up menu
-    laststatus = 3,        -- global statusline
-    guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175", -- blinking cursor, change cursor style, "" keeps a fat cursor at all times
-    showmode = true,       -- set mode visibility on command line e.g. -- INSERT --
+    -- laststatus = 3,        -- global statusline
+    -- guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175", -- blinking cursor, change cursor style, "" keeps a fat cursor at all times
+    guicursor = "", -- fat cursor
+    showmode = false,       -- set mode visibility on command line e.g. -- INSERT --
     cursorline = true,     -- set highlight on the current line
 
     -- line numbers
@@ -36,7 +37,7 @@ local options = {
     colorcolumn = '100',       -- highlight the 100th character
     signcolumn = "yes",        -- always show the sign column, otherwise it would shift the text each time
     conceallevel = 0,          -- so that `` is visible in markdown files
-    fillchars = { eob = " " }, -- disable `~` on nonexistent lines
+    -- fillchars = { eob = " " }, -- disable `~` on nonexistent lines
 
     -- Editor behaviour --
     mouse = "a",           -- set mouse usuage "" disables mouse
@@ -93,7 +94,7 @@ vim.opt.isfname:append("@-@")                   -- make words with - a single wo
 vim.opt.iskeyword:append "-"                    -- hyphenated words recognized by searches
 
 vim.opt.viewoptions:remove "curdir"             -- disable saving current directory with views
-vim.opt.shortmess:append { s = true, I = true } -- disable search count wrap and startup messages
+vim.opt.shortmess:append { s = true, I = true, F = true } -- disable search count wrap and startup messages
 vim.opt.backspace:append { "nostop" }           -- don't stop backspace at insert
 
 if vim.fn.has "nvim-0.9" == 1 then

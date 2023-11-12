@@ -1,10 +1,10 @@
 -- get lualine nightfly theme
-local lualine_theme = require("lualine.themes.nightfox")
+local lualine_theme = require("lualine.themes.catppuccin")
 
 -- new colors for theme
 local new_colors = {
     blue = "#65D1FF",
-    green = "#3EFFDC",
+    green = "#B1E3AD",
     violet = "#FF61EF",
     yellow = "#FFDA7B",
     black = "#000000",
@@ -12,7 +12,7 @@ local new_colors = {
 
 -- change nightlfy theme colors
 lualine_theme.normal.a.bg = new_colors.blue
--- lualine_theme.insert.a.bg = new_colors.green
+lualine_theme.insert.a.bg = new_colors.green
 lualine_theme.visual.a.bg = new_colors.violet
 lualine_theme.normal.c.bg = nil
 lualine_theme.command = {
@@ -63,6 +63,19 @@ local branch = {
     icons_enabled = true,
     icon = "",
 }
+local location = {
+	"location",
+	padding = 0,
+}
+-- cool function for progress
+local progress = function()
+	local current_line = vim.fn.line(".")
+	local total_lines = vim.fn.line("$")
+	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+	local line_ratio = current_line / total_lines
+	local index = math.ceil(line_ratio * #chars)
+	return chars[index]
+end
 
 local spaces = function()
     return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
@@ -80,11 +93,11 @@ local config = function()
     },
     sections = {
         lualine_a = { branch, diagnostics },
-        lualine_b = {'buffers'},
-        lualine_c = { mode },
-        lualine_x = { diff, filetype},
+        lualine_b = { mode },
+        lualine_c = { diff },
+        lualine_x = { filename, filetype },
         lualine_y = { "location" },
-        lualine_z = { "progress" },
+        lualine_z = { progress },
     },
     inactive_sections = {
         lualine_a = {},
@@ -94,8 +107,18 @@ local config = function()
         lualine_y = {},
         lualine_z = {},
     },
-    tabline = {},
-    extensions = {},
+    tabline = {
+        lualine_a = {"buffers"}
+    },
+    -- winbar = {
+    --     lualine_a = {},
+    --     lualine_b = {},
+    --     lualine_c = {'filename'},
+    --     lualine_x = {},
+    --     lualine_y = {},
+    --     lualine_z = {}
+    -- },
+    extensions = {'nvim-tree','toggleterm','trouble','lazy','fugitive','man','aerial','quickfix'},
     })
 end
 

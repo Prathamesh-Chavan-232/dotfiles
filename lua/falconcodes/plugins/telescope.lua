@@ -5,6 +5,14 @@ local config = function()
 	local telescope = require("telescope")
 	telescope.setup({
 		defaults = {
+            prompt_prefix = " ",
+            selection_caret = " ",
+            path_display = { "smart" },
+
+            planets = {
+                show_pluto = true,
+            },
+
 			mappings = {
 				i = {
 					["<C-j>"] = "move_selection_next",
@@ -48,7 +56,7 @@ return {
         -- search grep string
         keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>", opts),
         -- search themes
-        keymap.set('n', '<leader>ft', ":Telescope colorscheme<CR>", opts),
+        keymap.set('n', '<leader>fc', ":Telescope colorscheme<CR>", opts),
         -- fuzy find git files
         keymap.set('n', '<leader>gf', ":Telescope git_files<CR>", opts),
 	},

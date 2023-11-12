@@ -25,12 +25,9 @@ local temp = {
 
   -- { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }, -- indent lines
   -- Editor features
-  { 'akinsho/toggleterm.nvim',                    version = "*", opts = {} }, -- Integrated Terminals
   { 'mbbill/undotree' },                                                      -- Undotree (View branches in changes)
   { 'numToStr/Comment.nvim',                      opts = {} },                -- "gcc" to comment visual regions/lines
   { 'tpope/vim-surround' },     -- surrond text with "", '', {}, etc
-  { "windwp/nvim-ts-autotag" }, -- auto close html, jsx tags
-  { "windwp/nvim-autopairs" },  -- Add closing brackets, parenthesis & quotes automatically
 
   -- Appearance
   { "goolord/alpha-nvim" },          -- Start screen
