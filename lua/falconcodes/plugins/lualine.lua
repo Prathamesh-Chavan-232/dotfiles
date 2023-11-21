@@ -1,5 +1,5 @@
 -- get lualine nightfly theme
-local lualine_theme = require("lualine.themes.catppuccin")
+local lualine_theme = require("lualine.themes.rose-pine")
 
 -- new colors for theme
 local new_colors = {
@@ -11,9 +11,9 @@ local new_colors = {
 }
 
 -- change nightlfy theme colors
-lualine_theme.normal.a.bg = new_colors.blue
-lualine_theme.insert.a.bg = new_colors.green
-lualine_theme.visual.a.bg = new_colors.violet
+-- lualine_theme.normal.a.bg = new_colors.blue
+-- lualine_theme.insert.a.bg = new_colors.green
+-- lualine_theme.visual.a.bg = new_colors.violet
 lualine_theme.normal.c.bg = nil
 lualine_theme.command = {
     a = {

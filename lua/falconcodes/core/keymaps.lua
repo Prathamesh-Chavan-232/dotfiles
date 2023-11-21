@@ -113,6 +113,8 @@ keymap("n", "<leader>=", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
 -- Plugin Keymaps
 -- Switch tmux sessions (requires tmux-sessionizer)
 -- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
--- Toggle term
+-- Switch Transparency
+keymap("n", "<C-A-z>", ":TransparentToggle<CR>", opts)
 
+-- Toggle term
 
