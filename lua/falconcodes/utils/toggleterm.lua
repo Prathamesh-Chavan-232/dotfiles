@@ -2,8 +2,6 @@ local status_ok, toggletermTerminal = pcall(require, "toggleterm.terminal")
 if not status_ok then
 	return
 end
-
-
     local Terminal = toggletermTerminal.Terminal
     local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 
