@@ -1,0 +1,14 @@
+[font]
+size = 18
+
+[font.bold]
+family = "MesloLGLDZ Nerd Font"
+
+[font.bold_italic]
+family = "MesloLGLDZ Nerd Font"
+
+[font.italic]
+family = "MesloLGLDZ Nerd Font"
+
+[font.normal]
+family = "MesloLGLDZ Nerd Font"
