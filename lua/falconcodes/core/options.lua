@@ -4,7 +4,6 @@ local global = {
 }
 
 local options = {
-
     -- UI features --
     cmdheight = 3,         -- set command line height -> 0 hides the command line unless its being used
     pumheight = 10,        -- height of the pop up menu

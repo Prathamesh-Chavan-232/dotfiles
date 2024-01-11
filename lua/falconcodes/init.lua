@@ -49,4 +49,3 @@ opts = {
 
 require("lazy").setup('falconcodes.plugins',opts)
 require("falconcodes.core.colorscheme")
-require("falconcodes.utils.toggleterm")

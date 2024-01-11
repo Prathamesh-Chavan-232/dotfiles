@@ -100,12 +100,6 @@ keymap("i", "kj", "<ESC>", opts)
 -- make <C-c> exit from multi-cursor edits
 keymap("i", "<C-c>", "<Esc>")
 
--- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-
 -- Commands
 -- make bash script executable
 keymap("n", "<leader>=", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
