@@ -1,12 +1,11 @@
 import = [
-    "/home/falconcodes/.config/alacritty/themes/zombie-night.toml",
     "/home/falconcodes/.config/alacritty/themes/dracula.toml",
-    "/home/falconcodes/.config/alacritty/themes/catppuccin.toml",
     "/home/falconcodes/.config/alacritty/fonts.toml"
 ]
 
 [window]
 decorations = "none"
+opacity = 0.93
 
 [window.dimensions]
 columns = 110
