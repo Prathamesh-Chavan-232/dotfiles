@@ -1,2 +1,2 @@
--- plugin manager
-require("falconcodes") -- lazy plugin manager & plugins
+-- import the config
+require("falconcodes")
