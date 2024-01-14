@@ -1,11 +1,1 @@
-/*
-/tmux/plugins/
-
-# Folders
-!alacritty/
-!neofetch/
-!layouts/
-!tmux/
-
-# Files
-!.gitignore
+lazy-lock.json
