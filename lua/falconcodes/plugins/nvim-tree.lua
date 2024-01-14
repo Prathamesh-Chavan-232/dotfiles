@@ -1,42 +1,112 @@
--- open file tree keymap
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>', opts)
-
-local config = function()
-    require("nvim-tree").setup({
-    view = {
-        adaptive_size = true,
-        side = "left",
-    },
-    git = {
-        enable = true,
-        ignore = false,
-        timeout = 500,
-    },
-        filters = {
-        dotfiles = false,
-    },
-    update_cwd = true,
-    actions = {
-        open_file = {
-          resize_window = true,
-        },
-    },
-    update_focused_file = {
-        enable = true,
-        update_cwd = true,
-    },
-
-})
-end
-
--- open file tree plugin
 return {
-  "nvim-tree/nvim-tree.lua",
-  version = "*",
-  lazy = false,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
-  config = config
+	"nvim-tree/nvim-tree.lua",
+	lazy = false,
+
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+
+	config = function()
+		local nvimtree = require("nvim-tree")
+		-- open file tree keymap
+		local opts = { noremap = true, silent = true }
+		vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", opts)
+		nvimtree.setup({
+			auto_reload_on_write = true,
+			view = {
+				side = "left",
+				number = true,
+				adaptive_size = true,
+				relativenumber = true,
+			},
+			git = {
+				enable = true,
+				ignore = false,
+				timeout = 500,
+			},
+			filters = {
+				dotfiles = false,
+			},
+			update_focused_file = {
+				enable = true,
+			},
+			renderer = {
+				add_trailing = false,
+				group_empty = false,
+				highlight_git = false,
+				full_name = false,
+				highlight_opened_files = "none",
+				highlight_modified = "none",
+				root_folder_label = ":~:s?$?/..?",
+				indent_width = 2,
+
+				indent_markers = {
+					enable = true, -- enables the tree like line
+					inline_arrows = true,
+					icons = {
+						corner = "└",
+						edge = "│",
+						item = "│",
+						bottom = "─",
+						none = " ",
+					},
+				},
+
+				icons = {
+					webdev_colors = true,
+					git_placement = "before",
+					modified_placement = "after",
+					padding = " ",
+					symlink_arrow = " ➛ ",
+					show = {
+						file = true,
+						folder = true,
+						folder_arrow = true,
+						git = true,
+						modified = true,
+					},
+
+					glyphs = {
+						default = "",
+						symlink = "",
+						bookmark = "",
+						modified = "●",
+						folder = {
+							arrow_closed = "",
+							arrow_open = "",
+							default = "",
+							open = "",
+							empty = "",
+							empty_open = "",
+							symlink = "",
+							symlink_open = "",
+						},
+
+						git = {
+							unstaged = "✗",
+							staged = "✓",
+							unmerged = "",
+							renamed = "➜",
+							untracked = "★",
+							deleted = "",
+							ignored = "◌",
+						},
+					},
+				}, -- end of icons rendering
+
+				special_files = {
+					"Cargo.toml",
+					"Makefile",
+					"README.md",
+					"readme.md",
+				},
+				symlink_destination = true,
+			}, -- end of rendering
+
+			ui = {
+				confirm = {
+					remove = true,
+					trash = true,
+				},
+			},
+		})
+	end,
 }

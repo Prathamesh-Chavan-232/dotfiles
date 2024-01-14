@@ -3,6 +3,6 @@ return {
     lazy = false,
     config = {},
     dependencies = {
-    'nvim-treesitter/nvim-treesitter', -- Highlight, edit, and navigate code
+        'nvim-treesitter/nvim-treesitter', -- Highlight, edit, and navigate code
     },
-} -- auto close html, jsx tags
+}                                          -- auto close html, jsx tags

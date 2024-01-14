@@ -7,6 +7,7 @@ return {
             opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
             vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
         end
+ 		current_line_blame = true,
 
         -- Navigation
         map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})

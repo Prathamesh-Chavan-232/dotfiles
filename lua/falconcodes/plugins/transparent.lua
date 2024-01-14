@@ -11,8 +11,22 @@ return {
             'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
             'EndOfBuffer',
           },
-          extra_groups = {}, -- table: additional groups that should be cleared
+          extra_groups = {
+            "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
+            "NvimTreeNormal", -- NvimTree
+            "NvimTreeNormalNC",
+            "NvimTreeWinSeparator",
+            "TelescopeNormal",
+            "TelescopeBorder",
+            "WhichKeyFloat",
+          }, -- table: additional groups that should be cleared
           exclude_groups = {}, -- table: groups you don't want to clear
         })
+
+        --- Fix for bufferline looking strange on startup ---
+        vim.cmd(":TransparentToggle")
+        vim.cmd(":TransparentToggle")
     end
 }
+
+

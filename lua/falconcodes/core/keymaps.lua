@@ -1,9 +1,10 @@
 -- Shorten function name
 local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
 -- [[ Custom Keymaps ]]
 -- Leader key
-local opts = { noremap = true, silent = true }
+vim.g.mapleader = " "
 keymap("", "<Space>", "<Nop>", opts)
 
 local term_opts = { silent = true }
@@ -26,11 +27,11 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Splits
-keymap('n', "<leader>_", ":vsp<CR>",opts)
-keymap('n', "<leader>|", ":sp<CR>",opts)
-keymap('n', "<leader>sv", ":vsp<CR>",opts)
-keymap('n', "<leader>sh", ":sp<CR>",opts)
-keymap('n', "<leader>sm", ":MaximizerToggle<CR>",opts)
+keymap("n", "<leader>_", ":vsp<CR>", opts)
+keymap("n", "<leader>|", ":sp<CR>", opts)
+keymap("n", "<leader>sv", ":vsp<CR>", opts)
+keymap("n", "<leader>sh", ":sp<CR>", opts)
+keymap("n", "<leader>sm", ":MaximizerToggle<CR>", opts)
 -- better window navigation
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
@@ -50,8 +51,8 @@ keymap("n", "<T-h>", ":bprevious<CR>", opts)
 -- toggle text wrap
 keymap("n", "<A-z>", ":set wrap!<CR>", opts)
 -- remap for dealing with word wrap
-keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Move lines up & down like Vscode
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
@@ -100,6 +101,12 @@ keymap("i", "kj", "<ESC>", opts)
 -- make <C-c> exit from multi-cursor edits
 keymap("i", "<C-c>", "<Esc>")
 
+-- Better terminal navigation
+keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
+keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
+keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
 -- Commands
 -- make bash script executable
 keymap("n", "<leader>=", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
@@ -109,6 +116,6 @@ keymap("n", "<leader>=", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
 -- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
 -- Switch Transparency
 keymap("n", "<C-A-z>", ":TransparentToggle<CR>", opts)
+keymap("n", "<leader>tt", ":TransparentToggle<CR>", opts)
 
 -- Toggle term
-

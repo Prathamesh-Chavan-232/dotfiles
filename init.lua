@@ -1,2 +1,2 @@
 -- plugin manager
-require "falconcodes"    -- lazy plugin manager & plugins
+require("falconcodes") -- lazy plugin manager & plugins

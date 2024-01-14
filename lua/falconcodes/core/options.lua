@@ -5,13 +5,13 @@ local global = {
 
 local options = {
     -- UI features --
-    cmdheight = 3,         -- set command line height -> 0 hides the command line unless its being used
-    pumheight = 10,        -- height of the pop up menu
+    cmdheight = 1,  -- set command line height -> 0 hides the command line unless its being used
+    pumheight = 10, -- height of the pop up menu
     -- laststatus = 3,        -- global statusline
     -- guicursor = "n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175", -- blinking cursor, change cursor style, "" keeps a fat cursor at all times
-    guicursor = "", -- fat cursor
-    showmode = false,       -- set mode visibility on command line e.g. -- INSERT --
-    cursorline = true,     -- set highlight on the current line
+    guicursor = "",    -- fat cursor
+    showmode = false,  -- set mode visibility on command line e.g. -- INSERT --
+    cursorline = true, -- set highlight on the current line
 
     -- line numbers
     number = true,         -- set numbered lines
@@ -39,9 +39,9 @@ local options = {
     -- fillchars = { eob = " " }, -- disable `~` on nonexistent lines
 
     -- Editor behaviour --
-    mouse = "a",           -- set mouse usuage "" disables mouse
-    history = 100,         -- number of commands to remember in a history table
-    virtualedit = "block", -- allow going past end of line in visual block mode
+    mouse = "a",                    -- set mouse usuage "" disables mouse
+    history = 100,                  -- number of commands to remember in a history table
+    virtualedit = "block",          -- allow going past end of line in visual block mode
     -- clipboard = "unnamedplus", -- make neovim use the system clipboard
     backspace = "indent,eol,start", -- makes backspace work properly
 
@@ -53,9 +53,9 @@ local options = {
     infercase = true,       -- infer cases in keyword completion
     smartcase = true,       -- smart case
     -- scrolling & text wrap
-    scrolloff = 8,     -- number of lines to keep above and below the cursor
-    sidescrolloff = 8, -- number of columns to keep at the sides of the cursor
-    wrap = false,      -- set text wrap (disregrads the previous setting, best to set a keybind, wrap is very disorienting)
+    scrolloff = 8,          -- number of lines to keep above and below the cursor
+    sidescrolloff = 8,      -- number of columns to keep at the sides of the cursor
+    wrap = false,           -- set text wrap (disregrads the previous setting, best to set a keybind, wrap is very disorienting)
 
     -- buffers,tabs & splits
     showtabline = 2,   -- always show tabs
@@ -63,8 +63,8 @@ local options = {
     splitright = true, -- force all vertical splits to go to the right of current window
 
     -- completion
-    updatetime = 300,                                -- faster completion (4000ms default)
-    timeoutlen = 300,                                -- time to wait for a mapped sequence to complete (in milliseconds)
+    updatetime = 300,                                 -- faster completion (4000ms default)
+    timeoutlen = 300,                                 -- time to wait for a mapped sequence to complete (in milliseconds)
     completeopt = { "menu", "noinsert", "noselect" }, -- Options for insert mode completion
 
     -- undo & undotree
@@ -87,14 +87,14 @@ for setting, value in pairs(options) do
     vim.opt[setting] = value
 end
 
-vim.opt.shortmess = "ilmnrx" -- flags to shorten vim messages, see :help 'shortmess'
-vim.opt.shortmess:append "c"                    -- don't give |ins-completion-menu| messages
-vim.opt.isfname:append("@-@")                   -- make words with - a single word
-vim.opt.iskeyword:append "-"                    -- hyphenated words recognized by searches
+vim.opt.shortmess = "ilmnrx"                              -- flags to shorten vim messages, see :help 'shortmess'
+vim.opt.shortmess:append "c"                              -- don't give |ins-completion-menu| messages
+vim.opt.isfname:append("@-@")                             -- make words with - a single word
+vim.opt.iskeyword:append "-"                              -- hyphenated words recognized by searches
 
-vim.opt.viewoptions:remove "curdir"             -- disable saving current directory with views
+vim.opt.viewoptions:remove "curdir"                       -- disable saving current directory with views
 vim.opt.shortmess:append { s = true, I = true, F = true } -- disable search count wrap and startup messages
-vim.opt.backspace:append { "nostop" }           -- don't stop backspace at insert
+vim.opt.backspace:append { "nostop" }                     -- don't stop backspace at insert
 
 if vim.fn.has "nvim-0.9" == 1 then
     vim.opt.diffopt:append "linematch:60" -- enable linematch diff algorithm
