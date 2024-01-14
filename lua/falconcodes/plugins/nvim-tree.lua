@@ -6,9 +6,6 @@ return {
 
 	config = function()
 		local nvimtree = require("nvim-tree")
-		-- open file tree keymap
-		local opts = { noremap = true, silent = true }
-		vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", opts)
 		nvimtree.setup({
 			auto_reload_on_write = true,
 			view = {
@@ -108,5 +105,8 @@ return {
 				},
 			},
 		})
+
+		-- open file tree keymap
+		local opts = { noremap = true, silent = true }
 	end,
 }

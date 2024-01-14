@@ -42,9 +42,6 @@ local config = function()
         autopairs = {
             enable = true,
         },
-        rainbow = {
-            enable = true,
-        },
         incremental_selection = {
             enable = true,
             keymaps = {
@@ -58,20 +55,20 @@ local config = function()
 end
 
 return {
-    'nvim-treesitter/nvim-treesitter', -- Highlight, edit, and navigate code
+    "nvim-treesitter/nvim-treesitter", -- Highlight, edit, and navigate code
     dependencies = {
         "JoosepAlviste/nvim-ts-context-commentstring",
         "windwp/nvim-ts-autotag",
-        'nvim-treesitter/nvim-treesitter-textobjects',
+        "nvim-treesitter/nvim-treesitter-textobjects",
         "hiphish/rainbow-delimiters.nvim",
         "windwp/nvim-autopairs",
     },
 
     lazy = false,
-    build = ':TSUpdate',
+    build = ":TSUpdate",
     event = {
         "BufReadPre",
         "BufNewFile",
     },
-    config = config
+    config = config,
 }

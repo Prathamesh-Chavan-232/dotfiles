@@ -64,7 +64,6 @@
 --     },
 -- }
 
-
 local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
@@ -79,7 +78,7 @@ local diff = {
     "diff",
     colored = false,
     symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-    cond = hide_in_width
+    cond = hide_in_width,
 }
 
 local mode = {
@@ -128,7 +127,7 @@ local config = function()
 
         options = {
             icons_enabled = true,
-            theme = 'auto',
+            theme = "auto",
             globalstatus = true,
             disabled_filetypes = { "alpha", "dashboard", "Outline" },
             always_divide_middle = true,
@@ -150,9 +149,9 @@ local config = function()
             lualine_z = {},
         },
         tabline = {
-            lualine_a = { "buffers" }
+            lualine_a = { "buffers" },
         },
-        extensions = { 'toggleterm', 'trouble', 'lazy', 'fugitive', 'man', 'aerial', 'quickfix' },
+        extensions = { "toggleterm", "trouble", "lazy", "fugitive", "man", "aerial", "quickfix" },
     })
 end
 

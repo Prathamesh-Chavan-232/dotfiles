@@ -1,7 +1,3 @@
-require("falconcodes.core.options")
-require("falconcodes.core.keymaps")
-require("falconcodes.core.autocmds")
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -58,8 +54,6 @@ opts = {
             height = 0.8,
         },
     },
-
-
 }
 
 require("lazy").setup(opts)

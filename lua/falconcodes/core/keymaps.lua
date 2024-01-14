@@ -27,8 +27,6 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Splits
-keymap("n", "<leader>_", ":vsp<CR>", opts)
-keymap("n", "<leader>|", ":sp<CR>", opts)
 keymap("n", "<leader>sv", ":vsp<CR>", opts)
 keymap("n", "<leader>sh", ":sp<CR>", opts)
 keymap("n", "<leader>sm", ":MaximizerToggle<CR>", opts)
@@ -72,12 +70,6 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
 
--- Quick fix list
-keymap("n", "<leader-K>", "<cmd>cnext<CR>zz", opts)
-keymap("n", "<leader-J>", "<cmd>cprev<CR>zz", opts)
-keymap("n", "<leader>k", "<cmd>lnext<CR>zz", opts)
-keymap("n", "<leader>j", "<cmd>lprev<CR>zz", opts)
-
 -- Yank, delete, paste, find & replace
 -- replace current word
 keymap("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
@@ -114,8 +106,22 @@ keymap("n", "<leader>=", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
 -- Plugin Keymaps
 -- Switch tmux sessions (requires tmux-sessionizer)
 -- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+
 -- Switch Transparency
 keymap("n", "<C-A-z>", ":TransparentToggle<CR>", opts)
-keymap("n", "<leader>tt", ":TransparentToggle<CR>", opts)
 
--- Toggle term
+--Fugative
+keymap("n", "<leader>ga", ":G add<Space>", opts)
+keymap("n", "<leader>gs", ":G status<CR>", opts)
+keymap("n", "<leader>gb", ":G branch<Space>", opts)
+keymap("n", "<leader>gm", ":G merge<Space>", opts)
+keymap("n", "<leader>gpl", ":G pull<Space>", opts)
+keymap("n", "<leader>gplo", ":G pull origin<Space>", opts)
+keymap("n", "<leader>gps", ":G push<Space>", opts)
+keymap("n", "<leader>gpso", ":G push origin<Space>", opts)
+keymap("n", "<leader>gc", ":G commit<Space>", opts)
+keymap("n", "<leader>gcm", ":G commit -m<Space>", opts)
+keymap("n", "<leader>gch", ":G checkout<Space>", opts)
+keymap("n", "<leader>gchb", ":G checkout -b<Space>", opts)
+keymap("n", "<leader>gcoe", ":G config user.email<Space>", opts)
+keymap("n", "<leader>gcon", ":G config user.name<Space>", opts)

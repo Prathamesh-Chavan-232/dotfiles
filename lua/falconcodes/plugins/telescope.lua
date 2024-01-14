@@ -57,11 +57,12 @@ return {
         keymap.set("n", "<leader>fw", ":Telescope live_grep<CR>", opts),
         -- search themes
         keymap.set("n", "<leader>fc", ":Telescope colorscheme<CR>", opts),
-        -- fuzy find git files
-        keymap.set("n", "<leader>gf", ":Telescope git_files<CR>", opts),
-        keymap.set("n", "<leader>fgc", ":Telescope git_commits<CR>", opts),
-        keymap.set("n", "<leader>fgs", ":Telescope git_stash<CR>", opts),
-        keymap.set("n", "<leader>fgb", ":Telescope git_branches<CR>", opts),
+        -- Treesitter
         keymap.set("n", "<leader>fv", ":Telescope treesitter<CR>", opts),
+        -- fuzy find git files
+        keymap.set("n", "<leader>fgf", ":Telescope git_files<CR>", opts),
+        keymap.set("n", "<leader>fgc", ":Telescope git_commits<CR>", opts),
+        keymap.set("n", "<leader>fgb", ":Telescope git_branches<CR>", opts),
+        keymap.set("n", "<leader>fgs", ":Telescope git_stash<CR>", opts),
     },
 }
