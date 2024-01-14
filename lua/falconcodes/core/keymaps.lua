@@ -107,8 +107,11 @@ keymap("n", "<leader>=", "<cmd>!chmod +x %<CR>", { silent = true }, opts)
 -- Switch tmux sessions (requires tmux-sessionizer)
 -- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
 
+-- Toggle Term
+vim.keymap.set("n", "<C-\\>", ":ToggleTerm<CR>", { remap = true }, opts)
+
 -- Switch Transparency
-keymap("n", "<leader>tt", ":TransparentToggle<CR>", opts)
+keymap("n", "<C-A-z>", ":TransparentToggle<CR>", opts)
 
 --Fugative
 -- Old Keymaps - I find it better to just type these
