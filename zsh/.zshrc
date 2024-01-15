@@ -147,15 +147,19 @@ alias mkdir='mkdir -pv'
 
 # Open config files quickly
 alias zshrc='nvim ~/.zshrc'
-alias nvimrc='~/.config/nvim && nvim'
 alias tmuxrc='nvim ~/.config/tmux/tmux.conf'
-alias tx-layoutsrc='~/.tmuxifier/layouts/ && nvim'
-alias alacrittyrc='~/.config/alacritty/ && nvim .'
-alias polybarrc='~/config/polybar/ && nvim .'
-alias i3rc='~/.config/i3/ && nvim .'
-alias bspwmrc='~/.config/bspwm/ && nvim .'
-alias rofirc='~/.config/rofi/ && nvim .'
-alias dunstrc='~/.config/dunst/ && nvim .'
+
+# Open config folders quickly
+alias dots='cd ~/keep-coding/falcon-dots/ && nvim .' # dotfiles are symlinked to this directory
+# Still keep these just in case
+alias nvimrc='cd ~/.config/nvim && nvim .'
+alias tx-layoutsrc='cd ~/.tmuxifier/layouts/ && nvim'
+alias alacrittyrc='cd ~/.config/alacritty/ && nvim .'
+alias polybarrc='cd ~/config/polybar/ && nvim .'
+alias i3rc='cd ~/.config/i3/ && nvim .'
+alias bspwmrc='cd ~/.config/bspwm/ && nvim .'
+alias rofirc='cd ~/.config/rofi/ && nvim .'
+alias dunstrc='cd ~/.config/dunst/ && nvim .'
 
 # copy current working directory
 function cpwd() {
