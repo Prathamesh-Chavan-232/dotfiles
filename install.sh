@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Install Tmux Plugin Manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 DOT_FOLDERS="alacritty,zsh,nvim,tmux,nvim-old,nvchad,kitty"
@@ -18,4 +21,5 @@ exec $SHELL -l
 
 
 echo "Dotfiles installation complete."
+
 
