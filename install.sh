@@ -39,12 +39,10 @@ yay -S spotify brave-bin
 # Install Patched nerd fonts
 print_header "Installing Patched Fonts"
 yay -S ttf-jetbrains-mono-nerd
-echo "Patched Fonts Installed"
 
 print_header "Installing Tmux Plugin Manager"
 # Install Tmux Plugin Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-echo "Tmux Plugin Manager Loaded - Please press Prefix + I to fetch all the plugins"
 
 print_header "Installing Packages Completed."
 print_header "Setting up a few things, for you please wait."
@@ -74,6 +72,7 @@ for folder in $(echo $DOT_FOLDERS | sed "s/,/ /g"); do
 done
 
 print_subheader "Dotfiles installation complete."
+print_subheader "Note:Tmux Plugin Manager - Please press Prefix + I to fetch all the plugins"
 print_subheader "[+] Reloading shell..."
 # Stop logging before reloading the shell
 exec > /dev/tty 2>&1
