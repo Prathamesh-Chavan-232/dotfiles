@@ -2,13 +2,17 @@
 
 # Install System Workflow Apps
 sudo pacman -S neovim alacritty kitty polybar i3 rofi fish neofetch picom ranger htop lazygit zsh starship tmux firefox
+echo "System Apps Installed"
 # Install Development Related Packages
 sudo pacman -S git github-cli fzf ripgrep python nodejs npm pnpm gcc xclip
+echo "Development Tools Installed"
 # Install Patched nerd fonts
 yay -S ttf-jetbrains-mono-nerd
+echo "Patched Fonts Installed"
 
 # Install Tmux Plugin Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "Tmux Plugin Manager Loaded - Please press Prefix + I to fetch all the plugins"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
