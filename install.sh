@@ -123,7 +123,7 @@ install_packages "yay" "${other_apps[@]}"
 # Install Patched nerd fonts
 print_header "$GREEN" "Installing Patched Fonts"
 patched_fonts=("ttf-jetbrains-mono-nerd")
-install_packages "piaur" "${patched_fonts[@]}"
+install_packages "yay" "${patched_fonts[@]}"
 # yay -S ttf-jetbrains-mono-nerd
 
 print_header "$GREEN" "Installing Tmux Plugin Manager"
