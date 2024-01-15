@@ -30,7 +30,7 @@ sudo pacman -S neovim alacritty kitty polybar i3 rofi fish neofetch picom ranger
 # Install Development Related Packages
 print_header "Installing Development Tools"
 sudo pacman -S git github-cli fzf ripgrep python nodejs npm pnpm gcc xclip
-yay -S google-chrome-stable visual-studio-code-bin
+yay -S google-chrome visual-studio-code-bin
 
 # Install Other Useful Apps
 print_header "Installing Other Useful Apps"
