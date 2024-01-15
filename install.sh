@@ -93,7 +93,7 @@ for folder in $(echo $DOT_FOLDERS | sed "s/,/ /g"); do
 done
 
 print_fin "$GREEN" "Dotfiles installation complete."
-print_subheader "$BLUE"" Note:Tmux Plugin Manager - Please press Prefix + I to fetch all the plugins"
+print_subheader "$BLUE" "Note:Tmux Plugin Manager - Please press Prefix + I to fetch all the plugins"
 print_subheader "$BLUE" "Note:Starship is installed but isn't used"
 # Stop logging before reloading the shell
 echo "Do you want to reload the shell? (Y/n): "
