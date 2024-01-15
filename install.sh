@@ -25,12 +25,24 @@ exec > >(tee -a "$LOG_FILE") 2>&1
 
 # Install System Workflow Apps
 print_header "Installing System Workflow Apps"
-sudo pacman -S neovim alacritty kitty polybar i3 rofi fish neofetch picom ranger htop lazygit zsh starship tmux firefox
+sudo pacman -S neovim alacritty kitty polybar i3 rofi fish neofetch picom ranger htop lazygit zsh starship tmux firefox lsd zoxide
 
 # Install Development Related Packages
 print_header "Installing Development Tools"
-sudo pacman -S git github-cli fzf ripgrep python nodejs npm pnpm gcc xclip
-yay -S google-chrome visual-studio-code-bin
+sudo pacman -S git github-cli fzf ripgrep python pip bun nodejs npm pnpm gcc xclip
+
+# Install conda
+print_header "Installing Miniconda"
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+
+print_header "Installing VS Code"
+yay -S visual-studio-code-bin
+
+print_header "Installing Web Browsers"
+yay -S google-chrome brave-bin
 
 # Install Other Useful Apps
 print_header "Installing Other Useful Apps"
@@ -47,7 +59,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 print_header "Installing Packages Completed."
 print_header "Setting up a few things, for you please wait."
 
-print_header"Changing the default shell to zsh."
+print_header "Changing the default shell to zsh."
 current_shell=$(basename "$SHELL")
 
 if [ "$current_shell" = "zsh" ]; then
