@@ -73,7 +73,7 @@ exec > >(tee -a "$LOG_FILE") 2>&1
 
 # Install System Workflow Apps
 print_header "$GREEN" "Installing System Workflow Apps"
-system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "picom" "ranger" "htop" "lazygit" "zsh" "starship" "tmux" "firefox" "lsd" "zoxide")
+system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "picom" "ranger" "htop" "lazygit" "zsh" "starship" "tmux" "firefox" "lsd" "zoxide" "stow")
 install_packages "pacman" "${system_packages[@]}"
 # sudo pacman -S neovim alacritty kitty dunst polybar i3 rofi neofetch picom ranger htop lazygit zsh starship tmux firefox lsd zoxide
 
@@ -138,6 +138,9 @@ else
     git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
     print_subheader "$GREEN" "TPM installed successfully at $tpm_dir."
 fi
+# Install zsh plugin Manager
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+print_subheader "$GREEN" "Zsh Plugin Manager (Zap) installed successfully at $tpm_dir."
 
 print_log "$GREEN" "Installing Packages Completed."
 echo ""
