@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+# Install System Workflow Apps
+sudo pacman -S neovim alacritty kitty polybar i3 rofi fish neofetch picom ranger htop lazygit zsh starship tmux firefox
+# Install Development Related Packages
+sudo pacman -S git github-cli fzf ripgrep python nodejs npm pnpm gcc xclip
+# Install Patched nerd fonts
+yay -S ttf-jetbrains-mono-nerd
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 DOT_FOLDERS="alacritty,zsh,nvim,tmux,nvim-old,nvchad,kitty"
