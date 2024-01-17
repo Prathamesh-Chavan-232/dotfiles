@@ -114,10 +114,10 @@ vim.keymap.set("n", "<C-\\>", ":ToggleTerm<CR>", { remap = true }, opts)
 keymap("n", "<C-A-z>", ":TransparentToggle<CR>", opts)
 
 -- Flutter Tools
-keymap("n", "<leader>Fs", ":FlutterRun<CR>", opts)
-keymap("n", "<leader>Fr", ":FlutterReload<CR>", opts)
-keymap("n", "<leader>FR", ":FlutterRestart<CR>", opts)
-keymap("n", "<leader>Fq", ":FlutterQuit<CR>", opts)
+keymap("n", "<leader>ms", ":FlutterRun<CR>", opts)
+keymap("n", "<leader>mr", ":FlutterReload<CR>", opts)
+keymap("n", "<leader>mR", ":FlutterRestart<CR>", opts)
+keymap("n", "<leader>mq", ":FlutterQuit<CR>", opts)
 
 --Fugative
 -- Old Keymaps - I find it better to just type these
