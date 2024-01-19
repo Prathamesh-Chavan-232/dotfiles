@@ -27,6 +27,7 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 
 # Exports
+export CHROME_EXECUTABLE='/usr/bin/google-chrome-stable'
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="google-chrome-stable"

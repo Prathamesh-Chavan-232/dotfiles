@@ -156,6 +156,8 @@ else
     chsh -s "$(which zsh)"
     print_log "$GREEN" "Default shell changed to Zsh."
 fi
+print_header "$GREEN" "Switching to local clock"
+timedatectl set-local-rtc 1 --adjust-system-clock
 
 print_header "$GREEN" "Linking your dotfiles..."
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
