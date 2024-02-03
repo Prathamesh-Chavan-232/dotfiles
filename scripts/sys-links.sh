@@ -3,7 +3,7 @@
 dotfiles_dir="$HOME/keep-coding/falcon-dots"
 
 # List of dotfiles to symlink
-dotfiles=("zshrc" "alacritty" "kitty" "nvim" "configs")
+dotfiles=("zsh")
 
 for file in "${dotfiles[@]}"; do
     source_path="$dotfiles_dir/$file"
