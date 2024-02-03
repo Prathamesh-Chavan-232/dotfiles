@@ -1,70 +1,5 @@
 #!/bin/sh
 
-# Zap Plugin Manager
-[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
-
-# plugins
-plug "esc/conda-zsh-completion"
-plug "zap-zsh/completions"
-plug "zsh-users/zsh-autosuggestions"
-plug "hlissner/zsh-autopair"
-plug "MAHcodes/distro-prompt"
-plug "zap-zsh/fzf"
-plug "zsh-users/zsh-syntax-highlighting"
-plug "zsh-users/zsh-history-substring-search"
-
-# Zsh cool options
-setopt AUTOCD            # cd into directly without writing cd
-setopt PROMPT_SUBST      # enable command substitution in prompt
-setopt MENU_COMPLETE     # Automatically highlight first element of completion menu
-setopt AUTO_LIST         # Automatically list choices on ambiguous completion.
-setopt HIST_IGNORE_DUPS  # Do not write events to history that are duplicates of previous events
-setopt HIST_FIND_NO_DUPS # When searching history don't display results already cycled through twice
-setopt COMPLETE_IN_WORD  # Complete from both ends of a word.
-
-HISTFILE=~/.cache/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
-
-# Exports
-export CHROME_EXECUTABLE='/usr/bin/google-chrome-stable'
-export EDITOR="nvim"
-export TERMINAL="alacritty"
-export BROWSER="google-chrome-stable"
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
-# export XDG_CURRENT_DESKTOP="Wayland"
-
-export GPG_TTY=$TTY
-path=(~/bin $path)
-
-# pnpm
-export PNPM_HOME="/home/falconcodes/.local/share/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# flutter
-export PATH="$PATH:/home/falconcodes/flutter/bin"
-
-eval "$(zoxide init zsh)"
-eval "`pip completion --zsh`"
-
-# keybinds
-bindkey '^ ' autosuggest-accept
-
-if command -v bat &> /dev/null; then
-  alias cat="bat -pp --theme \"Visual Studio Dark+\""
-  alias catt="bat --theme \"Visual Studio Dark+\""
-fi
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
 
 # Aliases
 # Maintenance
@@ -207,6 +142,76 @@ function nvims() {
   NVIM_APPNAME=$config nvim $@
 }
 bindkey -s "^a" "nvims\n"
+
+# Zap Plugin Manager
+[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
+
+# plugins
+plug "esc/conda-zsh-completion"
+plug "zap-zsh/completions"
+plug "zsh-users/zsh-autosuggestions"
+plug "hlissner/zsh-autopair"
+plug "MAHcodes/distro-prompt"
+plug "zap-zsh/fzf"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "zsh-users/zsh-history-substring-search"
+
+# Zsh cool options
+setopt AUTOCD            # cd into directly without writing cd
+setopt PROMPT_SUBST      # enable command substitution in prompt
+setopt MENU_COMPLETE     # Automatically highlight first element of completion menu
+setopt AUTO_LIST         # Automatically list choices on ambiguous completion.
+setopt HIST_IGNORE_DUPS  # Do not write events to history that are duplicates of previous events
+setopt HIST_FIND_NO_DUPS # When searching history don't display results already cycled through twice
+setopt COMPLETE_IN_WORD  # Complete from both ends of a word.
+
+HISTFILE=~/.cache/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+# Exports
+export CHROME_EXECUTABLE='/usr/bin/google-chrome-stable'
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export BROWSER="google-chrome-stable"
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+# export XDG_CURRENT_DESKTOP="Wayland"
+
+export GPG_TTY=$TTY
+
+# pnpm
+export PNPM_HOME="/home/falconcodes/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# flutter
+export PATH="$PATH:/home/falconcodes/flutter/bin"
+export ANDROID_SDK_ROOT="/home/falconcodes/Android/Sdk"
+export PATH="$PATH:/$ANDROID_SDK_ROOT"
+export PATH="$PATH:/$ANDROID_SDK_ROOT/platform-tools"
+export PATH="$PATH:/$ANDROID_SDK_ROOT/tools"
+
+eval "$(zoxide init zsh)"
+eval "`pip completion --zsh`"
+
+# keybinds
+bindkey '^ ' autosuggest-accept
+
+# if command -v bat &> /dev/null; then
+#   alias cat="bat -pp --theme \"Visual Studio Dark+\""
+#   alias catt="bat --theme \"Visual Studio Dark+\""
+# fi
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
 
 # Might be Useful some day - Do specfic things depending on the OS
 case "$(uname -s)" in
