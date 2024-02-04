@@ -79,6 +79,8 @@ development_tools=("git" "github-cli" "fzf" "ripgrep" "python" "python-pip" "bun
 install_packages "pacman" "${development_tools[@]}"
 # sudo pacman -S git github-cli fzf ripgrep python python-pip bun nodejs npm pnpm gcc xclip
 
+# Install Flutter
+
 # Install conda
 print_header "$GREEN" "Installing Miniconda"
 # Check if Miniconda is already installed
