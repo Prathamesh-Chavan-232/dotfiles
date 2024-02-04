@@ -80,7 +80,9 @@ install_packages "pacman" "${development_tools[@]}"
 # sudo pacman -S git github-cli fzf ripgrep python python-pip bun nodejs npm pnpm gcc xclip
 
 # Install Flutter
+print_header "$GREEN" "Installing Flutter"
 yay -S flutter
+print_log "$GREEN" "Flutter installed successfully."
 
 # Install conda
 print_header "$GREEN" "Installing Miniconda"
