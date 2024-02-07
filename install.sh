@@ -145,6 +145,7 @@ else
     git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
     print_subheader "$GREEN" "TPM installed successfully at $tpm_dir."
 fi
+
 # Install zsh plugin Manager
 zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 print_subheader "$GREEN" "Zsh Plugin Manager (Zap) installed successfully at $tpm_dir."
@@ -153,6 +154,23 @@ print_log "$GREEN" "Installing Packages Completed."
 echo ""
 print_subheader "$GREEN" "Setting up a few things, for you please wait."
 
+print_header "$LIGHT_PURPLE" "Backing up existing config files"
+mv ~/.zshrc ~/.zshrc.bak
+# Creating symlinks
+print_header "$GREEN" "Linking your dotfiles..."
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+DOT_FOLDERS="alacritty,zsh,tmux,kitty,nvim,nvim-alt,nvim-minimal,nvim-old,nvchad"
+
+for folder in $(echo $DOT_FOLDERS | sed "s/,/ /g"); do
+    print_log "$GREEN" "[+] File/Folder :: $folder"
+    stow --ignore=README.md --ignore=LICENSE \
+        -t $HOME -D $folder
+    stow -v -t $HOME $folder
+    print_subheader "$GREEN" "Symlinked: $folder"
+done
+
+# Tweak some settings
 print_header "$GREEN" "Changing the default shell to zsh."
 current_shell=$(basename "$SHELL")
 
@@ -167,27 +185,14 @@ fi
 print_header "$GREEN" "Switching to local clock"
 timedatectl set-local-rtc 1 --adjust-system-clock
 
-# Add current user to plugdev
+# Add current user to plugdev - For USB debugging & Tethering
 print_header "$GREEN" "Adding current user to plugdev"
 sudo groupadd plugdev
 sudo usermod -aG plugdev "$LOGNAME"
 
-print_header "$GREEN" "Linking your dotfiles..."
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-
-DOT_FOLDERS="alacritty,zsh,tmux,kitty,nvim,nvim-alt,nvim-minimal,nvim-old,nvchad"
-
-for folder in $(echo $DOT_FOLDERS | sed "s/,/ /g"); do
-    print_log "$GREEN" "[+] File/Folder :: $folder"
-    stow --ignore=README.md --ignore=LICENSE \
-        -t $HOME -D $folder
-    stow -v -t $HOME $folder
-    print_subheader "$GREEN" "Symlinked: $folder"
-done
-
-print_subheader "$LIGHT_PURPLE" "Note: Tmux Plugin Manager is installed, Please press Prefix + I in a tmux session to load all the plugins"
 print_subheader "$LIGHT_PURPLE" "Note: Starship is installed but isn't used"
-print_subheader "$RED" "Note: Dart, Flutter Sdk, Android Sdk, Android cmd-line tools and Android emulators are not installed."
+print_subheader "$LIGHT_PURPLE" "Note: Tmux Plugin Manager is installed, Please press Prefix + I in a tmux session to load all the plugins"
+print_subheader "$RED" "Note: Android Sdk, Android cmd-line tools and Android emulators are not installed."
 print_log "$GREEN" "Dotfiles installation complete."
 print_log "$GREEN" "System preferencs have been changed. Reboot Recommended."
 echo ""

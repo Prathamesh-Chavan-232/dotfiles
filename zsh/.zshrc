@@ -28,16 +28,18 @@ HISTFILE=~/.cache/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# Exports
+# Add to Path
 export CHROME_EXECUTABLE='/usr/bin/google-chrome-stable'
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="google-chrome-stable"
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
+export GPG_TTY=$TTY
 # export XDG_CURRENT_DESKTOP="Wayland"
 
-export GPG_TTY=$TTY
+# conda
+export PATH="$HOME/miniconda/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="/home/falconcodes/.local/share/pnpm"
