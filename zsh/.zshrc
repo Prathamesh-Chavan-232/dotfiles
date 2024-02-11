@@ -202,14 +202,15 @@ alias web-projects="cd ~/keep-coding/web-dev/projects/"
 alias web-games="cd ~/keep-coding/web-dev/game-dev/"
 alias nix-ricing="cd ~/keep-coding/nix-customization/"
 
-# Open config files quickly
-alias zshrc='nvim ~/.zshrc'
-alias tmuxrc='nvim ~/.config/tmux/tmux.conf'
 
-# Open config folders quickly
+# Open Dotfiles quickly
 alias dots='cd ~/keep-coding/falcon-dots/ && nvim .' # dotfiles are symlinked to this directory
 
 # Still keep these just in case
+# Open config files quickly
+alias zshrc='nvim ~/keep-coding/falcon-dots/zsh/.zshrc'
+alias tmuxrc='nvim ~/keep-coding/falcon-dots/tmux/.config/tmux/tmux.conf'
+# Open config folders quickly
 alias nvimrc='cd ~/.config/nvim && nvim .'
 alias tx-layoutsrc='cd ~/.tmuxifier/layouts/ && nvim'
 alias alacrittyrc='cd ~/.config/alacritty/ && nvim .'
