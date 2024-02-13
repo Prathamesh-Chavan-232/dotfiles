@@ -65,73 +65,17 @@ install_packages() {
     done
 }
 
-source echo.sh
-# Store all the install logs in file
-LOG_FILE="install_log.txt"
-# Remove existing log file
-rm -f "$LOG_FILE"
-# Start logging
-exec > >(tee -a "$LOG_FILE") 2>&1
-
 # Install Development Related Packages
 print_header  "$GREEN" "Installing Development Tools"
 development_tools=("git" "github-cli" "fzf" "ripgrep" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc" "xclip")
 install_packages "pacman" "${development_tools[@]}"
 # sudo pacman -S git github-cli fzf ripgrep python python-pip bun nodejs npm pnpm gcc xclip
 
-# Install Flutter
-print_header "$GREEN" "Installing Flutter"
-yay -S flutter
-print_log "$GREEN" "Flutter installed successfully."
-
-# Install conda
-print_header "$GREEN" "Installing Miniconda"
-# Check if Miniconda is already installed
-if command miniconda3 &> /dev/null; then
-    print_subheader "$LIGHT_PURPLE" "Miniconda is already installed."
-else
-    # Miniconda not found, install it
-    print_log "$GREEN" "Miniconda is not installed. Installing Miniconda..."
-
-    # Download and install Miniconda
-    mkdir -p ~/miniconda3
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-    bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-    rm -rf ~/miniconda3/miniconda.sh
-
-    # Add Miniconda to PATH
-    export PATH="$HOME/miniconda/bin:$PATH"
-
-    print_log "$GREEN" "Miniconda installed successfully."
-fi
-
 # Install System Workflow Apps
 print_header "$GREEN" "Installing System Workflow Apps"
-system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "picom" "ranger" "htop" "lazygit" "zsh" "starship" "tmux" "firefox" "lsd" "zoxide" "stow")
+system_packages=("neovim" "neofetch" "ranger" "htop" "lazygit" "zsh" "tmux" "lsd" "zoxide" "stow")
 install_packages "pacman" "${system_packages[@]}"
 # sudo pacman -S neovim alacritty kitty dunst polybar i3 rofi neofetch picom ranger htop lazygit zsh starship tmux firefox lsd zoxide
-
-print_header "$GREEN" "Installing Code Editors"
-code_editors=("visual-studio-code-bin" "android-studio")
-install_packages "yay" "${code_editors[@]}"
-# yay -S visual-studio-code-bin
-
-print_header "$GREEN" "Installing Web Browsers"
-browsers=("google-chrome" "brave-bin")
-install_packages "yay" "${browsers[@]}"
-# yay -S google-chrome brave-bin
-
-# Install Other Useful Apps
-print_header "$GREEN" "Installing Other Useful Apps"
-other_apps=("spotify")
-install_packages "yay" "${other_apps[@]}"
-# yay -S spotify
-
-# Install Patched nerd fonts
-print_header "$GREEN" "Installing Patched Fonts"
-patched_fonts=("ttf-jetbrains-mono-nerd")
-install_packages "yay" "${patched_fonts[@]}"
-# yay -S ttf-jetbrains-mono-nerd
 
 print_header "$GREEN" "Installing Tmux Plugin Manager"
 tpm_dir="$HOME/.tmux/plugins/tpm"
@@ -160,7 +104,7 @@ mv ~/.zshrc ~/.zshrc.bak
 print_header "$GREEN" "Linking your dotfiles..."
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-DOT_FOLDERS="alacritty,zsh,tmux,kitty,nvim,nvim-alt,nvim-minimal,nvim-old,nvchad"
+DOT_FOLDERS="zsh,tmux,nvim,nvim-alt,nvim-minimal,nvim-old,nvchad"
 
 for folder in $(echo $DOT_FOLDERS | sed "s/,/ /g"); do
     print_log "$GREEN" "[+] File/Folder :: $folder"
@@ -181,18 +125,13 @@ else
     chsh -s "$(which zsh)"
     print_log "$GREEN" "Default shell changed to Zsh."
 fi
-# Handle time differences between windows and linux
-print_header "$GREEN" "Switching to local clock"
-timedatectl set-local-rtc 1 --adjust-system-clock
 
 # Add current user to plugdev - For USB debugging & Tethering
 print_header "$GREEN" "Adding current user to plugdev"
 sudo groupadd plugdev
 sudo usermod -aG plugdev "$LOGNAME"
 
-print_subheader "$LIGHT_PURPLE" "Note: Starship is installed but isn't used"
 print_subheader "$LIGHT_PURPLE" "Note: Tmux Plugin Manager is installed, Please press Prefix + I in a tmux session to load all the plugins"
-print_subheader "$RED" "Note: Android Sdk, Android cmd-line tools and Android emulators are not installed."
 print_log "$GREEN" "Dotfiles installation complete."
 print_log "$GREEN" "System preferencs have been changed. Reboot Recommended."
 echo ""
