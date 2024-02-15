@@ -192,6 +192,7 @@ alias .....='cd ../../../'
 alias .5='cd ../../../'
 
 # cd into projects easily
+alias work="cd ~/keep-coding/work/"
 alias coding-practice="cd ~/keep-coding/coding-practice/"
 alias python-projects="cd ~/keep-coding/python/"
 alias cpp-projects="cd ~/keep-coding/low-lvl/"
