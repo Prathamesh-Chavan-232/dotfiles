@@ -193,16 +193,12 @@ alias .5='cd ../../../'
 
 # cd into projects easily
 alias work="cd ~/keep-coding/work/"
-alias coding-practice="cd ~/keep-coding/coding-practice/"
-alias python-projects="cd ~/keep-coding/python/"
-alias cpp-projects="cd ~/keep-coding/low-lvl/"
-alias sql-projects="cd ~/keep-coding/sql/"
 alias app-dev="cd ~/keep-coding/app-dev/"
 alias web-dev="cd ~/keep-coding/web-dev/"
-alias web-projects="cd ~/keep-coding/web-dev/projects/"
-alias web-games="cd ~/keep-coding/web-dev/game-dev/"
-alias nix-ricing="cd ~/keep-coding/nix-customization/"
-
+alias sql-projects="cd ~/keep-coding/sql/"
+alias cpp-projects="cd ~/keep-coding/low-lvl/"
+alias python-projects="cd ~/keep-coding/python/"
+alias coding-practice="cd ~/keep-coding/coding-practice/"
 
 # Open Dotfiles quickly
 alias dots='cd ~/keep-coding/falcon-dots/ && nvim .' # dotfiles are symlinked to this directory
