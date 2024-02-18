@@ -143,9 +143,8 @@ alias nowdate='date +"%d-%m-%Y"'
 alias fastping='ping -c 100 -s.2'
 alias ports='netstat -tulanp'
 
-# become root #
+# Become root #
 alias root='sudo -i'
-alias su='sudo -i'
 
 # get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4 | head -5'
@@ -247,3 +246,4 @@ function nvims() {
 bindkey -s "^a" "nvims\n"
 
 neofetch
+fastfetch
