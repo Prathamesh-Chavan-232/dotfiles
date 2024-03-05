@@ -105,9 +105,13 @@ alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git
 alias ping='ping -c 5'
 # Resume wget by default
 alias wget='wget -c'
-alias kill_port='kill -9 $(lsof -t -i:$1)'
+alias kill-port='kill -9 $(lsof -t -i:$1)'
 # Generate sha1 digest
 alias sha1='openssl sha1'
+
+# Docker
+alias docker-kill-all-containers='docker kill $(docker ps -q)'
+alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
 
 # Tmux
 alias tmux='tmux -u'
@@ -182,6 +186,9 @@ alias mkdir='mkdir -pv'
 # Easier to read disk
 alias df='df -h'     # human-readable sizes
 alias free='free -m' # show sizes in MB
+# pbcopy & pbpaste
+alias pbcopy='xclip -selection clipboard'
+# alias pbpaste='xclip -o'
 
 # Shortcuts
 # cd easily & multiple times
@@ -239,4 +246,6 @@ function nvims() {
 }
 bindkey -s "^a" "nvims\n"
 
-fastfetch
+if [[ -z "$TMUX" ]]; then
+    fastfetch
+fi
