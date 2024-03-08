@@ -181,6 +181,7 @@ alias pbcopy='xclip -selection clipboard'
 
 # Shortcuts
 # cd easily & multiple times
+alias ..='z ..'
 alias ....='z ../../'
 alias ..2='z ../../'
 alias .....='z ../../../'
