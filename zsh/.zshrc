@@ -235,6 +235,17 @@ function nvims() {
 }
 bindkey -s "^a" "nvims\n"
 
-if [[ -z "$TMUX" ]]; then
-    fastfetch
+
+# Define the path of your temp file
+TMPFILE="$HOME/.last_fetch_run"
+
+# Check if the temp file exists and if it was modified in the last 2 minutes
+if [[ ! -e "$TMPFILE" || "$(find "$TMPFILE" -mmin +2)" ]]; then
+    # Run fetch, outside tmux
+  if [[ -z "$TMUX" ]]; then
+      fastfetch
+  fi
+
+    # Touch the temp file to update its last modified time
+    touch "$TMPFILE"
 fi
