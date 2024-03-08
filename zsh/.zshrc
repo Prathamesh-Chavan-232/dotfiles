@@ -16,7 +16,7 @@ eval "$(zoxide init zsh)"
 eval "`pip completion --zsh`"
 
 # Zsh cool options
-setopt AUTOCD            # cd into directly without writing cd
+# setopt AUTOCD            # cd into directly without writing cd
 setopt PROMPT_SUBST      # enable command substitution in prompt
 setopt MENU_COMPLETE     # Automatically highlight first element of completion menu
 setopt AUTO_LIST         # Automatically list choices on ambiguous completion.
