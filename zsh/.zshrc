@@ -181,10 +181,10 @@ alias pbcopy='xclip -selection clipboard'
 
 # Shortcuts
 # cd easily & multiple times
-alias ....='cd ../../'
-alias .4='cd ../../'
-alias .....='cd ../../../'
-alias .5='cd ../../../'
+alias ....='z ../../'
+alias ..2='z ../../'
+alias .....='z ../../../'
+alias ..3='z ../../../'
 
 # cd into projects easily
 alias work="cd ~/keep-coding/work/"
@@ -207,7 +207,7 @@ alias dunstrc='cd ~/.config/dunst/ && nvim .'
 
 # Neovim config switcher
 alias vi="vim"
-alias nvi="nvim"
+alias nvi="nvim-alt"
 
 # Vimacs with nvchad
 alias nvchad="NVIM_APPNAME=nvchad nvim"
