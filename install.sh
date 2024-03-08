@@ -74,7 +74,7 @@ exec > >(tee -a "$LOG_FILE") 2>&1
 
 # Install Development Related Packages
 print_header "$GREEN" "Installing Development Tools"
-development_tools=("git" "github-cli" "fzf" "ripgrep" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc" "xclip")
+development_tools=("git" "github-cli" "fzf" "ripgrep" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc" "xclip" "docker")
 install_packages "pacman" "${development_tools[@]}"
 # sudo pacman -S git github-cli fzf ripgrep python python-pip bun nodejs npm pnpm gcc xclip
 
