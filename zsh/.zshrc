@@ -115,18 +115,7 @@ alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
 
 # Tmux
 alias tmux='tmux -u'
-alias tmux-n="tmux new -t"
-alias tmux-l="tmux list-sessions"
 alias tmux-kill="tmux kill-session -t"
-alias tmux-k="tmux kill-session -t"
-
-# Tmuxifier
-alias tx-ns="tmuxifier new-session"
-alias tx-ls="tmuxifier load-session"
-alias tx-es="tmuxifier edit-session"
-alias tx-list="tmuxifier list"
-alias tx-l="tmuxifier list"
-alias tx-layouts="cd ~/.tmuxifier/layouts/"
 
 # Calculator
 alias bc='bc -l'
@@ -209,7 +198,6 @@ alias zshrc='nvim ~/keep-coding/falcon-dots/zsh/.zshrc'
 alias tmuxrc='nvim ~/keep-coding/falcon-dots/tmux/.config/tmux/tmux.conf'
 # Open config folders quickly
 alias nvimrc='cd ~/.config/nvim && nvim .'
-alias tx-layoutsrc='cd ~/.tmuxifier/layouts/ && nvim'
 alias alacrittyrc='cd ~/.config/alacritty/ && nvim .'
 alias polybarrc='cd ~/config/polybar/ && nvim .'
 alias i3rc='cd ~/.config/i3/ && nvim .'
