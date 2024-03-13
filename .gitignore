@@ -1,3 +1,4 @@
 lazy-lock.json
 install_log.txt
 tmux/.config/tmux/plugins
+.idea/
