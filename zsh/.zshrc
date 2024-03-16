@@ -109,14 +109,6 @@ alias kill-port='kill -9 $(lsof -t -i:$1)'
 # Generate sha1 digest
 alias sha1='openssl sha1'
 
-# Docker
-alias docker-kill-all-containers='docker kill $(docker ps -q)'
-alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
-
-# Tmux
-alias tmux='tmux -u'
-alias tmux-kill="tmux kill-session -t"
-
 # Calculator
 alias bc='bc -l'
 
@@ -180,6 +172,38 @@ alias pbcopy='xclip -selection clipboard'
 # alias pbpaste='xclip -o'
 
 # Shortcuts
+
+# Docker
+alias docker-kill-all-containers='docker kill $(docker ps -q)'
+alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
+alias docker-conls='docker container ls'
+alias docker-imagels='docker image ls'
+alias docker-volls='docker volume ls'
+
+# postgresql
+function postgres() {
+    local cmd=$1
+    local user=${2:-falconcodes}
+    local db=${3:-postgres}
+    local file=$4
+    if [ "$1" = "start" ]; then
+        docker-compose -f ~/keep-coding/db-docker/postgres_server/docker-compose.yml -p postgres_db up -d
+    elif [ "$1" = "stop" ]; then
+        docker rm -f postgres_db
+    elif [ "$1" = "run" ]; then
+        docker exec -it postgres_db psql -U $user $db
+    elif [ "$1" = "exec" ]; then
+        docker exec -it postgres_db psql -U $user -d $db -f $file
+    else
+        echo "Invalid command"
+    fi
+}
+
+# Tmux
+# The alias `tmux='tmux -u'` is setting up an alias for the `tmux` command. In this case, when you type `tmux` in the terminal, it will actually execute `tmux -u`. The `-u` flag in `tmux -u` stands for "update-environment" and it ensures that the environment variables are updated when a new session is created or an existing session is attached. This can be useful to make sure that the environment variables are consistent across different tmux sessions.
+alias tmux='tmux -u'
+alias tmux-kill="tmux kill-session -t"
+
 # cd easily & multiple times
 alias ..='z ..'
 alias ....='z ../../'
