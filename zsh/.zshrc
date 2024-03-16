@@ -182,15 +182,18 @@ alias docker-volls='docker volume ls'
 
 # postgresql
 function postgres() {
+    local cmd=$1
     local user=${2:-falconcodes}
     local db=${3:-postgres}
     local file=$4
     if [ "$1" = "start" ]; then
-        docker-compose -f ~/keep-coding/postgres_server/docker-compose.yml -p postgres_db up -d
+        docker-compose -f ~/keep-coding/db-docker/postgres_server/docker-compose.yml -p postgres_db up -d
+    elif [ "$1" = "stop" ]; then
+        docker rm -f postgres_db
     elif [ "$1" = "run" ]; then
-        docker exec -it postgres_db psql -U $2 $3
+        docker exec -it postgres_db psql -U $user $db
     elif [ "$1" = "exec" ]; then
-        docker exec -it postgres_db psql -U $2 -d $3 -f $4
+        docker exec -it postgres_db psql -U $user -d $db -f $file
     else
         echo "Invalid command"
     fi
