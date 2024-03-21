@@ -64,14 +64,6 @@ install_packages() {
 	done
 }
 
-source echo.sh
-# Store all the install logs in file
-LOG_FILE="install_log.txt"
-# Remove existing log file
-rm -f "$LOG_FILE"
-# Start logging
-exec > >(tee -a "$LOG_FILE") 2>&1
-
 # Install Development Related Packages
 print_header "$GREEN" "Installing Development Tools"
 development_tools=("git" "github-cli" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc" "docker")
@@ -83,32 +75,32 @@ print_header "$GREEN" "Installing Flutter"
 sdks=("flutter")
 install_packages "yay" "${browsers[@]}"
 # yay -S flutter
-print_log "$GREEN" "Flutter installed successfully."
 
 # Install conda
-print_header "$GREEN" "Installing Miniconda"
-# Check if Miniconda is already installed
-if command miniconda3 &>/dev/null; then
-	print_subheader "$LIGHT_PURPLE" "Miniconda is already installed."
-else
-	# Miniconda not found, install it
-	print_log "$GREEN" "Miniconda is not installed. Installing Miniconda..."
 
-	# Download and install Miniconda
-	mkdir -p ~/miniconda3
-	wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-	bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-	rm -rf ~/miniconda3/miniconda.sh
-
-	# Add Miniconda to PATH
-	export PATH="$HOME/miniconda/bin:$PATH"
-
-	print_log "$GREEN" "Miniconda installed successfully."
-fi
+# print_header "$GREEN" "Installing Miniconda"
+# # Check if Miniconda is already installed
+# if command miniconda3 &>/dev/null; then
+# 	print_subheader "$LIGHT_PURPLE" "Miniconda is already installed."
+# else
+# 	# Miniconda not found, install it
+# 	print_log "$GREEN" "Miniconda is not installed. Installing Miniconda..."
+#
+# 	# Download and install Miniconda
+# 	mkdir -p ~/miniconda3
+# 	wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+# 	bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+# 	rm -rf ~/miniconda3/miniconda.sh
+#
+# 	# Add Miniconda to PATH
+# 	export PATH="$HOME/miniconda/bin:$PATH"
+#
+# 	print_log "$GREEN" "Miniconda installed successfully."
+# fi
 
 # Install System Workflow Apps
 print_header "$GREEN" "Installing System Workflow Apps"
-system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "picom" "ranger" "htop" "lazygit" "zsh" "starship" "tmux" "firefox" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop" "eza")
+system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "fastfetch" "picom" "ranger" "htop" "lazygit" "zsh" "starship" "bat" "tmux" "firefox" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop")
 install_packages "pacman" "${system_packages[@]}"
 # sudo pacman -S neovim alacritty kitty dunst polybar i3 rofi neofetch picom ranger htop lazygit zsh starship tmux firefox lsd zoxide
 
