@@ -180,7 +180,7 @@ alias docker-conls='docker container ls'
 alias docker-imagels='docker image ls'
 alias docker-volls='docker volume ls'
 
-# postgresql
+# Postgresql
 function postgres() {
     local cmd=$1
     local user=${2:-falconcodes}
@@ -197,6 +197,47 @@ function postgres() {
     else
         echo "Invalid command"
     fi
+}
+
+# Github cli
+function gh_work() {
+  # Get the current GitHub user
+  current_user=$(gh auth status --hostname github.com | grep Logged | awk '{print $7}' | head -n 1)
+
+  echo "Current User is $current_user"
+  if [ "$current_user" = "Prathamesh-Chavan-Noovosoft" ]; then
+
+    if [ "$1" = "repo" ] && [ "$2" = "create" ]; then
+
+    # Determine the correct SSH hostname
+    ssh_hostname="github.com-work"
+
+    echo "Disclaimer: You are using your work account. Remote will be set as your work git hostname (github.com-work)."
+
+    # Prompt for the repository name
+    echo -n "Enter the repository name ($(basename $PWD)): "
+    read repo_name
+
+    # Create the repository
+    gh repo create $repo_name
+
+    # Use the current folder name if no name is provided
+    if [ -z "$repo_name" ]; then
+      repo_name=$(basename "$PWD")
+    fi
+
+    # Set the remote URL
+    git remote set-url origin git@$ssh_hostname:$current_user/$repo_name.git
+    echo "$(git remote -v)"
+
+    else
+      echo "Disclaimer: You are using gh from your work account."
+      command gh "$@"
+    fi
+
+  else
+    echo "You are not signed in into Prathamesh-Chavan-Noovosoft! Login with your work account to continue."
+  fi
 }
 
 # Tmux
@@ -273,3 +314,23 @@ if [[ ! -e "$TMPFILE" || "$(find "$TMPFILE" -mmin +2)" ]]; then
     # Touch the temp file to update its last modified time
     touch "$TMPFILE"
 fi
+
+
+
+ function foo() {
+   local container=$1
+   local volume=$2
+
+   cat <<EOF > ~/keep-coding/work/new-compose-file.yaml
+   version: "3"
+     services:
+       ${container}:
+     image: nodered/node-red
+     ports:
+       - "3000:1880"
+     volumes:
+       - ./${volume}/:/data
+EOF
+
+}
+# sed 's/node_red_container/new_docker_container/' template.yml | sed 's/node-red-data/new-volume/';
