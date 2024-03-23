@@ -95,7 +95,7 @@ esac
 # Maintenance
 alias mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias maintenimiento="yay -Sc && sudo pacman -Scc"
+alias arch-maintenance="yay -Sc && sudo pacman -Scc"
 alias purga="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
 alias update="sudo pacman -Syu --nocombinedupgrade"
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
@@ -171,7 +171,47 @@ alias free='free -m' # show sizes in MB
 alias pbcopy='xclip -selection clipboard'
 # alias pbpaste='xclip -o'
 
+# ASCII shbang
+alias shbang='cermic 2 ~/keep-coding/falcon-dots/cermic-sh-art/images;echo ""'
+
 # Shortcuts
+# Tmux
+# The alias `tmux='tmux -u'` is setting up an alias for the `tmux` command. In this case, when you type `tmux` in the terminal, it will actually execute `tmux -u`. The `-u` flag in `tmux -u` stands for "update-environment" and it ensures that the environment variables are updated when a new session is created or an existing session is attached. This can be useful to make sure that the environment variables are consistent across different tmux sessions.
+alias tmux='tmux -u'
+alias tmux-kill="tmux kill-session -t"
+
+# cd easily & multiple times
+alias ..='z ..'
+alias ....='z ../../'
+alias ..2='z ../../'
+alias .....='z ../../../'
+alias ..3='z ../../../'
+
+# cd into projects easily
+alias work="cd ~/keep-coding/work/"
+
+# Open Dotfiles quickly
+alias dots='cd ~/keep-coding/falcon-dots/ && nvim .' # dotfiles are symlinked to this directory
+
+# Still keep these just in case
+# Open config files quickly
+alias zshrc='nvim ~/keep-coding/falcon-dots/zsh/.zshrc'
+alias tmuxrc='nvim ~/keep-coding/falcon-dots/tmux/.config/tmux/tmux.conf'
+# Open config folders quickly
+alias nvimrc='cd ~/.config/nvim && nvim .'
+alias alacrittyrc='cd ~/.config/alacritty/ && nvim .'
+alias polybarrc='cd ~/config/polybar/ && nvim .'
+alias i3rc='cd ~/.config/i3/ && nvim .'
+alias bspwmrc='cd ~/.config/bspwm/ && nvim .'
+alias rofirc='cd ~/.config/rofi/ && nvim .'
+alias dunstrc='cd ~/.config/dunst/ && nvim .'
+
+# Neovim config switcher
+alias vi="vim"
+alias nvi="nvim-alt"
+
+# Vimacs with nvchad
+alias nvchad="NVIM_APPNAME=nvchad nvim"
 
 # Docker
 alias docker-kill-all-containers='docker kill $(docker ps -q)'
@@ -179,6 +219,29 @@ alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
 alias docker-conls='docker container ls'
 alias docker-imagels='docker image ls'
 alias docker-volls='docker volume ls'
+
+# On demand docker containers using compose templates
+function foo() {
+   local container=$1
+   local volume=$2
+
+   cat <<EOF > ~/keep-coding/work/new-compose-file.yaml
+   version: "3"
+     services:
+       ${container}:
+     image: nodered/node-red
+     ports:
+       - "3000:1880"
+     volumes:
+       - ./${volume}/:/data
+EOF
+# sed 's/node_red_container/new_docker_container/' template.yml | sed 's/node-red-data/new-volume/';
+}
+
+# docker-compose-template
+function docker-compose-template() {
+echo "TODO: Create templates for MERN & React + SQL projects"
+}
 
 # Postgresql
 function postgres() {
@@ -240,43 +303,22 @@ function gh_work() {
   fi
 }
 
-# Tmux
-# The alias `tmux='tmux -u'` is setting up an alias for the `tmux` command. In this case, when you type `tmux` in the terminal, it will actually execute `tmux -u`. The `-u` flag in `tmux -u` stands for "update-environment" and it ensures that the environment variables are updated when a new session is created or an existing session is attached. This can be useful to make sure that the environment variables are consistent across different tmux sessions.
-alias tmux='tmux -u'
-alias tmux-kill="tmux kill-session -t"
+# fastfetch
+function run_fastfetch() {
+  # Define the path of your temp file
+  TMPFILE="$HOME/.last_fetch_run"
 
-# cd easily & multiple times
-alias ..='z ..'
-alias ....='z ../../'
-alias ..2='z ../../'
-alias .....='z ../../../'
-alias ..3='z ../../../'
+  # Check if the temp file exists and if it was modified in the last 2 minutes
+  if [[ ! -e "$TMPFILE" || "$(find "$TMPFILE" -mmin +2)" ]]; then
+      # Run fetch, outside tmux
+    if [[ -z "$TMUX" ]]; then
+        fastfetch
+    fi
+      # Touch the temp file to update its last modified time
+      touch "$TMPFILE"
+  fi
 
-# cd into projects easily
-alias work="cd ~/keep-coding/work/"
-
-# Open Dotfiles quickly
-alias dots='cd ~/keep-coding/falcon-dots/ && nvim .' # dotfiles are symlinked to this directory
-
-# Still keep these just in case
-# Open config files quickly
-alias zshrc='nvim ~/keep-coding/falcon-dots/zsh/.zshrc'
-alias tmuxrc='nvim ~/keep-coding/falcon-dots/tmux/.config/tmux/tmux.conf'
-# Open config folders quickly
-alias nvimrc='cd ~/.config/nvim && nvim .'
-alias alacrittyrc='cd ~/.config/alacritty/ && nvim .'
-alias polybarrc='cd ~/config/polybar/ && nvim .'
-alias i3rc='cd ~/.config/i3/ && nvim .'
-alias bspwmrc='cd ~/.config/bspwm/ && nvim .'
-alias rofirc='cd ~/.config/rofi/ && nvim .'
-alias dunstrc='cd ~/.config/dunst/ && nvim .'
-
-# Neovim config switcher
-alias vi="vim"
-alias nvi="nvim-alt"
-
-# Vimacs with nvchad
-alias nvchad="NVIM_APPNAME=nvchad nvim"
+}
 
 # My configs
 alias nvold="NVIM_APPNAME=nvim-old nvim"
@@ -300,37 +342,7 @@ function nvims() {
 }
 bindkey -s "^a" "nvims\n"
 
+# ASCII Shibang #!
+shbang
+# run_fastfetch
 
-# Define the path of your temp file
-TMPFILE="$HOME/.last_fetch_run"
-
-# Check if the temp file exists and if it was modified in the last 2 minutes
-if [[ ! -e "$TMPFILE" || "$(find "$TMPFILE" -mmin +2)" ]]; then
-    # Run fetch, outside tmux
-  if [[ -z "$TMUX" ]]; then
-      fastfetch
-  fi
-
-    # Touch the temp file to update its last modified time
-    touch "$TMPFILE"
-fi
-
-
-
- function foo() {
-   local container=$1
-   local volume=$2
-
-   cat <<EOF > ~/keep-coding/work/new-compose-file.yaml
-   version: "3"
-     services:
-       ${container}:
-     image: nodered/node-red
-     ports:
-       - "3000:1880"
-     volumes:
-       - ./${volume}/:/data
-EOF
-
-}
-# sed 's/node_red_container/new_docker_container/' template.yml | sed 's/node-red-data/new-volume/';

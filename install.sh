@@ -77,7 +77,6 @@ install_packages "yay" "${browsers[@]}"
 # yay -S flutter
 
 # Install conda
-
 # print_header "$GREEN" "Installing Miniconda"
 # # Check if Miniconda is already installed
 # if command miniconda3 &>/dev/null; then
@@ -100,7 +99,8 @@ install_packages "yay" "${browsers[@]}"
 
 # Install System Workflow Apps
 print_header "$GREEN" "Installing System Workflow Apps"
-system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "fastfetch" "picom" "ranger" "htop" "lazygit" "zsh" "starship" "bat" "tmux" "firefox" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop")
+system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "fastfetch" "picom" "ranger" "feh" "ueberzug" "htop" "lazygit" "zsh" "starship" "bat" "tmux" "firefox" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop")
+
 install_packages "pacman" "${system_packages[@]}"
 # sudo pacman -S neovim alacritty kitty dunst polybar i3 rofi neofetch picom ranger htop lazygit zsh starship tmux firefox lsd zoxide
 
