@@ -172,7 +172,7 @@ alias pbcopy='xclip -selection clipboard'
 # alias pbpaste='xclip -o'
 
 # ASCII shbang
-alias shbang='cermic 2 ~/keep-coding/falcon-dots/cermic-sh-art/images;echo ""'
+alias shbang='cermic 1 ~/keep-coding/falcon-dots/cermic-sh-art/images;echo ""'
 
 # Shortcuts
 # Tmux
