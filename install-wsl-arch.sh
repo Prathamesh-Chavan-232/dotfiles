@@ -68,13 +68,11 @@ install_packages() {
 print_header "$GREEN" "Installing Development Tools"
 development_tools=("git" "github-cli" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc")
 install_packages "pacman" "${development_tools[@]}"
-# sudo pacman -S git github-cli fzf ripgrep python python-pip bun nodejs npm pnpm gcc xclip
 
 # Install System Workflow Apps
 print_header "$GREEN" "Installing System Workflow Apps"
-system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "picom" "ranger" "htop" "lazygit" "zsh" "starship" "tmux" "firefox" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop" "eza")
+system_packages=("neovim" "dunst" "neofetch" "ranger" "htop" "lazygit" "zsh" "tmux" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop")
 install_packages "pacman" "${system_packages[@]}"
-# sudo pacman -S neovim alacritty kitty dunst polybar i3 rofi neofetch picom ranger htop lazygit zsh starship tmux firefox lsd zoxide
 
 print_header "$GREEN" "Installing Tmux Plugin Manager"
 tpm_dir="$HOME/.tmux/plugins/tpm"
@@ -91,7 +89,7 @@ fi
 
 # Install zsh plugin Manager
 zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
-print_subheader "$GREEN" "Zsh Plugin Manager (Zap) installed successfully at $tpm_dir."
+print_subheader "$GREEN" "Zsh Plugin Manager (Zap) installed successfully"
 
 print_log "$GREEN" "Installing Packages Completed."
 echo ""
@@ -103,7 +101,7 @@ mv ~/.zshrc ~/.zshrc.bak
 print_header "$GREEN" "Linking your dotfiles..."
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
-DOT_FOLDERS="zsh,tmux,nvim,nvim-alt,nvim-minimal,nvim-old,nvchad"
+DOT_FOLDERS="zsh,tmux,nvim,nvim-alt,nvim-minimal"
 
 for folder in $(echo $DOT_FOLDERS | sed "s/,/ /g"); do
 	print_log "$GREEN" "[+] File/Folder :: $folder"
@@ -114,17 +112,6 @@ for folder in $(echo $DOT_FOLDERS | sed "s/,/ /g"); do
 done
 
 # Tweak some settings
-print_header "$GREEN" "Changing the default shell to zsh."
-current_shell=$(basename "$SHELL")
-
-if [ "$current_shell" = "zsh" ]; then
-	print_subheader "$LIGHT_PURPLE" "Zsh is already the default shell."
-else
-	print_subheader "$GREEN" "Changing default shell to Zsh..."
-	chsh -s "$(which zsh)"
-	print_log "$GREEN" "Default shell changed to Zsh."
-fi
-
 # Add current user to plugdev - For USB debugging & Tethering
 print_header "$GREEN" "Adding current user to plugdev"
 sudo groupadd plugdev
