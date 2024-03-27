@@ -71,7 +71,7 @@ install_packages "pacman" "${development_tools[@]}"
 
 # Install System Workflow Apps
 print_header "$GREEN" "Installing System Workflow Apps"
-system_packages=("neovim" "dunst" "neofetch" "ranger" "htop" "lazygit" "zsh" "tmux" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop")
+system_packages=("neovim" "neofetch" "fastfetch" "ranger" "htop" "lazygit" "zsh" "tmux" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "bat" "dust" "btop")
 install_packages "pacman" "${system_packages[@]}"
 
 print_header "$GREEN" "Installing Tmux Plugin Manager"
