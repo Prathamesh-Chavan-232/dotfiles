@@ -32,21 +32,13 @@ install_packages() {
 	local package_list=("$@")
 
 	case "$package_manager" in
-	"pacman")
-		install_command="sudo pacman -S --noconfirm"
-		check_command="pacman -Qs"
+	"dnf")
+		install_command="sudo dnf install -y"
+		check_command="dnf list installed"
 		;;
-	"yay")
-		install_command="yay -S --noconfirm"
-		check_command="yay -Qs"
-		;;
-	"piaur")
-		install_command="piaur -S --noconfirm"
-		check_command="piaur -Qs"
-		;;
-	"snap")
-		install_command="sudo snap install"
-		check_command="snap list"
+	"flatpak")
+		install_command="flatpak install -y"
+		check_command="flatpak list --app --columns=application"
 		;;
 	*)
 		print_subheader "$RED" "Unsupported package manager: $package_manager"
@@ -55,7 +47,7 @@ install_packages() {
 	esac
 
 	for package in "${package_list[@]}"; do
-		if $check_command "$package" &>/dev/null; then
+		if $check_command | grep -q "^$package\$"; then
 			print_subheader "$LIGHT_PURPLE" "$package is already installed."
 		else
 			$install_command "$package"
@@ -66,65 +58,37 @@ install_packages() {
 
 # Install Development Related Packages
 print_header "$GREEN" "Installing Development Tools"
-development_tools=("git" "github-cli" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc" "docker")
-install_packages "pacman" "${development_tools[@]}"
-# sudo pacman -S git github-cli fzf ripgrep python python-pip bun nodejs npm pnpm gcc xclip
+development_tools=("git" "python3" "python3-pip" "nodejs" "npm" "gcc" "gcc-c++" "make" "cmake" "docker")
+install_packages "dnf" "${development_tools[@]}"
 
 # Install Flutter
 print_header "$GREEN" "Installing Flutter"
-sdks=("flutter")
-install_packages "yay" "${browsers[@]}"
-# yay -S flutter
-
-# Install conda
-# print_header "$GREEN" "Installing Miniconda"
-# # Check if Miniconda is already installed
-# if command miniconda3 &>/dev/null; then
-# 	print_subheader "$LIGHT_PURPLE" "Miniconda is already installed."
-# else
-# 	# Miniconda not found, install it
-# 	print_log "$GREEN" "Miniconda is not installed. Installing Miniconda..."
-#
-# 	# Download and install Miniconda
-# 	mkdir -p ~/miniconda3
-# 	wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-# 	bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-# 	rm -rf ~/miniconda3/miniconda.sh
-#
-# 	# Add Miniconda to PATH
-# 	export PATH="$HOME/miniconda/bin:$PATH"
-#
-# 	print_log "$GREEN" "Miniconda installed successfully."
-# fi
+flatpak_packages=("io.flutter.flutter" "com.google.Android.NDK")
+install_packages "flatpak" "${flatpak_packages[@]}"
 
 # Install System Workflow Apps
 print_header "$GREEN" "Installing System Workflow Apps"
-system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "fastfetch" "picom" "ranger" "feh" "ueberzug" "htop" "lazygit" "zsh" "starship" "bat" "tmux" "firefox" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop")
+system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "picom" "ranger" "feh" "ueberzug" "htop" "lazygit" "zsh" "starship" "bat" "tmux" "firefox" "lsd" "zoxide" "ripgrep" "fzf" "xclip" "dust" "btop")
 
-install_packages "pacman" "${system_packages[@]}"
-# sudo pacman -S neovim alacritty kitty dunst polybar i3 rofi neofetch picom ranger htop lazygit zsh starship tmux firefox lsd zoxide
+install_packages "dnf" "${system_packages[@]}"
 
 print_header "$GREEN" "Installing Code Editors"
-code_editors=("visual-studio-code-bin" "android-studio")
-install_packages "yay" "${code_editors[@]}"
-# yay -S visual-studio-code-bin
+code_editors=("code" "android-studio")
+install_packages "dnf" "${code_editors[@]}"
 
 print_header "$GREEN" "Installing Web Browsers"
-browsers=("google-chrome" "brave-bin")
-install_packages "yay" "${browsers[@]}"
-# yay -S google-chrome brave-bin
+browsers=("google-chrome-stable" "brave-browser")
+install_packages "dnf" "${browsers[@]}"
 
 # Install Other Useful Apps
 print_header "$GREEN" "Installing Other Useful Apps"
-other_apps=("spotify")
-install_packages "yay" "${other_apps[@]}"
-# yay -S spotify
+other_apps=("spotify-client")
+install_packages "dnf" "${other_apps[@]}"
 
 # Install Patched nerd fonts
 print_header "$GREEN" "Installing Patched Fonts"
-patched_fonts=("ttf-jetbrains-mono-nerd")
-install_packages "yay" "${patched_fonts[@]}"
-# yay -S ttf-jetbrains-mono-nerd
+patched_fonts=("google-noto-fonts-nerd" "jetbrains-mono-nerd")
+install_packages "dnf" "${patched_fonts[@]}"
 
 print_header "$GREEN" "Installing Tmux Plugin Manager"
 tpm_dir="$HOME/.tmux/plugins/tpm"
@@ -140,8 +104,8 @@ else
 fi
 
 # Install zsh plugin Manager
-zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
-print_subheader "$GREEN" "Zsh Plugin Manager (Zap) installed successfully at $tpm_dir."
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+print_subheader "$GREEN" "Oh My Zsh installed successfully."
 
 print_log "$GREEN" "Installing Packages Completed."
 echo ""
@@ -149,18 +113,33 @@ print_subheader "$GREEN" "Setting up a few things, for you please wait."
 
 print_header "$LIGHT_PURPLE" "Backing up existing config files"
 mv ~/.zshrc ~/.zshrc.bak
+
 # Creating symlinks
 print_header "$GREEN" "Linking your dotfiles..."
-SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
-DOT_FOLDERS="alacritty,zsh,tmux,kitty,nvim,nvim-alt,nvim-minimal,nvim-old,nvchad"
+# Define the directories to be symlinked
+DOT_FOLDERS="alacritty kitty nvim nvim-alt nvim-minimal nvchad tmux"
 
-for folder in $(echo $DOT_FOLDERS | sed "s/,/ /g"); do
-	print_log "$GREEN" "[+] File/Folder :: $folder"
-	stow --ignore=README.md --ignore=LICENSE \
-		-t $HOME -D $folder
-	stow -v -t $HOME $folder
-	print_subheader "$GREEN" "Symlinked: $folder"
+# Function to create symlinks for a directory
+create_symlinks() {
+	local dir="$1"
+	local target_dir="$2"
+
+	if [ ! -d "$target_dir" ]; then
+		echo "Target directory $target_dir does not exist. Creating..."
+		mkdir -p "$target_dir"
+	fi
+
+	# Use stow to create symlinks
+	print_log "$GREEN" "[+] Symlining Folder :: $dir"
+	stow -vt "$target_dir" "$dir"
+}
+
+# Create symlinks for zsh
+create_symlinks "zsh" "$HOME"
+# Create symlinks for remaining folders
+for folder in $DOT_FOLDERS; do
+	create_symlinks "$folder" "$HOME/.config/$folder"
 done
 
 # Tweak some settings
@@ -174,9 +153,6 @@ else
 	chsh -s "$(which zsh)"
 	print_log "$GREEN" "Default shell changed to Zsh."
 fi
-# Handle time differences between windows and linux
-print_header "$GREEN" "Switching to local clock"
-timedatectl set-local-rtc 1 --adjust-system-clock
 
 # Add current user to plugdev - For USB debugging & Tethering
 print_header "$GREEN" "Adding current user to plugdev"
@@ -199,9 +175,7 @@ if [[ $response_lower == "y" ]]; then
 	print_subheader "[+] Reloading shell..."
 	exec >/dev/tty 2>&1 # Stop logging to text file before reloading the shell
 	exec $SHELL -l
-	# Add your code here for the 'yes' case
 elif [[ $response_lower == "n" ]]; then
-	# Add your code here for the 'no' case
 	print_log "$RED" "Please reload the shell to see the changes in effect."
 else
 	echo "Invalid response. Please enter 'Y/y' or 'N/n'."
