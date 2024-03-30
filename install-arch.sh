@@ -64,6 +64,23 @@ install_packages() {
 	done
 }
 
+# Function to create symlinks for a directory
+create_symlinks() {
+	local dir="$1"
+	local target_dir="$2"
+
+	if [ ! -d "$target_dir" ]; then
+		echo "Target directory $target_dir does not exist. Creating..."
+		mkdir -p "$target_dir"
+	fi
+
+	# Use stow to create symlinks
+	print_log "$GREEN" "[+] Symlining Folder :: $dir"
+	# Create symlinks for remaining folders
+	stow -t "$target_dir" -D "$dir"
+	stow -vt "$target_dir" "$dir"
+}
+
 # Install Development Related Packages
 print_header "$GREEN" "Installing Development Tools"
 development_tools=("git" "github-cli" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc" "docker")
@@ -141,38 +158,22 @@ fi
 
 # Install zsh plugin Manager
 zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
-print_subheader "$GREEN" "Zsh Plugin Manager (Zap) installed successfully at $tpm_dir."
+print_subheader "$GREEN" "Zsh Plugin Manager (Zap) installed successfully."
 
 print_log "$GREEN" "Installing Packages Completed."
 echo ""
 print_subheader "$GREEN" "Setting up a few things, for you please wait."
 
-print_header "$LIGHT_PURPLE" "Backing up existing config files"
-mv ~/.zshrc ~/.zshrc.bak
-
 # Creating symlinks
 print_header "$GREEN" "Linking your dotfiles..."
 
+# Create symlinks for zsh
+print_header "$LIGHT_PURPLE" "Backing up existing config files"
+mv ~/.zshrc ~/.zshrc.bak
+create_symlinks "zsh" "$HOME"
+
 # Define the directories to be symlinked
 DOT_FOLDERS="alacritty kitty nvim nvim-alt nvim-minimal nvchad tmux"
-
-# Function to create symlinks for a directory
-create_symlinks() {
-	local dir="$1"
-	local target_dir="$2"
-
-	if [ ! -d "$target_dir" ]; then
-		echo "Target directory $target_dir does not exist. Creating..."
-		mkdir -p "$target_dir"
-	fi
-
-	# Use stow to create symlinks
-	print_log "$GREEN" "[+] Symlining Folder :: $dir"
-	stow -vt "$target_dir" "$dir"
-}
-
-# Create symlinks for zsh
-create_symlinks "zsh" "$HOME"
 # Create symlinks for remaining folders
 for folder in $DOT_FOLDERS; do
 	create_symlinks "$folder" "$HOME/.config/$folder"
