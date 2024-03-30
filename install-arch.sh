@@ -76,8 +76,6 @@ create_symlinks() {
 
 	# Use stow to create symlinks
 	print_log "$GREEN" "[+] Symlining Folder :: $dir"
-	# Create symlinks for remaining folders
-	stow -t "$target_dir" -D "$dir"
 	stow -vt "$target_dir" "$dir"
 }
 
@@ -178,16 +176,18 @@ print_log "$GREEN" "Installing Packages Completed."
 echo ""
 print_subheader "$GREEN" "Setting up a few things, for you please wait."
 
+print_header "$LIGHT_PURPLE" "Backing up existing config files"
+mv ~/.zshrc ~/.zshrc.bak
+
 # Creating symlinks
 print_header "$GREEN" "Linking your dotfiles..."
 
 # Create symlinks for zsh
-print_header "$LIGHT_PURPLE" "Backing up existing config files"
-mv ~/.zshrc ~/.zshrc.bak
 create_symlinks "zsh" "$HOME"
 
 # Define the directories to be symlinked
 DOT_FOLDERS="alacritty kitty nvim nvim-alt nvim-minimal nvchad tmux"
+
 # Create symlinks for remaining folders
 for folder in $DOT_FOLDERS; do
 	create_symlinks "$folder" "$HOME/.config/$folder"

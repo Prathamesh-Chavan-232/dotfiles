@@ -3,7 +3,7 @@
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
 # plugins
-plug "esc/conda-zsh-completion"
+# plug "esc/conda-zsh-completion"
 plug "zap-zsh/completions"
 plug "zsh-users/zsh-autosuggestions"
 plug "hlissner/zsh-autopair"
@@ -13,7 +13,7 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
 
 eval "$(zoxide init zsh)"
-eval "`pip completion --zsh`"
+# eval "`pip3 completion --zsh`"
 
 # Zsh cool options
 # setopt AUTOCD            # cd into directly without writing cd
@@ -92,12 +92,14 @@ CYGWIN* | MINGW32* | MSYS* | MINGW*)
 esac
 
 # Aliases
+# Arch
+#alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+#alias arch-mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
+#alias arch-maintenance="yay -Sc && sudo pacman -Scc"
+#alias arch-purge="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
+#alias arch-update="sudo pacman -Syu --nocombinedupgrade"
+
 # Maintenance
-alias mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
-alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias arch-maintenance="yay -Sc && sudo pacman -Scc"
-alias purga="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
-alias update="sudo pacman -Syu --nocombinedupgrade"
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
 # Networking
@@ -171,8 +173,8 @@ alias free='free -m' # show sizes in MB
 alias pbcopy='xclip -selection clipboard'
 # alias pbpaste='xclip -o'
 
-# ASCII shbang
-alias shbang='cermic 1 ~/keep-coding/falcon-dots/cermic-sh-art/images;echo ""'
+# ASCII shibang
+alias shibang='cermic 1 ~/keep-coding/falcon-dots/cermic-sh-art/images;echo ""'
 
 # Shortcuts
 # Tmux
@@ -343,6 +345,6 @@ function nvims() {
 bindkey -s "^a" "nvims\n"
 
 # ASCII Shibang #!
-shbang
+shibang
 # run_fastfetch
 export ZDOTDIR="$HOME/.config/zsh"

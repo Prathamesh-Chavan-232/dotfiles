@@ -64,6 +64,21 @@ install_packages() {
 	done
 }
 
+# Function to create symlinks for a directory
+create_symlinks() {
+	local dir="$1"
+	local target_dir="$2"
+
+	if [ ! -d "$target_dir" ]; then
+		echo "Target directory $target_dir does not exist. Creating..."
+		mkdir -p "$target_dir"
+	fi
+
+	# Use stow to create symlinks
+	print_log "$GREEN" "[+] Symlining Folder :: $dir"
+	stow -vt "$target_dir" "$dir"
+}
+
 # Install Development Related Packages
 print_header "$GREEN" "Installing Development Tools"
 development_tools=("git" "github-cli" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc")
@@ -99,18 +114,19 @@ print_subheader "$GREEN" "Setting up a few things, for you please wait."
 
 print_header "$LIGHT_PURPLE" "Backing up existing config files"
 mv ~/.zshrc ~/.zshrc.bak
+
 # Creating symlinks
 print_header "$GREEN" "Linking your dotfiles..."
-SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
-DOT_FOLDERS="zsh,tmux,nvim,nvim-alt,nvim-minimal,nvim-old,nvchad"
+# Create symlinks for zsh
+create_symlinks "zsh" "$HOME"
 
-for folder in $(echo $DOT_FOLDERS | sed "s/,/ /g"); do
-	print_log "$GREEN" "[+] File/Folder :: $folder"
-	stow --ignore=README.md --ignore=LICENSE \
-		-t $HOME -D $folder
-	stow -v -t $HOME $folder
-	print_subheader "$GREEN" "Symlinked: $folder"
+# Define the directories to be symlinked
+DOT_FOLDERS="alacritty kitty nvim nvim-alt nvim-minimal nvchad tmux"
+
+# Create symlinks for remaining folders
+for folder in $DOT_FOLDERS; do
+	create_symlinks "$folder" "$HOME/.config/$folder"
 done
 
 # Tweak some settings

@@ -4,7 +4,7 @@ import = [
 ]
 
 [window]
-# decorations = "none"
+decorations = "none"
 opacity = 0.9
 
 [window.dimensions]
