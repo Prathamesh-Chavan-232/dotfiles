@@ -7,7 +7,7 @@ window-size=(1904, 600)
 last-used-version='0.4.3'
 
 [control-center]
-last-panel='keyboard'
+last-panel='datetime'
 window-state=(1896, 1008, false)
 
 [desktop/app-folders]
@@ -32,11 +32,14 @@ translate=true
 [desktop/background]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
-picture-uri-dark='file:///usr/share/backgrounds/gnome/blobs-d.svg'
+picture-uri='file:///home/falconcodes/.config/background'
+picture-uri-dark='file:///home/falconcodes/.config/background'
 primary-color='#241f31'
 secondary-color='#000000'
 show-desktop-icons=false
+
+[desktop/datetime]
+automatic-timezone=true
 
 [desktop/input-sources]
 current=uint32 0
@@ -52,7 +55,10 @@ gtk-theme='falconcodes-rose-pine'
 toolkit-accessibility=false
 
 [desktop/notifications]
-application-children=['gnome-power-panel', 'org-freedesktop-problems-applet']
+application-children=['gnome-power-panel', 'org-freedesktop-problems-applet', 'gnome-datetime-panel']
+
+[desktop/notifications/application/gnome-datetime-panel]
+application-id='gnome-datetime-panel.desktop'
 
 [desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
@@ -113,6 +119,9 @@ enable-smartcard-authentication=false
 
 [mutter]
 dynamic-workspaces=false
+
+[nautilus/icon-view]
+default-zoom-level='extra-large'
 
 [nautilus/preferences]
 default-folder-viewer='icon-view'
@@ -708,8 +717,11 @@ window-size=(1416, 1062)
 [portal/filechooser/google-chrome-stable]
 last-folder-path='/home/falconcodes/Downloads'
 
+[portal/filechooser/org.gnome.Settings]
+last-folder-path='/home/falconcodes/Prathamesh/walls'
+
 [settings-daemon/plugins/color]
-night-light-last-coordinates=(21.990774122473002, 79.001099999999994)
+night-light-last-coordinates=(21.991483184917765, 79.001099999999994)
 
 [settings-daemon/plugins/media-keys]
 control-center=['<Super>i']
@@ -757,7 +769,7 @@ name='Open Google Chrome Personal'
 
 [shell]
 app-picker-layout=[{'org.fedoraproject.MediaWriter.desktop': <{'position': <0>}>, 'org.gnome.Contacts.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'libreoffice-calc.desktop': <{'position': <5>}>, 'libreoffice-impress.desktop': <{'position': <6>}>, 'org.gnome.Totem.desktop': <{'position': <7>}>, 'org.gnome.Calculator.desktop': <{'position': <8>}>, 'libreoffice-writer.desktop': <{'position': <9>}>, 'simple-scan.desktop': <{'position': <10>}>, 'org.gnome.Settings.desktop': <{'position': <11>}>, 'gnome-system-monitor.desktop': <{'position': <12>}>, 'org.gnome.Boxes.desktop': <{'position': <13>}>, 'org.gnome.Terminal.desktop': <{'position': <14>}>, 'Utilities': <{'position': <15>}>, 'org.gnome.Rhythmbox3.desktop': <{'position': <16>}>, 'yelp.desktop': <{'position': <17>}>, 'org.gnome.TextEditor.desktop': <{'position': <18>}>, 'org.gnome.Cheese.desktop': <{'position': <19>}>, 'org.gnome.Tour.desktop': <{'position': <20>}>}]
-enabled-extensions=['background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'just-perfection-desktop@just-perfection', 'forge@jmmaranan.com', 'mediacontrols@cliffniff.github.com']
+enabled-extensions=['background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'just-perfection-desktop@just-perfection', 'forge@jmmaranan.com', 'mediacontrols@cliffniff.github.com', 'no-overview@fthx']
 welcome-dialog-last-shown-version='45.0'
 
 [shell/extensions/forge]
