@@ -143,6 +143,20 @@ patched_fonts=("ttf-jetbrains-mono-nerd")
 install_packages "yay" "${patched_fonts[@]}"
 # yay -S ttf-jetbrains-mono-nerd
 
+# Install Icon themes
+print_header "$GREEN" "Installing Icon Theme"
+icon_themes=("numix-circle-icon-theme-git")
+install_packages "yay" "${icon_themes[@]}"
+# yay -S ttf-jetbrains-mono-nerd
+
+# Download and extract wallpapers
+# print_header "$GREEN" "Downloading and extracting wallpapers"
+# wallpapers_dir="$HOME/Prathamesh/walls"
+# mkdir -p "$wallpapers_dir"
+# wget -O wallpapers.zip "https://drive.google.com/uc?export=download&id=1VlLOfYVHl5lsaSK7T4Ak_-0_Wo_DOuaS"
+# unzip wallpapers.zip -d "$wallpapers_dir"
+# rm wallpapers.zip
+
 print_header "$GREEN" "Installing Tmux Plugin Manager"
 tpm_dir="$HOME/.tmux/plugins/tpm"
 
