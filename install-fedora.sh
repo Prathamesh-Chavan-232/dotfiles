@@ -223,6 +223,13 @@ fi
 
 print_log "${GREEN}" "SSH keys setup completed."
 
+print_subhear "${GREEN}" "Adding SSH keys config"
+if [ ! -f ~/.ssh/config]; then
+cp github-ssh/config ~/.ssh/config
+else
+	print_log "${YELLOW}" "config file already exists"
+fi
+
 # Tweak some settings
 print_header "$GREEN" "Changing the default shell to zsh."
 current_shell=$(basename "$SHELL")
@@ -249,7 +256,7 @@ response_lower=$(echo "$response" | tr '[:upper:]' '[:lower:]')
 
 if [[ $response_lower == "y" ]]; then
 	print_subheader "[+] Porting GNOME settings,shortcuts and extensions..."
-	dconf load / <gnome-settings.dconf
+	dconf load /org/gnome/ <gnome-settings.dconf
 
 elif [[ $response_lower == "n" ]]; then
 	print_log "$RED" "Skipping GNOME Settings installation."

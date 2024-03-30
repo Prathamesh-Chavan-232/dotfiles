@@ -1,5 +1,131 @@
+[calendar]
+active-view='month'
+window-maximized=false
+window-size=(1904, 600)
+
 [com/mattjakeman/ExtensionManager]
 last-used-version='0.4.3'
+
+[control-center]
+last-panel='keyboard'
+window-state=(1896, 1008, false)
+
+[desktop/app-folders]
+folder-children=['Utilities', 'YaST', 'Pardus']
+
+[desktop/app-folders/folders/Pardus]
+categories=['X-Pardus-Apps']
+name='X-Pardus-Apps.directory'
+translate=true
+
+[desktop/app-folders/folders/Utilities]
+apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.Loupe.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
+categories=['X-GNOME-Utilities']
+name='X-GNOME-Utilities.directory'
+translate=true
+
+[desktop/app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
+translate=true
+
+[desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
+picture-uri-dark='file:///usr/share/backgrounds/gnome/blobs-d.svg'
+primary-color='#241f31'
+secondary-color='#000000'
+show-desktop-icons=false
+
+[desktop/input-sources]
+current=uint32 0
+sources=[('xkb', 'us')]
+xkb-options=@as []
+
+[desktop/interface]
+color-scheme='prefer-dark'
+enable-animations=true
+font-antialiasing='grayscale'
+font-hinting='slight'
+gtk-theme='falconcodes-rose-pine'
+toolkit-accessibility=false
+
+[desktop/notifications]
+application-children=['gnome-power-panel', 'org-freedesktop-problems-applet']
+
+[desktop/notifications/application/gnome-power-panel]
+application-id='gnome-power-panel.desktop'
+
+[desktop/notifications/application/org-freedesktop-problems-applet]
+application-id='org.freedesktop.problems.applet.desktop'
+
+[desktop/peripherals/touchpad]
+click-method='areas'
+
+[desktop/privacy]
+report-technical-problems=true
+
+[desktop/screensaver]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
+primary-color='#241f31'
+secondary-color='#000000'
+
+[desktop/sound]
+allow-volume-above-100-percent=true
+
+[desktop/wm/keybindings]
+close=['<Super>q']
+maximize=@as []
+minimize=@as []
+move-to-workspace-1=['<Shift><Super>1']
+move-to-workspace-2=['<Shift><Super>2']
+move-to-workspace-3=['<Shift><Super>3']
+move-to-workspace-4=['<Shift><Super>4']
+panel-run-dialog=['<Alt>F1']
+switch-applications=@as []
+switch-applications-backward=@as []
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
+switch-windows=['<Alt>Tab']
+switch-windows-backward=['<Shift><Alt>Tab']
+toggle-maximized=['<Super>m']
+unmaximize=@as []
+
+[desktop/wm/preferences]
+button-layout='appmenu:minimize,maximize,close'
+num-workspaces=5
+resize-with-right-button=true
+titlebar-font='Monospace Bold 13'
+workspace-names=['1', '2', '3', '4']
+
+[evolution-data-server]
+migrated=true
+
+[login-screen]
+enable-fingerprint-authentication=true
+enable-password-authentication=true
+enable-smartcard-authentication=false
+
+[mutter]
+dynamic-workspaces=false
+
+[nautilus/preferences]
+default-folder-viewer='icon-view'
+migrated-gtk-settings=true
+search-filter-time-type='last_modified'
+
+[nautilus/window-state]
+initial-size=(1896, 1008)
+maximized=false
+
+[nm-applet/eap/ab28c2ba-3952-4513-a900-77630019019d]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
 
 [org/gnome/Console]
 last-window-size=(2289, 1258)
@@ -578,3 +704,209 @@ sort-order='ascending'
 type-format='category'
 window-position=(26, 23)
 window-size=(1416, 1062)
+
+[portal/filechooser/google-chrome-stable]
+last-folder-path='/home/falconcodes/Downloads'
+
+[settings-daemon/plugins/color]
+night-light-last-coordinates=(21.990774122473002, 79.001099999999994)
+
+[settings-daemon/plugins/media-keys]
+control-center=['<Super>i']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/']
+screensaver=['<Super>backslash']
+volume-down=['F8']
+volume-mute=['F7']
+volume-up=['F9']
+www=@as []
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>g'
+command='google-chrome-stable --profile-directory="Default"'
+name='Open Google Chrome'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Super>Return'
+command='alacritty'
+name='Open Alacritty'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Super>s'
+command='flatpak run com.spotify.Client'
+name='Open Spotify'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom3]
+binding='<Super>e'
+command='nautilus'
+name='Open File Manager'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom5]
+binding='<Super>c'
+command='code --disable-gpu'
+name='Open VS Code'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom6]
+binding='<Super>t'
+command='gnome-terminal'
+name='Open Gnome terminal'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom7]
+binding='<Super>b'
+command='google-chrome-stable --profile-directory="Profile 2"'
+name='Open Google Chrome Personal'
+
+[shell]
+app-picker-layout=[{'org.fedoraproject.MediaWriter.desktop': <{'position': <0>}>, 'org.gnome.Contacts.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'libreoffice-calc.desktop': <{'position': <5>}>, 'libreoffice-impress.desktop': <{'position': <6>}>, 'org.gnome.Totem.desktop': <{'position': <7>}>, 'org.gnome.Calculator.desktop': <{'position': <8>}>, 'libreoffice-writer.desktop': <{'position': <9>}>, 'simple-scan.desktop': <{'position': <10>}>, 'org.gnome.Settings.desktop': <{'position': <11>}>, 'gnome-system-monitor.desktop': <{'position': <12>}>, 'org.gnome.Boxes.desktop': <{'position': <13>}>, 'org.gnome.Terminal.desktop': <{'position': <14>}>, 'Utilities': <{'position': <15>}>, 'org.gnome.Rhythmbox3.desktop': <{'position': <16>}>, 'yelp.desktop': <{'position': <17>}>, 'org.gnome.TextEditor.desktop': <{'position': <18>}>, 'org.gnome.Cheese.desktop': <{'position': <19>}>, 'org.gnome.Tour.desktop': <{'position': <20>}>}]
+enabled-extensions=['background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'just-perfection-desktop@just-perfection', 'forge@jmmaranan.com', 'mediacontrols@cliffniff.github.com']
+welcome-dialog-last-shown-version='45.0'
+
+[shell/extensions/forge]
+auto-split-enabled=true
+css-last-update=uint32 37
+css-updated='1711835424608'
+float-always-on-top-enabled=false
+focus-border-toggle=true
+preview-hint-enabled=true
+split-border-toggle=false
+stacked-tiling-mode-enabled=true
+tabbed-tiling-mode-enabled=false
+tiling-mode-enabled=true
+window-gap-hidden-on-single=false
+window-gap-size=uint32 6
+window-gap-size-increment=uint32 1
+workspace-skip-tile=''
+
+[shell/extensions/forge/keybindings]
+con-split-horizontal=['<Control><Super>z']
+con-split-layout-toggle=['<Control><Super>g']
+con-split-vertical=['<Control><Super>v']
+con-stacked-layout-toggle=@as []
+con-tabbed-layout-toggle=['<Shift><Super>t']
+con-tabbed-showtab-decoration-toggle=['<Control><Alt>y']
+focus-border-toggle=['<Control><Super>x']
+mod-mask-mouse-tile='None'
+prefs-tiling-toggle=@as []
+window-focus-down=['<Super>j']
+window-focus-left=['<Super>h']
+window-focus-right=['<Super>l']
+window-focus-up=['<Super>k']
+window-gap-size-decrease=['<Control><Super>minus']
+window-gap-size-increase=['<Control><Super>plus']
+window-move-down=['<Shift><Super>j']
+window-move-left=['<Shift><Super>h']
+window-move-right=['<Shift><Super>l']
+window-move-up=['<Shift><Super>k']
+window-resize-bottom-decrease=['<Shift><Control><Super>i']
+window-resize-bottom-increase=['<Control><Super>u']
+window-resize-left-decrease=['<Shift><Control><Super>o']
+window-resize-left-increase=['<Control><Super>y']
+window-resize-right-decrease=['<Shift><Control><Super>y']
+window-resize-right-increase=['<Control><Super>o']
+window-resize-top-decrease=['<Shift><Control><Super>u']
+window-resize-top-increase=['<Control><Super>i']
+window-snap-center=['<Control><Alt>c']
+window-snap-one-third-left=['<Control><Alt>d']
+window-snap-one-third-right=['<Control><Alt>g']
+window-snap-two-third-left=['<Control><Alt>e']
+window-snap-two-third-right=['<Control><Alt>t']
+window-swap-down=['<Control><Super>j']
+window-swap-last-active=@as []
+window-swap-left=['<Control><Super>h']
+window-swap-right=['<Control><Super>l']
+window-swap-up=['<Control><Super>k']
+window-toggle-always-float=['<Shift><Super>c']
+window-toggle-float=['<Control><Super>f']
+workspace-active-tile-toggle=['<Control><Super>w']
+
+[shell/extensions/pop-shell]
+active-hint=true
+active-hint-border-radius=uint32 14
+gap-inner=uint32 4
+gap-outer=uint32 4
+hint-color-rgba='rgb(193,56,29)'
+show-title=false
+smart-gaps=false
+snap-to-grid=true
+tile-by-default=false
+tile-enter=@as []
+
+[shell/extensions/tiling-assistant]
+activate-layout0=@as []
+activate-layout1=@as []
+activate-layout2=@as []
+activate-layout3=@as []
+active-window-hint=1
+active-window-hint-color='rgb(53,132,228)'
+auto-tile=@as []
+center-window=@as []
+debugging-free-rects=@as []
+debugging-show-tiled-rects=@as []
+default-move-mode=0
+dynamic-keybinding-behavior=0
+import-layout-examples=false
+last-version-installed=44
+restore-window=['<Super>Down']
+search-popup-layout=@as []
+single-screen-gap=4
+tile-bottom-half=['<Super>KP_2']
+tile-bottom-half-ignore-ta=@as []
+tile-bottomleft-quarter=['<Super>KP_1']
+tile-bottomleft-quarter-ignore-ta=@as []
+tile-bottomright-quarter=['<Super>KP_3']
+tile-bottomright-quarter-ignore-ta=@as []
+tile-edit-mode=@as []
+tile-left-half=['<Super>Left', '<Super>KP_4']
+tile-left-half-ignore-ta=@as []
+tile-maximize=['<Super>Up', '<Super>KP_5']
+tile-maximize-horizontally=@as []
+tile-maximize-vertically=@as []
+tile-right-half=['<Super>Right', '<Super>KP_6']
+tile-right-half-ignore-ta=@as []
+tile-top-half=['<Super>KP_8']
+tile-top-half-ignore-ta=@as []
+tile-topleft-quarter=['<Super>KP_7']
+tile-topleft-quarter-ignore-ta=@as []
+tile-topright-quarter=['<Super>KP_9']
+tile-topright-quarter-ignore-ta=@as []
+tiling-popup-all-workspace=true
+toggle-always-on-top=@as []
+toggle-tiling-popup=@as []
+window-gap=4
+
+[shell/extensions/user-theme]
+name='falconcodes-rose-pine'
+
+[shell/extensions/window-list]
+display-all-workspaces=false
+grouping-mode='auto'
+show-on-all-monitors=false
+
+[shell/keybindings]
+focus-active-notification=@as []
+show-screenshot-ui=['<Shift><Super>s']
+switch-to-application-1=@as []
+switch-to-application-2=@as []
+switch-to-application-3=@as []
+switch-to-application-4=@as []
+toggle-message-tray=@as []
+toggle-quick-settings=@as []
+
+[shell/world-clocks]
+locations=@av []
+
+[software]
+check-timestamp=int64 1711831114
+first-run=false
+
+[system/location]
+enabled=true
+
+[terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+background-color='rgb(23,20,33)'
+foreground-color='rgb(208,207,204)'
+scrollbar-policy='never'
+use-theme-colors=false
+visible-name='falconcodes'
+
+[tweaks]
+show-extensions-notice=false
