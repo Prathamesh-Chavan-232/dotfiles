@@ -90,6 +90,15 @@ print_header "$GREEN" "Installing Patched Fonts"
 patched_fonts=("google-noto-fonts-nerd" "jetbrains-mono-nerd")
 install_packages "dnf" "${patched_fonts[@]}"
 
+# Install Icon Themes
+print_header "$GREEN" "Installing Icon Theme"
+icons_themes=("numix-icon-theme-circle")
+install_packages "dnf" "${icon_themes[@]}"
+
+print_header "$GREEN" "Installing GNOME Extensions Manager and Tweaks"
+gnome_extensions=("gnome-extensions-app" "gnome-tweaks")
+install_packages "dnf" "${gnome_extensions[@]}"
+
 print_header "$GREEN" "Installing Tmux Plugin Manager"
 tpm_dir="$HOME/.tmux/plugins/tpm"
 
