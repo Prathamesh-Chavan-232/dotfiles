@@ -129,6 +129,47 @@ for folder in $DOT_FOLDERS; do
 	create_symlinks "$folder" "$HOME/.config/$folder"
 done
 
+# Add github account SSH Keys
+print_header "${GREEN}" "Adding Github Accounts SSH keys"
+# Personal account
+if [ ! -f ~/.ssh/id_ed25519 ]; then
+	print_log "${GREEN}" "Creating SSH key for personal account..."
+	ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -N ""
+	ssh-add ~/.ssh/id_ed25519
+	print_log "${GREEN}" "Personal account SSH key created successfully."
+else
+	print_log "${YELLOW}" "Personal account SSH key already exists."
+fi
+
+# Work account
+if [ ! -f ~/.ssh/id_ed25519_work ]; then
+	print_log "${GREEN}" "Creating SSH key for work account..."
+	ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_work -q -N ""
+	ssh-add ~/.ssh/id_ed25519_work
+	print_log "${GREEN}" "Work account SSH key created successfully."
+else
+	print_log "${YELLOW}" "Work account SSH key already exists."
+fi
+
+print_log "${GREEN}" "SSH keys setup completed."
+
+echo ""
+echo -n "Porting GNOME settings have installed the required extensions from the README? (Y/n):"
+read response
+
+# Convert the response to lowercase for case-insensitive comparison
+response_lower=$(echo "$response" | tr '[:upper:]' '[:lower:]')
+
+if [[ $response_lower == "y" ]]; then
+	print_subheader "[+] Porting GNOME settings,shortcuts and extensions..."
+	dconf load / <gnome-settings.dconf
+
+elif [[ $response_lower == "n" ]]; then
+	print_log "$RED" "Skipping GNOME Settings installation."
+else
+	echo "Invalid response. Please enter 'Y/y' or 'N/n'."
+fi
+
 # Tweak some settings
 print_header "$GREEN" "Changing the default shell to zsh."
 current_shell=$(basename "$SHELL")
