@@ -76,6 +76,7 @@ create_symlinks() {
 print_header "$GREEN" "Adding RPM fusion repositories"
 sudo dnf config-manager --enable fedora-cisco-openh264
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
 print_header "$GREEN" "Adding Flatpak repositories"
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo dnf makecache

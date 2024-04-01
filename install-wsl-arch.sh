@@ -81,15 +81,26 @@ create_symlinks() {
 
 # Install Development Related Packages
 print_header "$GREEN" "Installing Development Tools"
-development_tools=("git" "github-cli" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc")
+development_tools=("git" "github-cli" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc" "rustup")
 install_packages "pacman" "${development_tools[@]}"
 # sudo pacman -S git github-cli fzf ripgrep python python-pip bun nodejs npm pnpm gcc xclip
 
 # Install System Workflow Apps
 print_header "$GREEN" "Installing System Workflow Apps"
-system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "picom" "ranger" "htop" "lazygit" "zsh" "starship" "tmux" "firefox" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop" "eza")
+system_packages=("neovim" "fastfetch" "neofetch" "ranger" "htop" "lazygit" "zsh" "starship" "tmux" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop")
 install_packages "pacman" "${system_packages[@]}"
-# sudo pacman -S neovim alacritty kitty dunst polybar i3 rofi neofetch picom ranger htop lazygit zsh starship tmux firefox lsd zoxide
+
+
+# Install Cermic {Display ASCII Art of images in the terminal}
+print_header "$GREEN" "Installing cermic for coll ASCII Art"
+git clone https://codeberg.org/Oglo12/cermic/
+cd cermic/
+cargo build --release
+sudo mv target/release/cermic /usr/local/bin/
+print_subheader "$GREEN" "Cermic Installed successfully."
+print_subheader "$RED" "Removing cermic build files"
+cd ..
+rm -rf cermic
 
 print_header "$GREEN" "Installing Tmux Plugin Manager"
 tpm_dir="$HOME/.tmux/plugins/tpm"
@@ -106,7 +117,7 @@ fi
 
 # Install zsh plugin Manager
 zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
-print_subheader "$GREEN" "Zsh Plugin Manager (Zap) installed successfully at $tpm_dir."
+print_subheader "$GREEN" "Zsh Plugin Manager (Zap) installed successfully."
 
 print_log "$GREEN" "Installing Packages Completed."
 echo ""
@@ -122,7 +133,7 @@ print_header "$GREEN" "Linking your dotfiles..."
 create_symlinks "zsh" "$HOME"
 
 # Define the directories to be symlinked
-DOT_FOLDERS="alacritty kitty nvim nvim-alt nvim-minimal nvchad tmux"
+DOT_FOLDERS="nvim nvim-alt nvim-minimal nvchad tmux"
 
 # Create symlinks for remaining folders
 for folder in $DOT_FOLDERS; do
@@ -132,43 +143,34 @@ done
 # Add github account SSH Keys
 print_header "${GREEN}" "Adding Github Accounts SSH keys"
 # Personal account
-if [ ! -f ~/.ssh/id_ed25519 ]; then
+if [ ! -f ~/.ssh/Prathamesh-Chavan-232 ]; then
 	print_log "${GREEN}" "Creating SSH key for personal account..."
-	ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -N ""
-	ssh-add ~/.ssh/id_ed25519
+	ssh-keygen -t ed25519 -C "prathamesh.chavanpsc2018@gmail.com" -f ~/.ssh/Prathamesh-Chavan-232
+	ssh-add ~/.ssh/Prathamesh-Chavan-232
 	print_log "${GREEN}" "Personal account SSH key created successfully."
 else
 	print_log "${YELLOW}" "Personal account SSH key already exists."
 fi
 
 # Work account
-if [ ! -f ~/.ssh/id_ed25519_work ]; then
+if [ ! -f ~/.ssh/Prathamesh-Chavan-Noovosoft ]; then
 	print_log "${GREEN}" "Creating SSH key for work account..."
-	ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_work -q -N ""
-	ssh-add ~/.ssh/id_ed25519_work
+	ssh-keygen -t ed25519 -C "prathamesh.chavan@noovosoft.com" -f ~/.ssh/Prathamesh-Chavan-Noovosoft
+	ssh-add ~/.ssh/Prathamesh-Chavan-Noovosoft
 	print_log "${GREEN}" "Work account SSH key created successfully."
 else
 	print_log "${YELLOW}" "Work account SSH key already exists."
 fi
 
-print_log "${GREEN}" "SSH keys setup completed."
-
-echo ""
-echo -n "Porting GNOME settings have installed the required extensions from the README? (Y/n):"
-read response
-
-# Convert the response to lowercase for case-insensitive comparison
-response_lower=$(echo "$response" | tr '[:upper:]' '[:lower:]')
-
-if [[ $response_lower == "y" ]]; then
-	print_subheader "[+] Porting GNOME settings,shortcuts and extensions..."
-	dconf load / <gnome-settings.dconf
-
-elif [[ $response_lower == "n" ]]; then
-	print_log "$RED" "Skipping GNOME Settings installation."
+# Adding config file
+if [ ! -f ~/.ssh/config ]; then
+	print_log "${GREEN}" "Adding github SSH keys config"
+	cp github-ssh/config  ~/.ssh/
 else
-	echo "Invalid response. Please enter 'Y/y' or 'N/n'."
+	print_log "${YELLOW}" "A Config file already exists."
 fi
+
+print_log "${GREEN}" "SSH keys setup completed."
 
 # Tweak some settings
 print_header "$GREEN" "Changing the default shell to zsh."
@@ -199,7 +201,6 @@ response_lower=$(echo "$response" | tr '[:upper:]' '[:lower:]')
 
 if [[ $response_lower == "y" ]]; then
 	print_subheader "[+] Reloading shell..."
-	exec >/dev/tty 2>&1 # Stop logging to text file before reloading the shell
 	exec $SHELL -l
 	# Add your code here for the 'yes' case
 elif [[ $response_lower == "n" ]]; then
