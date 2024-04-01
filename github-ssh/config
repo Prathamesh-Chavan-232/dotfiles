@@ -2,13 +2,13 @@
      Host github.com
           HostName github.com
           User git
-          IdentityFile ~/.ssh/id_ed25519
+          IdentityFile ~/.ssh/Prathamesh-Chavan-232
           IdentitiesOnly yes
 
  # Work account
-     Host github.com-work
+     Host github.com-noovosoft
           HostName github.com
           User git
-          IdentityFile ~/.ssh/id_ed25519_work
+          IdentityFile ~/.ssh/Prathamesh-Chavan-Noovosoft
           IdentitiesOnly yes
 
