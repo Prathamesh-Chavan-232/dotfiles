@@ -2,7 +2,7 @@
 # Zap Plugin Manager
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-source $HOME/keep-coding/fast-project-packages/fast-project.sh
+source $HOME/keep-coding/fast-project-package/fast-project.sh
 
 # plugins
 # plug "esc/conda-zsh-completion"
