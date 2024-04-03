@@ -46,8 +46,8 @@ export PATH="$HOME/miniconda/bin:$PATH"
 # pnpm
 export PNPM_HOME="/home/falconcodes/.local/share/pnpm"
 case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
@@ -301,7 +301,7 @@ function gh_work() {
   fi
 }
 
-# fastfetch
+# run_fastfetch
 function run_fastfetch() {
   # Define the path of your temp file
   TMPFILE="$HOME/.last_fetch_run"

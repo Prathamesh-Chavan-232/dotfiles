@@ -89,7 +89,8 @@ sudo dnf update -y && sudo dnf upgrade
 print_header "$GREEN" "Installing Development Tools"
 development_tools=("git" "python3" "python3-pip" "nodejs" "npm" "gcc" "gcc-c++" "make" "cmake" "docker" "rust" "cargo")
 install_packages "dnf" "${development_tools[@]}"
-
+print_header "$GREEN" "Installing pnpm"
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 # Install Flutter
 #print_header "$GREEN" "Installing Flutter"
 #flatpak_packages=("io.flutter.flutter" "com.google.Android.NDK")
@@ -223,21 +224,14 @@ else
 fi
 
 # Adding config file
-if [ ! -f ~/.ssh/config ]; then
-	print_log "${GREEN}" "Adding github SSH keys config"
-	cp github-ssh/config  ~/.ssh/
-else
-	print_log "${YELLOW}" "A Config file already exists."
-fi
-
-print_log "${GREEN}" "SSH keys setup completed."
-
-print_subhear "${GREEN}" "Adding SSH keys config"
+print_subheader "${GREEN}" "Adding SSH keys config"
 if [ ! -f ~/.ssh/config]; then
-cp github-ssh/config ~/.ssh/config
+	cp github-ssh/config ~/.ssh/config
 else
 	print_log "${YELLOW}" "config file already exists"
 fi
+
+print_log "${GREEN}" "SSH keys setup completed."
 
 # Tweak some settings
 print_header "$GREEN" "Changing the default shell to zsh."
