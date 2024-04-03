@@ -344,5 +344,3 @@ bindkey -s "^a" "nvims\n"
 
 # ASCII Shibang #!
 shibang
-# run_fastfetch
-export ZDOTDIR="$HOME/.config/zsh"
