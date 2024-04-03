@@ -218,9 +218,7 @@ alias nvchad="NVIM_APPNAME=nvchad nvim"
 # Docker
 alias docker-kill-all-containers='docker kill $(docker ps -q)'
 alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
-alias docker-conls='docker container ls'
-alias docker-imagels='docker image ls'
-alias docker-volls='docker volume ls'
+alias docker-remove-all-images='docker rmi $(docker image ls -a -q)'
 
 # On demand docker containers using compose templates
 function foo() {
