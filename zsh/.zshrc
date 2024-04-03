@@ -2,6 +2,8 @@
 # Zap Plugin Manager
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
+source $HOME/keep-coding/fast-project-packages/fast-project.sh
+
 # plugins
 # plug "esc/conda-zsh-completion"
 plug "zap-zsh/completions"
@@ -179,7 +181,7 @@ alias shibang='cermic 1 ~/keep-coding/falcon-dots/cermic-sh-art/images;echo ""'
 # Shortcuts
 # Tmux
 # The alias `tmux='tmux -u'` is setting up an alias for the `tmux` command. In this case, when you type `tmux` in the terminal, it will actually execute `tmux -u`. The `-u` flag in `tmux -u` stands for "update-environment" and it ensures that the environment variables are updated when a new session is created or an existing session is attached. This can be useful to make sure that the environment variables are consistent across different tmux sessions.
-alias tmux='tmux -u'
+# alias tmux='tmux -u'
 alias tmux-kill="tmux kill-session -t"
 
 # cd easily & multiple times
@@ -188,30 +190,26 @@ alias ....='z ../../'
 alias ..2='z ../../'
 alias .....='z ../../../'
 alias ..3='z ../../../'
-
 # cd into projects easily
 alias work="cd ~/keep-coding/work/"
 
-# Open Dotfiles quickly
-alias dots='cd ~/keep-coding/falcon-dots/ && nvim .' # dotfiles are symlinked to this directory
-
-# Still keep these just in case
 # Open config files quickly
-alias zshrc='nvim ~/keep-coding/falcon-dots/zsh/.zshrc'
-alias tmuxrc='nvim ~/keep-coding/falcon-dots/tmux/.config/tmux/tmux.conf'
+alias zshrc='nvi ~/.zshrc'
+alias tmuxrc='nvi ~/.config/tmux/tmux.conf'
+# Open Dotfiles quickly
+alias dots='cd ~/keep-coding/falcon-dots/ && nvi .' # dotfiles are symlinked to this directory
 # Open config folders quickly
-alias nvimrc='cd ~/.config/nvim && nvim .'
-alias alacrittyrc='cd ~/.config/alacritty/ && nvim .'
-alias polybarrc='cd ~/config/polybar/ && nvim .'
-alias i3rc='cd ~/.config/i3/ && nvim .'
-alias bspwmrc='cd ~/.config/bspwm/ && nvim .'
-alias rofirc='cd ~/.config/rofi/ && nvim .'
-alias dunstrc='cd ~/.config/dunst/ && nvim .'
+alias nvimrc='cd ~/.config/nvim && nvi .'
+alias alacrittyrc='cd ~/.config/alacritty/ && nvi .'
+alias polybarrc='cd ~/config/polybar/ && nvi .'
+alias i3rc='cd ~/.config/i3/ && nvi .'
+alias bspwmrc='cd ~/.config/bspwm/ && nvi .'
+alias rofirc='cd ~/.config/rofi/ && nvi .'
+alias dunstrc='cd ~/.config/dunst/ && nvi .'
 
 # Neovim config switcher
 alias vi="vim"
 alias nvi="nvim-alt"
-
 # Vimacs with nvchad
 alias nvchad="NVIM_APPNAME=nvchad nvim"
 
