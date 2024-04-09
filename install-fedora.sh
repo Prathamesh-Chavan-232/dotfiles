@@ -87,10 +87,46 @@ sudo dnf update -y && sudo dnf upgrade
 
 # Install Development Related Packages
 print_header "$GREEN" "Installing Development Tools"
-development_tools=("git" "python3" "python3-pip" "nodejs" "npm" "gcc" "gcc-c++" "make" "cmake" "docker" "rust" "cargo")
+development_tools=("git" "python3" "python3-pip" "nodejs" "npm" "gcc" "gcc-c++" "make" "cmake" "rust" "cargo")
 install_packages "dnf" "${development_tools[@]}"
+
+# Install docker
+print_header "$GREEN" "Installing Docker"
+# Uninstall old versions
+sudo dnf remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
+
+# Set up the repository
+print_subheader "$GREEN" "Setting up repositories"
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+# Install Docker Engine
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+# Start Docker.
+sudo systemctl start docker
+
+# Manage Docker as a non-root user
+print_subheader "$GREEN" "Allow non-root users to use docker"
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
+# Verify that the Docker Engine installation is successful by running the hello-world image.
+print_subheader "$GREEN" "Verifying Docker engine installtion"
+docker run hello-world
+
+# Install pnpm
 print_header "$GREEN" "Installing pnpm"
 curl -fsSL https://get.pnpm.io/install.sh | sh -
+
 # Install Flutter
 #print_header "$GREEN" "Installing Flutter"
 #flatpak_packages=("io.flutter.flutter" "com.google.Android.NDK")

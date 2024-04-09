@@ -271,7 +271,7 @@ function gh_work() {
     if [ "$1" = "repo" ] && [ "$2" = "create" ]; then
 
     # Determine the correct SSH hostname
-    ssh_hostname="github.com-work"
+    ssh_hostname="github.noovosoft"
 
     echo "Disclaimer: You are using your work account. Remote will be set as your work git hostname (github.com-work)."
 
