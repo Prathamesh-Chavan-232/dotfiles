@@ -240,20 +240,20 @@ done
 # Add github account SSH Keys
 print_header "${GREEN}" "Adding Github Accounts SSH keys"
 # Personal account
-if [ ! -f ~/.ssh/Prathamesh-Chavan-232 ]; then
+if [ ! -f ~/.ssh/id_github_personal ]; then
 	print_log "${GREEN}" "Creating SSH key for personal account..."
-	ssh-keygen -t ed25519 -C "prathamesh.chavanpsc2018@gmail.com" -f ~/.ssh/Prathamesh-Chavan-232
-	ssh-add ~/.ssh/Prathamesh-Chavan-232
+	ssh-keygen -t ed25519 -f ~/.ssh/id_github_personal
+	ssh-add ~/.ssh/id_github_personal
 	print_log "${GREEN}" "Personal account SSH key created successfully."
 else
 	print_log "${YELLOW}" "Personal account SSH key already exists."
 fi
 
 # Work account
-if [ ! -f ~/.ssh/Prathamesh-Chavan-Noovosoft ]; then
+if [ ! -f ~/.ssh/id_github_noovosoft ]; then
 	print_log "${GREEN}" "Creating SSH key for work account..."
-	ssh-keygen -t ed25519 -C "prathamesh.chavan@noovosoft.com" -f ~/.ssh/Prathamesh-Chavan-Noovosoft
-	ssh-add ~/.ssh/Prathamesh-Chavan-Noovosoft
+	ssh-keygen -t ed25519 -f ~/.ssh/id_github_noovosoft
+	ssh-add ~/.ssh/id_github_noovosoft
 	print_log "${GREEN}" "Work account SSH key created successfully."
 else
 	print_log "${YELLOW}" "Work account SSH key already exists."
@@ -261,13 +261,13 @@ fi
 
 # Adding config file
 print_subheader "${GREEN}" "Adding SSH keys config"
-if [ ! -f ~/.ssh/config]; then
-	cp github-ssh/config ~/.ssh/config
+if [ ! -f ~/.ssh/config ]; then
+	cp github-ssh/config ~/.ssh/
 else
-	print_log "${YELLOW}" "config file already exists"
+	print_log "${YELLOW}" "A Config file already exists."
 fi
 
-print_log "${GREEN}" "SSH keys setup completed."
+print_subheader "${GREEN}" "SSH keys setup completed."
 
 # Tweak some settings
 print_header "$GREEN" "Changing the default shell to zsh."
