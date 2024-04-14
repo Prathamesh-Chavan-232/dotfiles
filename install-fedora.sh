@@ -142,7 +142,7 @@ install_packages "dnf" "${drivers[@]}"
 
 # Install System Workflow Apps
 config_packages=("stow" "dconf")
-system_packages=("ripgrep" "fzf" "xclip")
+system_packages=("ripgrep" "fzf" "fd" "xclip")
 i3_packages=("i3" "rofi" "polybar" "dunst" "picom" "ranger" "feh" "ueberzug")
 workflow_packages=("firefox" "vim" "neovim" "alacritty" "kitty" "tmux" "zsh" "starship" "gh")
 fun_packages=("bat" "lsd" "zoxide" "lazygit" "dust" "htop" "btop" "neofetch" "fastfetch")

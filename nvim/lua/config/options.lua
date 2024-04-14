@@ -14,7 +14,6 @@ local options = {
   pumheight = 10, -- height of the pop up menu
   showcmd = true, -- show command in the bottom right
   cmdheight = 0, -- set command line height -> 0 hides the command line unless its being used
-  laststatus = 0, -- global statusline
 
   -- line numbers
   numberwidth = 4, -- set number column {default 4}
@@ -81,6 +80,9 @@ for setting, value in pairs(options) do
   vim.opt[setting] = value
 end
 
+vim.opt.path:append("**") -- add recursive file search
+vim.opt.wildignore:append({ ".git", "node_modules", "dist", "build" }) -- ignore these files in wildmenu
+vim.opt.formatoptions:append({ "r" }) -- autoformat options
 vim.opt.shortmess = "ilmnrx" -- flags to shorten vim messages, see :help 'shortmess'
 vim.opt.shortmess:append("c") -- don't give |ins-completion-menu| messages
 vim.opt.isfname:append("@-@") -- make words with - a single word
