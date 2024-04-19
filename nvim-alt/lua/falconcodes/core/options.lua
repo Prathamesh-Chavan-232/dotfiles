@@ -43,7 +43,7 @@ local options = {
     history = 100,               -- number of commands to remember in a history table
     virtualedit = "block",       -- allow going past end of line in visual block mode
     -- clipboard = "unnamedplus", -- make neovim use the system clipboard
-    backspace = "indent,eol,start", -- makes backspace work properly
+    backspace = "start,eol,indent", -- makes backspace work properly
 
     -- searching
     fileencoding = "utf-8", -- the encoding written to a file
@@ -92,6 +92,7 @@ vim.opt.shortmess:append("c")                              -- don't give |ins-co
 vim.opt.isfname:append("@-@")                              -- make words with - a single word
 vim.opt.iskeyword:append("-")                              -- hyphenated words recognized by searches
 
+vim.opt.formatoptions:append({ "r" })                      -- add asterisk to block comments
 vim.opt.viewoptions:remove("curdir")                       -- disable saving current directory with views
 vim.opt.shortmess:append({ s = true, I = true, F = true }) -- disable search count wrap and startup messages
 vim.opt.backspace:append({ "nostop" })                     -- don't stop backspace at insert

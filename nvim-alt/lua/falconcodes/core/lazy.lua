@@ -10,7 +10,8 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
-opts = {
+
+local opts = {
     defaults = {
         -- lazy = true, -- should plugins be lazy-loaded?
     },
@@ -57,4 +58,3 @@ opts = {
 }
 
 require("lazy").setup(opts)
-require("falconcodes.core.colorscheme")
