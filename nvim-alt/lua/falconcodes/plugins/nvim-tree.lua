@@ -3,7 +3,6 @@ return {
     lazy = false,
 
     dependencies = { "nvim-tree/nvim-web-devicons" },
-
     config = function()
         local nvimtree = require("nvim-tree")
         nvimtree.setup({
@@ -72,16 +71,14 @@ return {
                         bookmark = "",
                         modified = "●",
                         folder = {
-                            arrow_closed = "",
-                            arrow_open = "",
-                            default = "",
+                            arrow_closed = "",
+                            arrow_open = "",
                             open = "",
                             empty = "",
                             empty_open = "",
                             symlink = "",
                             symlink_open = "",
                         },
-
                         git = {
                             unstaged = "✗",
                             staged = "✓",
@@ -110,5 +107,7 @@ return {
                 },
             },
         })
+        -- set keymaps
+        vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
     end,
 }

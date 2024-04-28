@@ -1,5 +1,5 @@
-require("falconcodes.core.keymaps")
 require("falconcodes.core.options")
+require("falconcodes.core.keymaps")
 require("falconcodes.core.lazy")
 require("falconcodes.core.autocmds")
 require("falconcodes.core.colorscheme")
