@@ -1,3 +1,12 @@
+[Weather]
+window-height=1008
+window-maximized=false
+window-width=1896
+
+[baobab/ui]
+is-maximized=false
+window-size=(942, 1008)
+
 [calendar]
 active-view='month'
 window-maximized=false
@@ -7,8 +16,8 @@ window-size=(1904, 600)
 last-used-version='0.4.3'
 
 [control-center]
-last-panel='datetime'
-window-state=(1896, 1008, false)
+last-panel='power'
+window-state=(1896, 1008, true)
 
 [desktop/app-folders]
 folder-children=['Utilities', 'YaST', 'Pardus']
@@ -52,19 +61,45 @@ enable-animations=true
 font-antialiasing='grayscale'
 font-hinting='slight'
 gtk-theme='falconcodes-rose-pine'
+monospace-font-name='Source Code Pro 10'
+show-battery-percentage=true
 toolkit-accessibility=false
 
 [desktop/notifications]
-application-children=['gnome-power-panel', 'org-freedesktop-problems-applet', 'gnome-datetime-panel']
+application-children=['gnome-power-panel', 'org-freedesktop-problems-applet', 'gnome-datetime-panel', 'org-gnome-software', 'gnome-network-panel', 'google-chrome', 'com-spotify-client', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gnome-evince']
+
+[desktop/notifications/application/com-spotify-client]
+application-id='com.spotify.Client.desktop'
 
 [desktop/notifications/application/gnome-datetime-panel]
 application-id='gnome-datetime-panel.desktop'
 
+[desktop/notifications/application/gnome-network-panel]
+application-id='gnome-network-panel.desktop'
+
 [desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
 
+[desktop/notifications/application/google-chrome]
+application-id='google-chrome.desktop'
+
 [desktop/notifications/application/org-freedesktop-problems-applet]
 application-id='org.freedesktop.problems.applet.desktop'
+
+[desktop/notifications/application/org-gnome-baobab]
+application-id='org.gnome.baobab.desktop'
+
+[desktop/notifications/application/org-gnome-evince]
+application-id='org.gnome.Evince.desktop'
+
+[desktop/notifications/application/org-gnome-extensions-desktop]
+application-id='org.gnome.Extensions.desktop.desktop'
+
+[desktop/notifications/application/org-gnome-software]
+application-id='org.gnome.Software.desktop'
+
+[desktop/peripherals/keyboard]
+numlock-state=true
 
 [desktop/peripherals/touchpad]
 click-method='areas'
@@ -79,6 +114,9 @@ picture-uri='file:///usr/share/backgrounds/gnome/blobs-l.svg'
 primary-color='#241f31'
 secondary-color='#000000'
 
+[desktop/session]
+idle-delay=uint32 900
+
 [desktop/sound]
 allow-volume-above-100-percent=true
 
@@ -87,16 +125,28 @@ close=['<Super>q']
 maximize=@as []
 minimize=@as []
 move-to-workspace-1=['<Shift><Super>1']
+move-to-workspace-10=['<Super><Shift>0']
 move-to-workspace-2=['<Shift><Super>2']
 move-to-workspace-3=['<Shift><Super>3']
 move-to-workspace-4=['<Shift><Super>4']
+move-to-workspace-5=['<Super><Shift>5']
+move-to-workspace-6=['<Super><Shift>6']
+move-to-workspace-7=['<Super><Shift>7']
+move-to-workspace-8=['<Super><Shift>8']
+move-to-workspace-9=['<Super><Shift>9']
 panel-run-dialog=['<Alt>F1']
 switch-applications=@as []
 switch-applications-backward=@as []
 switch-to-workspace-1=['<Super>1']
+switch-to-workspace-10=['<Super>0']
 switch-to-workspace-2=['<Super>2']
 switch-to-workspace-3=['<Super>3']
 switch-to-workspace-4=['<Super>4']
+switch-to-workspace-5=['<Super>5']
+switch-to-workspace-6=['<Super>6']
+switch-to-workspace-7=['<Super>7']
+switch-to-workspace-8=['<Super>8']
+switch-to-workspace-9=['<Super>9']
 switch-windows=['<Alt>Tab']
 switch-windows-backward=['<Shift><Alt>Tab']
 toggle-maximized=['<Super>m']
@@ -109,6 +159,20 @@ resize-with-right-button=true
 titlebar-font='Monospace Bold 13'
 workspace-names=['1', '2', '3', '4']
 
+[evince/default]
+continuous=true
+dual-page=false
+dual-page-odd-left=true
+enable-spellchecking=true
+fullscreen=false
+inverted-colors=false
+show-sidebar=false
+sidebar-page='thumbnails'
+sidebar-size=150
+sizing-mode='free'
+window-ratio=(1.5392156862745099, 1.2727272727272727)
+zoom=0.5
+
 [evolution-data-server]
 migrated=true
 
@@ -120,8 +184,11 @@ enable-smartcard-authentication=false
 [mutter]
 dynamic-workspaces=false
 
+[nautilus/compression]
+default-compression-format='zip'
+
 [nautilus/icon-view]
-default-zoom-level='extra-large'
+default-zoom-level='medium'
 
 [nautilus/preferences]
 default-folder-viewer='icon-view'
@@ -721,15 +788,12 @@ last-folder-path='/home/falconcodes/Downloads'
 last-folder-path='/home/falconcodes/Prathamesh/walls'
 
 [settings-daemon/plugins/color]
-night-light-last-coordinates=(21.991483184917765, 79.001099999999994)
+night-light-last-coordinates=(18.93122780505059, 73.320767399999994)
 
 [settings-daemon/plugins/media-keys]
 control-center=['<Super>i']
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/']
 screensaver=['<Super>backslash']
-volume-down=['F8']
-volume-mute=['F7']
-volume-up=['F9']
 www=@as []
 
 [settings-daemon/plugins/media-keys/custom-keybindings/custom0]
@@ -767,9 +831,13 @@ binding='<Super>b'
 command='google-chrome-stable --profile-directory="Profile 2"'
 name='Open Google Chrome Personal'
 
+[settings-daemon/plugins/power]
+idle-dim=false
+
 [shell]
 app-picker-layout=[{'org.fedoraproject.MediaWriter.desktop': <{'position': <0>}>, 'org.gnome.Contacts.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'libreoffice-calc.desktop': <{'position': <5>}>, 'libreoffice-impress.desktop': <{'position': <6>}>, 'org.gnome.Totem.desktop': <{'position': <7>}>, 'org.gnome.Calculator.desktop': <{'position': <8>}>, 'libreoffice-writer.desktop': <{'position': <9>}>, 'simple-scan.desktop': <{'position': <10>}>, 'org.gnome.Settings.desktop': <{'position': <11>}>, 'gnome-system-monitor.desktop': <{'position': <12>}>, 'org.gnome.Boxes.desktop': <{'position': <13>}>, 'org.gnome.Terminal.desktop': <{'position': <14>}>, 'Utilities': <{'position': <15>}>, 'org.gnome.Rhythmbox3.desktop': <{'position': <16>}>, 'yelp.desktop': <{'position': <17>}>, 'org.gnome.TextEditor.desktop': <{'position': <18>}>, 'org.gnome.Cheese.desktop': <{'position': <19>}>, 'org.gnome.Tour.desktop': <{'position': <20>}>}]
 enabled-extensions=['background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'just-perfection-desktop@just-perfection', 'forge@jmmaranan.com', 'mediacontrols@cliffniff.github.com', 'no-overview@fthx']
+last-selected-power-profile='performance'
 welcome-dialog-last-shown-version='45.0'
 
 [shell/extensions/forge]
@@ -903,12 +971,21 @@ switch-to-application-4=@as []
 toggle-message-tray=@as []
 toggle-quick-settings=@as []
 
+[shell/weather]
+automatic-location=true
+locations=@av []
+
 [shell/world-clocks]
 locations=@av []
 
 [software]
-check-timestamp=int64 1711831114
+check-timestamp=int64 1714706363
 first-run=false
+flatpak-purge-timestamp=int64 1714714414
+install-timestamp=int64 1713451810
+packagekit-historical-updates-timestamp=uint64 1713451810
+update-notification-timestamp=int64 1713451970
+upgrade-notification-timestamp=int64 1714706363
 
 [system/location]
 enabled=true
