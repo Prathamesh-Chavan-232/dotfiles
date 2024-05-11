@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # List of directories to be sorted
-declare -a dirs=("dir_1" "dir_2" "dir_3"
-
-)
+declare -a dirs=("dir_1" "dir_2" "dir_3")
 
 # Function to move directories
 move_dirs() {

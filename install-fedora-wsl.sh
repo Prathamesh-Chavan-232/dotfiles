@@ -19,7 +19,7 @@ print_log() {
 	local color=$1
 	local timestamp=$(date +"%Y-%m-%d %H:%M:%S")
 	echo ""
-	echo -e "${color}$2                              [$timestamp]${NC}"
+	echo -e "${color}$2                             [$timestamp]${NC}"
 }
 print_subheader() {
 	local color=$1

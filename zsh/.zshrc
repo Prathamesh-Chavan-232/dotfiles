@@ -9,7 +9,7 @@ source $HOME/keep-coding/personal/fast-project-package/fast-project.sh
 plug "zap-zsh/completions"
 plug "zsh-users/zsh-autosuggestions"
 plug "hlissner/zsh-autopair"
-plug "MAHcodes/distro-prompt"
+# plug "MAHcodes/distro-prompt"
 plug "zap-zsh/fzf"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
