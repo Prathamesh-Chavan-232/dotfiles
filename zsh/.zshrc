@@ -17,6 +17,10 @@ plug "zsh-users/zsh-history-substring-search"
 eval "$(zoxide init zsh)"
 # eval "`pip3 completion --zsh`"
 
+# Enable colors and change prompt:
+autoload -U colors && colors
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
 # Zsh cool options
 # setopt AUTOCD            # cd into directly without writing cd
 setopt PROMPT_SUBST      # enable command substitution in prompt
@@ -38,10 +42,6 @@ export BROWSER="google-chrome-stable"
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 export GPG_TTY=$TTY
-# export XDG_CURRENT_DESKTOP="Wayland"
-
-# conda
-export PATH="$HOME/miniconda/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="/home/falconcodes/.local/share/pnpm"
@@ -61,48 +61,19 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
 # Keybinds
 bindkey '^ ' autosuggest-accept
 
-# if command -v bat &> /dev/null; then
-#   alias cat="bat -pp --theme \"Visual Studio Dark+\""
-#   alias catt="bat --theme \"Visual Studio Dark+\""
-# fi
-
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-
-# Might be Useful some day - Do specfic things depending on the OS
-case "$(uname -s)" in
-
-Darwin)
-	# echo 'Mac OS X'
-	alias ls='ls -G'
-	;;
-
-Linux)
-	alias ls='ls --color=auto'
-	;;
-
-CYGWIN* | MINGW32* | MSYS* | MINGW*)
-	# echo 'MS Windows'
-	;;
-*)
-	# echo 'Other OS'
-	;;
-esac
-
 # Aliases
-# Arch
+# Arch Maintenance
 #alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 #alias arch-mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
 #alias arch-maintenance="yay -Sc && sudo pacman -Scc"
 #alias arch-purge="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
 #alias arch-update="sudo pacman -Syu --nocombinedupgrade"
-
-# Maintenance
-alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
 # Networking
 # Stop after sending count ECHO_REQUEST packets #
@@ -234,11 +205,6 @@ function foo() {
        - ./${volume}/:/data
 EOF
 # sed 's/node_red_container/new_docker_container/' template.yml | sed 's/node-red-data/new-volume/';
-}
-
-# docker-compose-template
-function docker-compose-template() {
-echo "TODO: Create templates for MERN & React + SQL projects"
 }
 
 # Postgresql
