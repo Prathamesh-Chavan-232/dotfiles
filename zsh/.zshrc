@@ -9,7 +9,7 @@ source $HOME/keep-coding/personal/fast-project-package/fast-project.sh
 plug "zap-zsh/completions"
 plug "zsh-users/zsh-autosuggestions"
 plug "hlissner/zsh-autopair"
-# plug "MAHcodes/distro-prompt"
+plug "MAHcodes/distro-prompt"
 plug "zap-zsh/fzf"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
@@ -17,9 +17,20 @@ plug "zsh-users/zsh-history-substring-search"
 eval "$(zoxide init zsh)"
 # eval "`pip3 completion --zsh`"
 
-# Enable colors and change prompt:
+# load current theme colors
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+# custom prompts
+
+# username@hostname directory info
+# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+#directory info
+# PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
+
+# minimal directory info
+# PS1='%{$fg_bold[cyan]%}%c%{$fg[green]%}'
+# PS1+="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%}) > %{$reset_color%}"
 
 # Zsh cool options
 # setopt AUTOCD            # cd into directly without writing cd
@@ -58,14 +69,20 @@ export PATH="$PATH:$ANDROID_SDK_ROOT"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
 
+
 # Keybinds
+# vi mode
+bindkey -v
+bindkey -M viins jk vi-cmd-mode
+
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
 bindkey '^ ' autosuggest-accept
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
 
 # Aliases
 # Arch Maintenance
