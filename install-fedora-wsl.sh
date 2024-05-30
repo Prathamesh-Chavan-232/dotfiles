@@ -86,6 +86,10 @@ print_header "$GREEN" "Installing Development Tools"
 development_tools=("git" "python3" "python3-pip" "nodejs" "npm" "gcc" "gcc-c++" "make" "cmake" "rust" "cargo")
 install_packages "dnf" "${development_tools[@]}"
 
+# Install Node Version Manager
+print_header "$GREEN" "Installing node version manager"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
 # Install pnpm
 print_header "$GREEN" "Installing pnpm"
 curl -fsSL https://get.pnpm.io/install.sh | sh -
