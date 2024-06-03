@@ -123,6 +123,10 @@ newgrp docker
 print_subheader "$GREEN" "Verifying Docker engine installtion"
 docker run hello-world
 
+# Install Node Version Manager
+print_header "$GREEN" "Installing node version manager"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
 # Install pnpm
 print_header "$GREEN" "Installing pnpm"
 curl -fsSL https://get.pnpm.io/install.sh | sh -
