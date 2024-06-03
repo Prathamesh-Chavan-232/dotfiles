@@ -177,11 +177,6 @@ install_packages "dnf" "${browsers[@]}"
 print_header "$GREEN" "Installing Other Useful Apps"
 flatpak install flathub com.spotify.Client
 
-# Install Patched nerd fonts
-print_header "$GREEN" "Installing Patched Fonts"
-sudo dnf copr enable maveonair/jetbrains-mono-nerd-fonts
-sudo dnf install jetbrains-mono-nerd-fonts jetbrains-mononl-nerd-fonts
-
 # Install Icon Themes
 print_header "$GREEN" "Installing Icon Theme"
 icons_themes=("numix-icon-theme-circle")
@@ -299,7 +294,7 @@ response_lower=$(echo "$response" | tr '[:upper:]' '[:lower:]')
 
 if [[ $response_lower == "y" ]]; then
 	print_subheader "[+] Porting GNOME settings,shortcuts and extensions..."
-	dconf load /org/gnome/ <gnome-settings.dconf
+	sudo dconf load -f /org/gnome/ <gnome-settings.dconf
 
 elif [[ $response_lower == "n" ]]; then
 	print_log "$RED" "Skipping GNOME Settings installation."
@@ -309,8 +304,12 @@ fi
 
 print_subheader "$LIGHT_PURPLE" "Note: Starship is installed but isn't used"
 print_subheader "$LIGHT_PURPLE" "Note: Tmux Plugin Manager is installed, Please press Prefix + I in a tmux session to load all the plugins"
-print_subheader "$LIGHT_PURPLE" "Note: To Apply the GNOME legacy apps and shell theme copy the theme folder to $HOME/.themes and for gtk4.0 copy the gtk4.0 folder to $HOME/.config"
-print_subheader "$RED" "Note: Android Sdk, Android cmd-line tools and Android emulators are not installed."
+print_subheader "$LIGHT_PURPLE" "Note: To Apply the GNOME legacy apps and shell theme copy the theme folder to ~/.themes and for gtk4.0 copy the gtk4.0 folder to ~/.config"
+print_subheader "$LIGHT_PURPLE" "Note: To be able to use custom fonts, download new fonts, unzip them and paste them in ~/.local/share/fonts then run fc-cache -v"
+print_subheader "$RED" "Note: A Nerd Font is required for Alacritty, Kitty &  Neovim"
+print_subheader "$RED" "Note: Flutter, Android Sdk, Android cmd-line tools and Android emulators are not installed."
+print_subheader "$RED" "Note: Paste your SSH keys into your github profile(s) & test them."
+
 print_log "$GREEN" "Dotfiles installation complete."
 print_log "$GREEN" "System preferencs have been changed. Reboot Recommended."
 
