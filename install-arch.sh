@@ -81,9 +81,13 @@ create_symlinks() {
 
 # Install Development Related Packages
 print_header "$GREEN" "Installing Development Tools"
-development_tools=("git" "github-cli" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc" "docker")
+development_tools=("git" "github-cli" "python" "python-pip" "gcc" "docker")
 install_packages "pacman" "${development_tools[@]}"
 # sudo pacman -S git github-cli fzf ripgrep python python-pip bun nodejs npm pnpm gcc xclip
+
+# Install pnpm
+print_header "$GREEN" "Installing pnpm"
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 # Install Flutter
 print_header "$GREEN" "Installing Flutter"
@@ -114,7 +118,7 @@ install_packages "yay" "${browsers[@]}"
 
 # Install System Workflow Apps
 print_header "$GREEN" "Installing System Workflow Apps"
-system_packages=("neovim" "alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "fastfetch" "picom" "ranger" "feh" "ueberzug" "htop" "lazygit" "zsh" "starship" "bat" "tmux" "firefox" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop")
+system_packages=("alacritty" "kitty" "dunst" "polybar" "i3" "rofi" "neofetch" "fastfetch" "picom" "ranger" "feh" "ueberzug" "htop" "lazygit" "zsh" "starship" "bat" "tmux" "firefox" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop")
 
 install_packages "pacman" "${system_packages[@]}"
 # sudo pacman -S neovim alacritty kitty dunst polybar i3 rofi neofetch picom ranger htop lazygit zsh starship tmux firefox lsd zoxide
@@ -154,6 +158,11 @@ install_packages "yay" "${icon_themes[@]}"
 # wget -O wallpapers.zip "https://drive.google.com/uc?export=download&id=1VlLOfYVHl5lsaSK7T4Ak_-0_Wo_DOuaS"
 # unzip wallpapers.zip -d "$wallpapers_dir"
 # rm wallpapers.zip
+#
+
+# Installing Neovim
+print_header "$GREEN" "Installing Neovim & Neovim version manager"
+cargo install --git https://github.com/MordechaiHadad/bob.git
 
 print_header "$GREEN" "Installing Tmux Plugin Manager"
 tpm_dir="$HOME/.tmux/plugins/tpm"

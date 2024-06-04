@@ -87,8 +87,12 @@ sudo dnf update -y && sudo dnf upgrade
 
 # Install Development Related Packages
 print_header "$GREEN" "Installing Development Tools"
-development_tools=("git" "python3" "python3-pip" "nodejs" "npm" "gcc" "gcc-c++" "make" "cmake" "rust" "cargo")
+development_tools=("git" "python3" "python3-pip" "npm" "gcc" "gcc-c++" "make" "cmake" "rust" "cargo")
 install_packages "dnf" "${development_tools[@]}"
+
+# Installing Neovim
+print_header "$GREEN" "Installing Neovim & Neovim version manager"
+cargo install --git https://github.com/MordechaiHadad/bob.git
 
 # Install docker
 print_header "$GREEN" "Installing Docker"
@@ -123,10 +127,6 @@ newgrp docker
 print_subheader "$GREEN" "Verifying Docker engine installtion"
 docker run hello-world
 
-# Install Node Version Manager
-print_header "$GREEN" "Installing node version manager"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-
 # Install pnpm
 print_header "$GREEN" "Installing pnpm"
 curl -fsSL https://get.pnpm.io/install.sh | sh -
@@ -148,7 +148,7 @@ install_packages "dnf" "${drivers[@]}"
 config_packages=("stow" "dconf")
 system_packages=("ripgrep" "fzf" "fd" "xclip")
 i3_packages=("i3" "rofi" "polybar" "dunst" "picom" "ranger" "feh" "ueberzug")
-workflow_packages=("firefox" "vim" "neovim" "alacritty" "kitty" "tmux" "zsh" "starship" "gh")
+workflow_packages=("firefox" "vim" "alacritty" "kitty" "tmux" "zsh" "starship" "gh")
 fun_packages=("bat" "lsd" "zoxide" "lazygit" "dust" "htop" "btop" "neofetch" "fastfetch")
 
 print_header "$GREEN" "Installing System Tools/Packages"

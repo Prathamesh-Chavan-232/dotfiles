@@ -69,6 +69,13 @@ export PATH="$PATH:$ANDROID_SDK_ROOT"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
 
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 
 # Keybinds
 # vi mode
@@ -325,8 +332,3 @@ bindkey -s "^a" "nvims\n"
 
 # ASCII Shibang #!
 # shibang
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

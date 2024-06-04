@@ -81,15 +81,22 @@ create_symlinks() {
 
 # Install Development Related Packages
 print_header "$GREEN" "Installing Development Tools"
-development_tools=("git" "github-cli" "python" "python-pip" "bun" "nodejs" "npm" "pnpm" "gcc" "rustup")
+development_tools=("git" "github-cli" "python" "python-pip" "pnpm" "gcc" "rustup")
 install_packages "pacman" "${development_tools[@]}"
 # sudo pacman -S git github-cli fzf ripgrep python python-pip bun nodejs npm pnpm gcc xclip
 
 # Install System Workflow Apps
 print_header "$GREEN" "Installing System Workflow Apps"
-system_packages=("neovim" "fastfetch" "neofetch" "ranger" "htop" "lazygit" "zsh" "starship" "tmux" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop")
+system_packages=("fastfetch" "neofetch" "ranger" "htop" "lazygit" "zsh" "starship" "tmux" "lsd" "zoxide" "stow" "ripgrep" "fzf" "xclip" "dust" "btop")
 install_packages "pacman" "${system_packages[@]}"
 
+# Installing Neovim
+print_header "$GREEN" "Installing Neovim & Neovim version manager"
+cargo install --git https://github.com/MordechaiHadad/bob.git
+
+# Install pnpm
+print_header "$GREEN" "Installing pnpm"
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 # Install Cermic {Display ASCII Art of images in the terminal}
 print_header "$GREEN" "Installing cermic for coll ASCII Art"

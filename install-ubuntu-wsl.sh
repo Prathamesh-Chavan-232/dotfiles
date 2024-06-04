@@ -61,16 +61,16 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 # Install Development Related Packages
 print_header "$GREEN" "Installing Development Tools"
-development_tools=("git" "python3" "python3-pip" "nodejs" "npm" "gcc" "g++" "make" "cmake" "rustc" "cargo")
+development_tools=("git" "python3" "python3-pip" "npm" "gcc" "g++" "make" "cmake" "rustc" "cargo")
 install_packages "${development_tools[@]}"
+
+# Installing Neovim
+print_header "$GREEN" "Installing Neovim & Neovim version manager"
+cargo install --git https://github.com/MordechaiHadad/bob.git
 
 # Install Node Version Manager
 print_header "$GREEN" "Installing node version manager"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-
-# Install pnpm
-print_header "$GREEN" "Installing pnpm"
-curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 # Install System Workflow Apps
 config_packages=("stow")
