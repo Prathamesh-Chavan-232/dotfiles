@@ -81,7 +81,7 @@ export NVM_DIR="$HOME/.nvm"
 # Keybinds
 # vi mode
 bindkey -v
-bindkey -M viins jk vi-cmd-mode
+# bindkey -M viins jk vi-cmd-mode
 
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
