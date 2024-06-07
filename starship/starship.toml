@@ -1,0 +1,16 @@
+
+format = """$username$hostname$directory$character"""
+right_format = """$all"""
+[username]
+format = "[$user]($style)@"
+show_always = true
+
+[hostname]
+format = "[$hostname]($style) "
+ssh_only = false
+
+[directory]
+format = "[$path]($style) "
+truncation_length = 3
+
+
