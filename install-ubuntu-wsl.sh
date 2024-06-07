@@ -75,7 +75,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 # Install System Workflow Apps
 config_packages=("stow")
 system_packages=("ripgrep" "fzf" "xsel")
-workflow_packages=("vim" "neovim" "tmux" "zsh" "starship" "gh")
+workflow_packages=("vim" "neovim" "tmux" "zsh" "gh")
 fun_packages=("bat" "lsd" "lazygit" "dust" "htop" "btop" "neofetch" "fastfetch")
 
 print_header "$GREEN" "Installing System Tools/Packages"
@@ -86,6 +86,10 @@ print_header "$GREEN" "Installing Configuration Tools"
 install_packages "${config_packages[@]}"
 print_header "$GREEN" "Installing Fun Terminal Tools"
 install_packages "${fun_packages[@]}"
+
+# Install Starship
+print_header "$GREEN" "Installing Starship"
+curl -sS https://starship.rs/install.sh | sh
 
 # Install zoxide
 print_header "$GREEN" "Installing Zoxide"

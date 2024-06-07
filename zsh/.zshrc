@@ -6,15 +6,16 @@
 
 # plugins
 # plug "esc/conda-zsh-completion"
+# plug "MAHcodes/distro-prompt"
 plug "zap-zsh/completions"
 plug "zsh-users/zsh-autosuggestions"
 plug "hlissner/zsh-autopair"
-plug "MAHcodes/distro-prompt"
 plug "zap-zsh/fzf"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
 
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
 # eval "`pip3 completion --zsh`"
 
 # load current theme colors
@@ -309,16 +310,18 @@ function run_fastfetch() {
 }
 
 # My configs
-alias nvold="NVIM_APPNAME=nvim-old nvim"
-alias nvim-old="NVIM_APPNAME=nvim-old nvim"
-alias nvalt="NVIM_APPNAME=nvim-alt nvim"
 alias nvim-alt="NVIM_APPNAME=nvim-alt nvim"
-alias nvminimal="NVIM_APPNAME=nvim-minimal nvim"
+alias nvalt="NVIM_APPNAME=nvim-alt nvim"
+
 alias nvim-minimal="NVIM_APPNAME=nvim-minimal nvim"
+alias nvminimal="NVIM_APPNAME=nvim-minimal nvim"
+
+alias nvim-ide="NVIM_APPNAME=nvim-ide nvim"
+alias nvide="NVIM_APPNAME=nvim-ide nvim"
 
 # Configs' launcher function
 function nvims() {
-  items=("default" "nvim-alt" "nvim-minimal" "nvim-old" "nvchad")
+  items=("default" "nvim-alt" "nvim-minimal" "nvim-ide")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config - " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
