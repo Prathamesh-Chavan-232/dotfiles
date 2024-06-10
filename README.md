@@ -15,7 +15,6 @@ Backup and remove your old dotfiles. Read the script before executing it.
 - No overview at startup
 - Forge
 - Blur my shell
-- No overview at startup
 - Media controls
 
 ## Helpful links & Things for setup
