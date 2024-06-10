@@ -127,7 +127,7 @@ print_header "$GREEN" "Linking your dotfiles..."
 create_symlinks "zsh" "$HOME"
 
 # Define the directories to be symlinked
-DOT_FOLDERS="nvim nvim-alt nvim-minimal tmux"
+DOT_FOLDERS="nvim nvim-alt tmux starship"
 
 # Create symlinks for remaining folders
 for folder in $DOT_FOLDERS; do

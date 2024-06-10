@@ -98,15 +98,15 @@ cargo install --git https://github.com/MordechaiHadad/bob.git
 print_header "$GREEN" "Installing Docker"
 # Uninstall old versions
 sudo dnf remove docker \
-                  docker-client \
-                  docker-client-latest \
-                  docker-common \
-                  docker-latest \
-                  docker-latest-logrotate \
-                  docker-logrotate \
-                  docker-selinux \
-                  docker-engine-selinux \
-                  docker-engine
+	docker-client \
+	docker-client-latest \
+	docker-common \
+	docker-latest \
+	docker-latest-logrotate \
+	docker-logrotate \
+	docker-selinux \
+	docker-engine-selinux \
+	docker-engine
 
 # Set up the repository
 print_subheader "$GREEN" "Setting up repositories"
@@ -229,7 +229,7 @@ print_header "$GREEN" "Linking your dotfiles..."
 create_symlinks "zsh" "$HOME"
 
 # Define the directories to be symlinked
-DOT_FOLDERS="alacritty kitty nvim nvim-alt nvim-minimal nvchad tmux"
+DOT_FOLDERS="alacritty kitty nvim nvim-alt nvchad tmux starship"
 
 # Create symlinks for remaining folders
 for folder in $DOT_FOLDERS; do
@@ -294,7 +294,7 @@ response_lower=$(echo "$response" | tr '[:upper:]' '[:lower:]')
 
 if [[ $response_lower == "y" ]]; then
 	print_subheader "[+] Porting GNOME settings,shortcuts and extensions..."
-	sudo dconf load -f /org/gnome/ <gnome-settings.dconf
+	dconf load -f /org/gnome/ <gnome-settings.dconf
 
 elif [[ $response_lower == "n" ]]; then
 	print_log "$RED" "Skipping GNOME Settings installation."
