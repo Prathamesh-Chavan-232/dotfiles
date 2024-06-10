@@ -1,19 +1,19 @@
 [font]
-size = 20
+size = 16
 
 [font.normal]
-family = "GohuFont uni14 Nerd Font Mono"
+family = "JetbrainsMono Nerd Font"
 style = "Regular"
 
 [font.bold]
-family = "GohuFont uni14 Nerd Font Mono"
+family = "JetbrainsMono Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "GohuFont uni14 Nerd Font Mono"
+family = "JetbrainsMono Nerd Font"
 style = "Italic"
 
 [font.bold_italic]
-family = "GohuFont uni14 Nerd Font Mono"
+family = "JetbrainsMono Nerd Font"
 style = "Bold Italic"
 
