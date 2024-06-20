@@ -2,8 +2,6 @@
 # Zap Plugin Manager
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-# source $HOME/keep-coding/personal/fast-project-package/fast-project.sh
-
 # plugins
 # plug "esc/conda-zsh-completion"
 # plug "MAHcodes/distro-prompt"
@@ -21,17 +19,9 @@ eval "$(starship init zsh)"
 # load current theme colors
 autoload -U colors && colors
 
-# custom prompts
-
+# custom prompt
 # username@hostname directory info
 # PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
-#directory info
-# PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
-
-# minimal directory info
-# PS1='%{$fg_bold[cyan]%}%c%{$fg[green]%}'
-# PS1+="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%}) > %{$reset_color%}"
 
 # Zsh cool options
 # setopt AUTOCD            # cd into directly without writing cd
@@ -46,11 +36,8 @@ HISTFILE=~/.cache/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# Add to Path
-export CHROME_EXECUTABLE='/usr/bin/google-chrome-stable'
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="google-chrome-stable"
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 export GPG_TTY=$TTY
@@ -90,15 +77,6 @@ bindkey '^ ' autosuggest-accept
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
-
-# Aliases
-# Arch Maintenance
-#alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-#alias arch-mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
-#alias arch-maintenance="yay -Sc && sudo pacman -Scc"
-#alias arch-purge="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
-#alias arch-update="sudo pacman -Syu --nocombinedupgrade"
 
 # Networking
 # Stop after sending count ECHO_REQUEST packets #
@@ -140,8 +118,8 @@ alias pscpu='ps auxf | sort -nr -k 3 | head -5'
 # Remarkable SSH
 alias remarkable_ssh='ssh root@10.11.99.1'
 alias restream='restream -p'
-# systemd
 
+# systemd
 alias mach_list_systemctl="systemctl list-unit-files --state=enabled"
 alias mach_java_mode="export SDKMAN_DIR="$HOME/.sdkman" && [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh""
 
@@ -213,24 +191,6 @@ alias nvchad="NVIM_APPNAME=nvchad nvim"
 alias docker-kill-all-containers='docker kill $(docker ps -q)'
 alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
 alias docker-remove-all-images='docker rmi $(docker image ls -a -q)'
-
-# On demand docker containers using compose templates
-function foo() {
-   local container=$1
-   local volume=$2
-
-   cat <<EOF > ~/keep-coding/work/new-compose-file.yaml
-   version: "3"
-     services:
-       ${container}:
-     image: nodered/node-red
-     ports:
-       - "3000:1880"
-     volumes:
-       - ./${volume}/:/data
-EOF
-# sed 's/node_red_container/new_docker_container/' template.yml | sed 's/node-red-data/new-volume/';
-}
 
 # Postgresql
 function postgres() {
