@@ -1,6 +1,6 @@
 # config.nvim
 
-A minimalistic neovim config inspired by Lunarvim, Nvchad &amp; LazyVim, written in Lua
+A minimalistic neovim config written in Lua
 
 ## Try out this config
 
