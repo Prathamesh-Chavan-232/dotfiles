@@ -42,28 +42,13 @@ export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 export GPG_TTY=$TTY
 
-# pnpm
-export PNPM_HOME="/home/falconcodes/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# Flutter
-export PATH="$PATH:/opt/flutter"
-export ANDROID_SDK_ROOT="/home/falconcodes/Android/Sdk"
-export PATH="$PATH:$ANDROID_SDK_ROOT"
-export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
-export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
-
+# Path
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # Keybinds
 # vi mode
@@ -77,6 +62,71 @@ bindkey '^ ' autosuggest-accept
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+# Postgresql
+function postgres() {
+    local cmd=$1
+    local user=${2:-falconcodes}
+    local db=${3:-postgres}
+    local file=$4
+    if [ "$1" = "start" ]; then
+        docker-compose -f ~/keep-coding/db-docker/postgres_server/docker-compose.yml -p postgres_db up -d
+    elif [ "$1" = "stop" ]; then
+        docker rm -f postgres_db
+    elif [ "$1" = "run" ]; then
+        docker exec -it postgres_db psql -U $user $db
+    elif [ "$1" = "exec" ]; then
+        docker exec -it postgres_db psql -U $user -d $db -f $file
+    else
+        echo "Invalid command"
+    fi
+}
+
+# Github cli
+function gh_work() {
+  # Get the current GitHub user
+  current_user=$(gh auth status --hostname github.com | grep Logged | awk '{print $7}' | head -n 1)
+
+  echo "Current User is $current_user"
+  if [ "$current_user" = "Prathamesh-Chavan-Noovosoft" ]; then
+
+    if [ "$1" = "repo" ] && [ "$2" = "create" ]; then
+
+    # Determine the correct SSH hostname
+    ssh_hostname="github.noovosoft"
+
+    echo "Disclaimer: You are using your work account. Remote will be set as your work git hostname (github.com-work)."
+
+    # Prompt for the repository name
+    echo -n "Enter the repository name ($(basename $PWD)): "
+    read repo_name
+
+    # Create the repository
+    gh repo create $repo_name
+
+    # Use the current folder name if no name is provided
+    if [ -z "$repo_name" ]; then
+      repo_name=$(basename "$PWD")
+    fi
+
+    # Set the remote URL
+    git remote set-url origin git@$ssh_hostname:$current_user/$repo_name.git
+    echo "$(git remote -v)"
+
+    else
+      echo "Disclaimer: You are using gh from your work account."
+      command gh "$@"
+    fi
+
+  else
+    echo "You are not signed in into Prathamesh-Chavan-Noovosoft! Login with your work account to continue."
+  fi
+}
+
+# Docker
+alias docker-kill-all-containers='docker kill $(docker ps -q)'
+alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
+alias docker-remove-all-images='docker rmi $(docker image ls -a -q)'
 
 # Networking
 # Stop after sending count ECHO_REQUEST packets #
@@ -172,102 +222,10 @@ alias zshrc='nvi ~/.zshrc'
 alias tmuxrc='nvi ~/.config/tmux/tmux.conf'
 # Open Dotfiles quickly
 alias dots='cd ~/keep-coding/falcon-dots/ && nvi .' # dotfiles are symlinked to this directory
-# Open config folders quickly
-alias nvimrc='cd ~/.config/nvim && nvi .'
-alias alacrittyrc='cd ~/.config/alacritty/ && nvi .'
-alias polybarrc='cd ~/config/polybar/ && nvi .'
-alias i3rc='cd ~/.config/i3/ && nvi .'
-alias bspwmrc='cd ~/.config/bspwm/ && nvi .'
-alias rofirc='cd ~/.config/rofi/ && nvi .'
-alias dunstrc='cd ~/.config/dunst/ && nvi .'
 
 # Neovim config switcher
 alias vi="vim"
 alias nvi="nvim-alt"
-# Vimacs with nvchad
-alias nvchad="NVIM_APPNAME=nvchad nvim"
-
-# Docker
-alias docker-kill-all-containers='docker kill $(docker ps -q)'
-alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
-alias docker-remove-all-images='docker rmi $(docker image ls -a -q)'
-
-# Postgresql
-function postgres() {
-    local cmd=$1
-    local user=${2:-falconcodes}
-    local db=${3:-postgres}
-    local file=$4
-    if [ "$1" = "start" ]; then
-        docker-compose -f ~/keep-coding/db-docker/postgres_server/docker-compose.yml -p postgres_db up -d
-    elif [ "$1" = "stop" ]; then
-        docker rm -f postgres_db
-    elif [ "$1" = "run" ]; then
-        docker exec -it postgres_db psql -U $user $db
-    elif [ "$1" = "exec" ]; then
-        docker exec -it postgres_db psql -U $user -d $db -f $file
-    else
-        echo "Invalid command"
-    fi
-}
-
-# Github cli
-function gh_work() {
-  # Get the current GitHub user
-  current_user=$(gh auth status --hostname github.com | grep Logged | awk '{print $7}' | head -n 1)
-
-  echo "Current User is $current_user"
-  if [ "$current_user" = "Prathamesh-Chavan-Noovosoft" ]; then
-
-    if [ "$1" = "repo" ] && [ "$2" = "create" ]; then
-
-    # Determine the correct SSH hostname
-    ssh_hostname="github.noovosoft"
-
-    echo "Disclaimer: You are using your work account. Remote will be set as your work git hostname (github.com-work)."
-
-    # Prompt for the repository name
-    echo -n "Enter the repository name ($(basename $PWD)): "
-    read repo_name
-
-    # Create the repository
-    gh repo create $repo_name
-
-    # Use the current folder name if no name is provided
-    if [ -z "$repo_name" ]; then
-      repo_name=$(basename "$PWD")
-    fi
-
-    # Set the remote URL
-    git remote set-url origin git@$ssh_hostname:$current_user/$repo_name.git
-    echo "$(git remote -v)"
-
-    else
-      echo "Disclaimer: You are using gh from your work account."
-      command gh "$@"
-    fi
-
-  else
-    echo "You are not signed in into Prathamesh-Chavan-Noovosoft! Login with your work account to continue."
-  fi
-}
-
-# run_fastfetch
-function run_fastfetch() {
-  # Define the path of your temp file
-  TMPFILE="$HOME/.last_fetch_run"
-
-  # Check if the temp file exists and if it was modified in the last 2 minutes
-  if [[ ! -e "$TMPFILE" || "$(find "$TMPFILE" -mmin +2)" ]]; then
-      # Run fetch, outside tmux
-    if [[ -z "$TMUX" ]]; then
-        fastfetch
-    fi
-      # Touch the temp file to update its last modified time
-      touch "$TMPFILE"
-  fi
-
-}
 
 # My configs
 alias nvim-alt="NVIM_APPNAME=nvim-alt nvim"
