@@ -294,7 +294,7 @@ response_lower=$(echo "$response" | tr '[:upper:]' '[:lower:]')
 
 if [[ $response_lower == "y" ]]; then
 	print_subheader "[+] Porting GNOME settings,shortcuts and extensions..."
-	dconf load -f /org/gnome/ <gnome-settings.dconf
+	dconf load -f / <gnome-settings.dconf
 
 elif [[ $response_lower == "n" ]]; then
 	print_log "$RED" "Skipping GNOME Settings installation."

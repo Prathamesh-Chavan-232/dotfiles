@@ -319,9 +319,12 @@ alias nvminimal="NVIM_APPNAME=nvim-minimal nvim"
 alias nvim-ide="NVIM_APPNAME=nvim-ide nvim"
 alias nvide="NVIM_APPNAME=nvim-ide nvim"
 
+alias nvim-front="NVIM_APPNAME=nvim-front nvim"
+alias nvfront="NVIM_APPNAME=nvim-front nvim"
+
 # Configs' launcher function
 function nvims() {
-  items=("default" "nvim-alt" "nvim-minimal" "nvim-ide")
+  items=("default" "nvim-alt" "nvim-front" "nvim-ide")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config - " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
