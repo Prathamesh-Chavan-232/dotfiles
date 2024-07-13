@@ -17,7 +17,8 @@ Backup and remove your old dotfiles. Read the script before executing it.
 
 #### Note
 
-To Apply the GNOME legacy apps and shell theme copy the theme folder to ~/.themes and for gtk4.0 copy the gtk4.0 folder to ~/.config/
+- To Apply the GNOME legacy apps and shell theme copy the theme folder to ~/.themes and for
+- GTK 4 Apps copy the gtk4.0 folder to ~/.config/
 
 #### Install these extensions
 
