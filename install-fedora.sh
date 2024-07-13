@@ -302,7 +302,6 @@ else
 	echo "Invalid response. Please enter 'Y/y' or 'N/n'."
 fi
 
-print_subheader "$LIGHT_PURPLE" "Note: Starship is installed but isn't used"
 print_subheader "$LIGHT_PURPLE" "Note: Tmux Plugin Manager is installed, Please press Prefix + I in a tmux session to load all the plugins"
 print_subheader "$LIGHT_PURPLE" "Note: To Apply the GNOME legacy apps and shell theme copy the theme folder to ~/.themes and for gtk4.0 copy the gtk4.0 folder to ~/.config"
 print_subheader "$LIGHT_PURPLE" "Note: To be able to use custom fonts, download new fonts, unzip them and paste them in ~/.local/share/fonts then run fc-cache -v"

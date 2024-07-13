@@ -1,14 +1,25 @@
-# dotfiles
+# Dotfiles
 
 My Minimal Arch linux setup
 
 ## Before Installing
 
+### Prerequisites
+
+- A Nerd Font is required for Alacritty & Neovim
+- To be able to use custom fonts, download new fonts, unzip them and paste them in ~/.local/share/fonts then run fc-cache -v
+
 ### Backup
 
 Backup and remove your old dotfiles. Read the script before executing it.
 
-### GNOME extensions
+### GNOME && GNOME extensions
+
+#### Note
+
+To Apply the GNOME legacy apps and shell theme copy the theme folder to ~/.themes and for gtk4.0 copy the gtk4.0 folder to ~/.config/
+
+#### Install these extensions
 
 - Just perfection
 - User themes
