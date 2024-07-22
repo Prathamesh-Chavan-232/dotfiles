@@ -24,28 +24,34 @@ keymap("n", "<C-s>", vim.cmd.write, opts)
 -- navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
--- Splits
-keymap("n", "<leader>sv", ":vsp<CR>", opts)
-keymap("n", "<leader>sh", ":sp<CR>", opts)
-keymap("n", "<leader>sm", ":MaximizerToggle<CR>", opts)
-
--- resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap(
+  "n",
+  "<C-w>",
+  [[:lua if #vim.fn.getbufinfo({buflisted = 1}) > 1 then vim.cmd('bp|bd #') else vim.cmd('enew|bd #') end<CR>]],
+  opts
+)
 
 -- Tabs
 keymap("n", "<leader>te", ":tabedit<CR>", opts)
 keymap("n", "<tab>", ":tabnext<CR>", opts)
 keymap("n", "<S-tab>", ":tabprev<CR>", opts)
 
+-- Splits
+keymap("n", "<leader>sv", ":vsp<CR>", opts)
+keymap("n", "<leader>sh", ":sp<CR>", opts)
+
+-- resize with arrows
+keymap("n", "<C-Up>", ":resize -1<CR>", opts)
+keymap("n", "<C-Down>", ":resize +1<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize -1<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize +1<CR>", opts)
+
 -- Text Wrap
 -- toggle text wrap
 keymap("n", "<A-z>", ":set wrap!<CR>", opts)
--- remap for dealing with word wrap
+
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- remap for dealing with word wrap
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Move lines up & down like Vscode
@@ -87,22 +93,9 @@ keymap("i", "kj", "<ESC>", opts)
 -- make <C-c> exit from multi-cursor edits
 keymap("i", "<C-c>", "<Esc>")
 
--- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-
 -- Commands
 -- make bash script executable
 keymap("n", "<leader>=", "<cmd>!chmod +x %<CR>", opts)
-
--- Plugin Keymaps
--- Switch tmux sessions (requires tmux-sessionizer)
--- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
-
--- Toggle Term
-vim.keymap.set("n", "<C-\\>", ":ToggleTerm<CR>", { remap = true })
 
 -- Switch Transparency
 keymap("n", "<C-A-z>", ":TransparentToggle<CR>", opts)
@@ -112,20 +105,3 @@ keymap("n", "<leader>ms", ":FlutterRun<CR>", opts)
 keymap("n", "<leader>mr", ":FlutterReload<CR>", opts)
 keymap("n", "<leader>mR", ":FlutterRestart<CR>", opts)
 keymap("n", "<leader>mq", ":FlutterQuit<CR>", opts)
-
--- Old Keymaps - I find it better to just type these
--- Fugative
--- keymap("n", "<leader>ga", ":G add<Space>", opts)
--- keymap("n", "<leader>gs", ":G status<CR>", opts)
--- keymap("n", "<leader>gb", ":G branch<Space>", opts)
--- keymap("n", "<leader>gm", ":G merge<Space>", opts)
--- keymap("n", "<leader>gpl", ":G pull<Space>", opts)
--- keymap("n", "<leader>gplo", ":G pull origin<Space>", opts)
--- keymap("n", "<leader>gps", ":G push<Space>", opts)
--- keymap("n", "<leader>gpso", ":G push origin<Space>", opts)
--- keymap("n", "<leader>gc", ":G commit<Space>", opts)
--- keymap("n", "<leader>gcm", ":G commit -m<Space>", opts)
--- keymap("n", "<leader>gch", ":G checkout<Space>", opts)
--- keymap("n", "<leader>gchb", ":G checkout -b<Space>", opts)
--- keymap("n", "<leader>gcoe", ":G config user.email<Space>", opts)
--- keymap("n", "<leader>gcon", ":G config user.name<Space>", opts)
