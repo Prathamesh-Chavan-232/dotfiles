@@ -316,22 +316,23 @@ alias nvcode="NVIM_APPNAME=nvim-code nvim"
 alias nvim-super="NVIM_APPNAME=nvim-super nvim"
 alias nvsuper="NVIM_APPNAME=nvim-super nvim"
 
-alias nvim-alt="NVIM_APPNAME=nvim-alt nvim"
-alias nvalt="NVIM_APPNAME=nvim-alt nvim"
-
-alias nvim-front="NVIM_APPNAME=nvim-front nvim"
-alias nvfront="NVIM_APPNAME=nvim-front nvim"
-
 alias nvim-noice="NVIM_APPNAME=nvim-noice nvim"
 alias nvnoice="NVIM_APPNAME=nvim-noice nvim"
 
 alias nvim-ide="NVIM_APPNAME=nvim-ide nvim"
 alias nvide="NVIM_APPNAME=nvim-ide nvim"
 
+alias nvim-front="NVIM_APPNAME=nvim-front nvim"
+alias nvfront="NVIM_APPNAME=nvim-front nvim"
+
+# Transfer everything here
+alias nvim-alt="NVIM_APPNAME=nvim-alt nvim"
+alias nvalt="NVIM_APPNAME=nvim-alt nvim"
+
 
 # Configs' launcher function
 function nvims() {
-  items=("default" "nvim-alt" "nvim-front" "nvim-ide")
+  items=("default" "nvim-code" "nvim-super" "nvim-noice" "nvim-ide" "nvim-front" "nvim-alt")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config - " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
