@@ -1,0 +1,8 @@
+require("config.keymaps")
+require("config.options")
+require("config.lazy")
+require("config.neovide")
+require("config.language")
+require("config.autocmd")
+-- require("config.diagnostics")
+-- require("config.statusline")
