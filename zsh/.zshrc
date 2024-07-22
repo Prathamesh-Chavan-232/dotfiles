@@ -310,17 +310,24 @@ function run_fastfetch() {
 }
 
 # My configs
+alias nvim-code="NVIM_APPNAME=nvim-code nvim"
+alias nvcode="NVIM_APPNAME=nvim-code nvim"
+
+alias nvim-super="NVIM_APPNAME=nvim-super nvim"
+alias nvsuper="NVIM_APPNAME=nvim-super nvim"
+
 alias nvim-alt="NVIM_APPNAME=nvim-alt nvim"
 alias nvalt="NVIM_APPNAME=nvim-alt nvim"
 
-alias nvim-minimal="NVIM_APPNAME=nvim-minimal nvim"
-alias nvminimal="NVIM_APPNAME=nvim-minimal nvim"
+alias nvim-front="NVIM_APPNAME=nvim-front nvim"
+alias nvfront="NVIM_APPNAME=nvim-front nvim"
+
+alias nvim-noice="NVIM_APPNAME=nvim-noice nvim"
+alias nvnoice="NVIM_APPNAME=nvim-noice nvim"
 
 alias nvim-ide="NVIM_APPNAME=nvim-ide nvim"
 alias nvide="NVIM_APPNAME=nvim-ide nvim"
 
-alias nvim-front="NVIM_APPNAME=nvim-front nvim"
-alias nvfront="NVIM_APPNAME=nvim-front nvim"
 
 # Configs' launcher function
 function nvims() {
