@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Loggers
@@ -52,7 +51,7 @@ create_symlinks() {
     fi
 
     # Use stow to create symlinks
-    print_log "$GREEN" "[+] Symlining Folder :: $dir"
+    print_log "$GREEN" "[+] Sym-linking Folder :: $dir"
     stow -vt "$target_dir" "$dir"
 }
 
