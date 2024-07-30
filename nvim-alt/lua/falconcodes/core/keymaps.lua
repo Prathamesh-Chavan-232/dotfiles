@@ -7,6 +7,7 @@ local term_opts = { silent = true }
 vim.g.mapleader = " "
 
 -- General keymaps
+keymap("n", "gx", ":!open <c-r><c-a><CR>", opts) -- open URL under cursor
 keymap("i", "jk", "<ESC>", opts) -- exit insert mode with jk
 keymap("i", "kj", "<ESC>", opts) -- exit insert mode with kj
 keymap("i", "ii", "<ESC>", opts) -- exit insert mode with ii
@@ -15,7 +16,12 @@ keymap("n", "<C-s>", vim.cmd.write, opts) -- ctrl s to save
 keymap("n", "<leader>wq", ":wq<CR>", opts) -- save and quit
 keymap("n", "<leader>qq", ":q!<CR>", opts) -- quit without saving
 keymap("n", "<leader>ww", ":w<CR>", opts) -- save
-keymap("n", "gx", ":!open <c-r><c-a><CR>", opts) -- open URL under cursor
+keymap(
+	"n",
+	"<C-w>",
+	[[:lua if #vim.fn.getbufinfo({buflisted = 1}) > 1 then vim.cmd('bp|bd #') else vim.cmd('enew|bd #') end<CR>]],
+	opts
+)
 
 -- Move through word wrap
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -102,13 +108,6 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- Diff keymaps
-keymap("n", "<leader>cc", ":diffput<CR>", opts) -- put diff from current to other during diff
-keymap("n", "<leader>cj", ":diffget 1<CR>", opts) -- get diff from left (local) during merge
-keymap("n", "<leader>ck", ":diffget 3<CR>", opts) -- get diff from right (remote) during merge
-keymap("n", "<leader>cn", "]c", opts) -- next diff hunk
-keymap("n", "<leader>cp", "[c", opts) -- previous diff hunk
-
 -- Quickfix keymaps
 keymap("n", "<leader>qo", ":copen<CR>", opts) -- open quickfix list
 keymap("n", "<leader>qf", ":cfirst<CR>", opts) -- jump to first quickfix list item
@@ -139,6 +138,13 @@ end, opts)
 
 -- Git-blame
 keymap("n", "<leader>gb", ":GitBlameToggle<CR>", opts) -- toggle git blame
+
+-- Diff keymaps
+keymap("n", "<leader>cc", ":diffput<CR>", opts) -- put diff from current to other during diff
+keymap("n", "<leader>cj", ":diffget 1<CR>", opts) -- get diff from left (local) during merge
+keymap("n", "<leader>ck", ":diffget 3<CR>", opts) -- get diff from right (remote) during merge
+keymap("n", "<leader>cn", "]c", opts) -- next diff hunk
+keymap("n", "<leader>cp", "[c", opts) -- previous diff hunk
 
 -- Harpoon
 keymap("n", "<leader>ha", require("harpoon.mark").add_file, opts)
