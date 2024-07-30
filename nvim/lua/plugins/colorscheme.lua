@@ -1,11 +1,12 @@
 return {
+  -- add dracula
+  { "Mofiqul/dracula.nvim" },
+
+  -- Configure LazyVim to load dracula
   {
-    "sainnhe/sonokai",
-    priority = 1000,
-    config = function()
-      vim.g.simple_colors = true
-      vim.g.sonokai_enable_italic = "1"
-      vim.g.sonokai_style = "andromeda"
-    end,
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "dracula",
+    },
   },
 }

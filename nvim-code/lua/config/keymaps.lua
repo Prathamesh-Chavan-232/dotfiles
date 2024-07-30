@@ -33,7 +33,6 @@ vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Resize
 vim.keymap.set("n", "<leader>Q", "<cmd>wq!<CR>", { desc = "Force save and  quit" })
 
 -- Buffers
-
 vim.keymap.set("n", "<leader>q", "<cmd>q!<CR>", { desc = "Close buffer/window" })
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
