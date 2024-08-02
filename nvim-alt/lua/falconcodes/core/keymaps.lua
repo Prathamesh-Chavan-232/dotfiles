@@ -119,6 +119,7 @@ keymap("n", "<leader>qc", ":cclose<CR>", opts) -- close quickfix list
 -- Vim-maximizer
 keymap("n", "<leader>sm", ":MaximizerToggle<CR>", opts) -- toggle maximize tab
 
+--[[
 -- Nvim-tree
 keymap("n", "<leader>ee", ":NvimTreeToggle<CR>", opts) -- toggle file explorer
 keymap("n", "<leader>er", ":NvimTreeFocus<CR>", opts) -- toggle focus to file explorer
@@ -245,3 +246,4 @@ keymap("n", "<leader>ms", ":FlutterRun<CR>", opts)
 keymap("n", "<leader>mr", ":FlutterReload<CR>", opts)
 keymap("n", "<leader>mR", ":FlutterRestart<CR>", opts)
 keymap("n", "<leader>mq", ":FlutterQuit<CR>", opts)
+]]--
