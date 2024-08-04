@@ -2,13 +2,8 @@
 
 # Function to create directories and subdirectories
 create_directories() {
-    mkdir -p "$1"
-    cd "$1" || exit
-    shift
-    while [[ $# -gt 0 ]]; do
-        mkdir -p "$1"
-        shift
-    done
+    mkdir -p "$1" || exit
+    echo "Created directory: $1"
 }
 
 # Function to clone GitHub repositories
@@ -24,16 +19,13 @@ clone_repo() {
 # Main function to create directory structure and clone repositories
 setup_workspaces() {
     # Create coding-practice directory and clone repos
-    create_directories "coding-practice" "dsa-practice" "problem-solving"
-    clone_repo "coding-practice/dsa-practice" "git@github.com:Prathamesh-Chavan-232/dsa-practice.git"
-    clone_repo "coding-practice/problem-solving" "git@github.com:Prathamesh-Chavan-232/problem-solving.git"
+    cd ""
+    mkdir test-dir
+    cd "./test-dir" || exit
 
+    create_directories "coding-practice" "dsa-practice" "problem-solving"
     # Create app-dev directory and subdirectories
     create_directories "app-dev" "work" "gigs" "practice" "projects"
-
-    # Clone repositories in app-dev/work
-    create_directories "app-dev/work" "dementia-app"
-    clone_repo "app-dev/work/dementia-app" "git@github.com:Manastik-Tech/dementia-app.git"
 
     # Clone repository in app-dev/gigs
     create_directories "app-dev/gigs" "first_india_plus"
@@ -53,4 +45,3 @@ setup_workspaces() {
 
 # Call the main function
 setup_workspaces
-
