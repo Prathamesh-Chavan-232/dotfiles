@@ -1,13 +1,12 @@
 import = [
-    "/home/falconcodes/.config/alacritty/themes/rose-pine-moon.toml",
-    "/home/falconcodes/.config/alacritty/fonts.toml"
+    "~/.config/alacritty/themes/rose-pine-moon.toml",
+    "~/.config/alacritty/fonts.toml"
 ]
 
 [env]
 TERM = "xterm-256color"
 
 [window]
-decorations = "none"
 opacity = 0.70
 blur = true
 

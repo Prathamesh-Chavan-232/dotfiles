@@ -4,6 +4,37 @@
 
 # source $HOME/keep-coding/personal/fast-project-package/fast-project.sh
 
+export PATH="$PATH:/opt/homebrew/bin"
+
+# pnpm
+export PNPM_HOME="/home/falconcodes/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Flutter
+export PATH="$PATH:/opt/flutter"
+export ANDROID_SDK_ROOT="/home/falconcodes/Android/Sdk"
+export PATH="$PATH:$ANDROID_SDK_ROOT"
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
+
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# set up defaults
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+export GPG_TTY=$TTY
+
 # plugins
 # plug "esc/conda-zsh-completion"
 # plug "MAHcodes/distro-prompt"
@@ -45,38 +76,6 @@ setopt COMPLETE_IN_WORD  # Complete from both ends of a word.
 HISTFILE=~/.cache/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
-
-# Add to Path
-export CHROME_EXECUTABLE='/usr/bin/google-chrome-stable'
-export EDITOR="nvim"
-export TERMINAL="alacritty"
-export BROWSER="google-chrome-stable"
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
-export GPG_TTY=$TTY
-
-# pnpm
-export PNPM_HOME="/home/falconcodes/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# Flutter
-export PATH="$PATH:/opt/flutter"
-export ANDROID_SDK_ROOT="/home/falconcodes/Android/Sdk"
-export PATH="$PATH:$ANDROID_SDK_ROOT"
-export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
-export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
-
-export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # Keybinds
 # vi mode
@@ -156,8 +155,7 @@ alias fgrep='fgrep --color=auto'
 
 # Execute frequent commands with useful flags.
 alias tree='tree -a -I .git'
-alias ls='lsd --group-directories-first'
-alias ll='lsd --group-directories-first -l'
+alias ll='ls -l'
 # Confirm before overwriting something
 alias cp="cp -i"
 alias mv='mv -i'
@@ -190,18 +188,18 @@ alias ..3='z ../../../'
 alias work="cd ~/keep-coding/work/"
 
 # Open config files quickly
-alias zshrc='nvi ~/.zshrc'
-alias tmuxrc='nvi ~/.config/tmux/tmux.conf'
+alias zshrc='nvim ~/.zshrc'
+alias tmuxrc='nvim ~/.config/tmux/tmux.conf'
 # Open Dotfiles quickly
-alias dots='cd ~/keep-coding/falcon-dots/ && nvi .' # dotfiles are symlinked to this directory
+alias dots='cd ~/keep-coding/falcon-dots/ && nvim .' # dotfiles are symlinked to this directory
 # Open config folders quickly
-alias nvimrc='cd ~/.config/nvim && nvi .'
-alias alacrittyrc='cd ~/.config/alacritty/ && nvi .'
-alias polybarrc='cd ~/config/polybar/ && nvi .'
-alias i3rc='cd ~/.config/i3/ && nvi .'
-alias bspwmrc='cd ~/.config/bspwm/ && nvi .'
-alias rofirc='cd ~/.config/rofi/ && nvi .'
-alias dunstrc='cd ~/.config/dunst/ && nvi .'
+alias nvimmrc='cd ~/.config/nvim && nvim .'
+alias alacrittyrc='cd ~/.config/alacritty/ && nvim .'
+alias polybarrc='cd ~/config/polybar/ && nvim .'
+alias i3rc='cd ~/.config/i3/ && nvim .'
+alias bspwmrc='cd ~/.config/bspwm/ && nvim .'
+alias rofirc='cd ~/.config/rofi/ && nvim .'
+alias dunstrc='cd ~/.config/dunst/ && nvim .'
 
 # Neovim config switcher
 alias vi="vim"

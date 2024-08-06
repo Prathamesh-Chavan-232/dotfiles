@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "loggers.sh"
+
 setup_github_keys() {
     # Add github account SSH Keys
     print_header "${GREEN}" "Adding Github Accounts SSH keys"
@@ -27,7 +29,7 @@ setup_github_keys() {
     # Adding config file
     print_subheader "${GREEN}" "Adding SSH keys config"
     if [ ! -f ~/.ssh/config ]; then
-        cp github-ssh/config ~/.ssh/
+        cp ../../github-ssh/config ~/.ssh/
     else
         print_log "${YELLOW}" "A Config file already exists."
     fi
@@ -45,6 +47,4 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     # Execute the main function
     setup_github_keys
 fi
-
-
 

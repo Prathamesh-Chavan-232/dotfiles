@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source "loggers.sh"
-
 # Function to create symlinks for a directory
 create_symlink_stow() {
     local dir="$1"
