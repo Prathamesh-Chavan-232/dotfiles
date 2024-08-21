@@ -20,13 +20,18 @@ export ANDROID_SDK_ROOT="/home/falconcodes/Android/Sdk"
 export PATH="$PATH:$ANDROID_SDK_ROOT"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
-
 export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
 
+# Node version manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# smart tmux sessions
+export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+
+# Bob
+export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
 
 # set up defaults
 export EDITOR="nvim"
@@ -155,7 +160,9 @@ alias fgrep='fgrep --color=auto'
 
 # Execute frequent commands with useful flags.
 alias tree='tree -a -I .git'
-alias ll='ls -l'
+
+alias ls='lsd --group-directories-first'
+alias ll='lsd --group-directories-first -l'
 # Confirm before overwriting something
 alias cp="cp -i"
 alias mv='mv -i'
@@ -327,6 +334,9 @@ alias nvfront="NVIM_APPNAME=nvim-front nvim"
 alias nvim-alt="NVIM_APPNAME=nvim-alt nvim"
 alias nvalt="NVIM_APPNAME=nvim-alt nvim"
 
+function tn() {
+  tmux new -s "$(basename "$PWD")"
+}
 
 # Configs' launcher function
 function nvims() {

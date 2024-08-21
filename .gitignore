@@ -1,4 +1,5 @@
 lazy-lock.json
 install_log.txt
 tmux/plugins/*
+.DS_Store
 .idea/
