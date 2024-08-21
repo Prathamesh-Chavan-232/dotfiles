@@ -334,6 +334,7 @@ alias nvfront="NVIM_APPNAME=nvim-front nvim"
 alias nvim-alt="NVIM_APPNAME=nvim-alt nvim"
 alias nvalt="NVIM_APPNAME=nvim-alt nvim"
 
+# Create new tmux session in current directory
 function tn() {
   tmux new -s "$(basename "$PWD")"
 }
