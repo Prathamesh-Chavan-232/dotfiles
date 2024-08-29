@@ -1,12 +1,19 @@
 # Personal account
-Host github
+Host github.com
   HostName github.com
   User git
   IdentityFile ~/.ssh/id_github_personal
   IdentitiesOnly true
 
- # Work account
-Host github-noovosoft
+# Hobby account
+Host github.com-hobby
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_github_hobby
+  IdentitiesOnly true
+
+# Work account
+Host github.com-noovosoft
   HostName github.com
   User git
   IdentityFile ~/.ssh/id_github_noovosoft
