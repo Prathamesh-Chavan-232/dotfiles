@@ -355,3 +355,9 @@ bindkey -s "^a" "nvims\n"
 
 # ASCII Shibang #!
 # shibang
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/falconcodes/google-cloud-sdk/path.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/falconcodes/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/completion.zsh.inc'; fi
