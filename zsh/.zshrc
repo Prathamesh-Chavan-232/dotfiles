@@ -161,7 +161,7 @@ alias fgrep='fgrep --color=auto'
 # Execute frequent commands with useful flags.
 alias tree='tree -a -I .git'
 
-# alias ls='lsd --group-directories-first'
+alias ls='lsd --group-directories-first'
 alias ll='lsd --group-directories-first -l'
 # Confirm before overwriting something
 alias cp="cp -i"
@@ -361,3 +361,10 @@ if [ -f '/home/falconcodes/google-cloud-sdk/path.zsh.inc' ]; then . '/home/falco
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/falconcodes/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/completion.zsh.inc'; fi
+
+# bun completions
+[ -s "/Users/prathameshchavan/.bun/_bun" ] && source "/Users/prathameshchavan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
