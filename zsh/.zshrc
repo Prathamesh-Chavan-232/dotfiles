@@ -211,6 +211,7 @@ alias dunstrc='cd ~/.config/dunst/ && nvim .'
 # Neovim config switcher
 alias vi="vim"
 alias nvi="nvim-alt"
+
 # Vimacs with nvchad
 alias nvchad="NVIM_APPNAME=nvchad nvim"
 
