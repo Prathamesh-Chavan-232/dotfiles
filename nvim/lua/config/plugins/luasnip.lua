@@ -43,7 +43,7 @@ return {
 			ls.jump(-1)
 		end, { silent = true })
 
-		vim.keymap.set({ "i", "s" }, "<c-c>", function()
+		vim.keymap.set({ "i", "s" }, "<c-x>", function()
 			if ls.choice_active() then
 				ls.change_choice(1)
 			end

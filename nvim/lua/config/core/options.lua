@@ -6,6 +6,7 @@ cmd("filetype plugin indent on")
 cmd([[highlight WinSeparator guibg = None]])
 
 -- Appearance
+opt.guicursor = ""
 opt.termguicolors = true
 opt.pumheight = 10
 opt.cmdheight = 0
@@ -23,6 +24,7 @@ opt.virtualedit = "block"
 
 opt.wrap = false
 opt.number = true
+opt.numberwidth = 4
 opt.relativenumber = true
 opt.cursorline = false
 opt.cursorcolumn = false

@@ -10,7 +10,9 @@ local options = {
   pumheight = 10, -- height of the pop up menu
 
   -- line numbers
-  numberwidth = 4, -- set number column {default 4}
+  numberwidth = 6, -- set number column {default 4}
+  number = true,
+  relativenumber = true,
 
   -- tabs & spaces
   tabstop = 4, -- 1 tabspace = ? spaces

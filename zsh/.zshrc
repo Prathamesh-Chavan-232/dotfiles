@@ -95,6 +95,105 @@ bindkey '^ ' autosuggest-accept
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+# On demand docker containers using compose templates
+function foo() {
+   local container=$1
+   local volume=$2
+
+   cat <<EOF > ~/keep-coding/work/new-compose-file.yaml
+   version: "3"
+     services:
+       ${container}:
+     image: nodered/node-red
+     ports:
+       - "3000:1880"
+     volumes:
+       - ./${volume}/:/data
+EOF
+# sed 's/node_red_container/new_docker_container/' template.yml | sed 's/node-red-data/new-volume/';
+}
+
+# Postgresql
+function postgres() {
+    local cmd=$1
+    local user=${2:-falconcodes}
+    local db=${3:-postgres}
+    local file=$4
+    if [ "$1" = "start" ]; then
+        docker-compose -f ~/keep-coding/db-docker/postgres_server/docker-compose.yml -p postgres_db up -d
+    elif [ "$1" = "stop" ]; then
+        docker rm -f postgres_db
+    elif [ "$1" = "run" ]; then
+        docker exec -it postgres_db psql -U $user $db
+    elif [ "$1" = "exec" ]; then
+        docker exec -it postgres_db psql -U $user -d $db -f $file
+    else
+        echo "Invalid command"
+    fi
+}
+
+# Github cli
+function gh_work() {
+  # Get the current GitHub user
+  current_user=$(gh auth status --hostname github.com | grep Logged | awk '{print $7}' | head -n 1)
+
+  echo "Current User is $current_user"
+  if [ "$current_user" = "Prathamesh-Chavan-Noovosoft" ]; then
+
+    if [ "$1" = "repo" ] && [ "$2" = "create" ]; then
+
+    # Determine the correct SSH hostname
+    ssh_hostname="github.noovosoft"
+
+    echo "Disclaimer: You are using your work account. Remote will be set as your work git hostname (github.com-work)."
+
+    # Prompt for the repository name
+    echo -n "Enter the repository name ($(basename $PWD)): "
+    read repo_name
+
+    # Create the repository
+    gh repo create $repo_name
+
+    # Use the current folder name if no name is provided
+    if [ -z "$repo_name" ]; then
+      repo_name=$(basename "$PWD")
+    fi
+
+    # Set the remote URL
+    git remote set-url origin git@$ssh_hostname:$current_user/$repo_name.git
+    echo "$(git remote -v)"
+
+    else
+      echo "Disclaimer: You are using gh from your work account."
+      command gh "$@"
+    fi
+
+  else
+    echo "You are not signed in into Prathamesh-Chavan-Noovosoft! Login with your work account to continue."
+  fi
+}
+
+# run_fastfetch
+function run_fastfetch() {
+  # Define the path of your temp file
+  TMPFILE="$HOME/.last_fetch_run"
+
+  # Check if the temp file exists and if it was modified in the last 2 minutes
+  if [[ ! -e "$TMPFILE" || "$(find "$TMPFILE" -mmin +2)" ]]; then
+      # Run fetch, outside tmux
+    if [[ -z "$TMUX" ]]; then
+        fastfetch
+    fi
+      # Touch the temp file to update its last modified time
+      touch "$TMPFILE"
+  fi
+
+}
+
+# Create new tmux session in current directory
+function tn() {
+  tmux new -s "$(basename "$PWD")"
+}
 
 # Aliases
 # Arch Maintenance
@@ -194,6 +293,11 @@ alias ..3='z ../../../'
 # cd into projects easily
 alias work="cd ~/keep-coding/work/"
 
+# Docker
+alias docker-kill-all-containers='docker kill $(docker ps -q)'
+alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
+alias docker-remove-all-images='docker rmi $(docker image ls -a -q)'
+
 # Open config files quickly
 alias zshrc='nvim ~/.zshrc'
 alias tmuxrc='nvim ~/.config/tmux/tmux.conf'
@@ -208,141 +312,32 @@ alias bspwmrc='cd ~/.config/bspwm/ && nvim .'
 alias rofirc='cd ~/.config/rofi/ && nvim .'
 alias dunstrc='cd ~/.config/dunst/ && nvim .'
 
-# Neovim config switcher
-alias vi="vim"
-alias nvi="nvim-alt"
-
+# My configs
 # Vimacs with nvchad
 alias nvchad="NVIM_APPNAME=nvchad nvim"
 
-# Docker
-alias docker-kill-all-containers='docker kill $(docker ps -q)'
-alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
-alias docker-remove-all-images='docker rmi $(docker image ls -a -q)'
+# lazyVim
+alias nvim-lazy="NVIM_APPNAME=nvim-lazy nvim"
+alias nvlazy="NVIM_APPNAME=nvim-lazy nvim"
 
-# On demand docker containers using compose templates
-function foo() {
-   local container=$1
-   local volume=$2
+alias nvim-ghost="NVIM_APPNAME=nvim-ghost nvim"
+alias nvghost="NVIM_APPNAME=nvim-ghost nvim"
 
-   cat <<EOF > ~/keep-coding/work/new-compose-file.yaml
-   version: "3"
-     services:
-       ${container}:
-     image: nodered/node-red
-     ports:
-       - "3000:1880"
-     volumes:
-       - ./${volume}/:/data
-EOF
-# sed 's/node_red_container/new_docker_container/' template.yml | sed 's/node-red-data/new-volume/';
-}
-
-# Postgresql
-function postgres() {
-    local cmd=$1
-    local user=${2:-falconcodes}
-    local db=${3:-postgres}
-    local file=$4
-    if [ "$1" = "start" ]; then
-        docker-compose -f ~/keep-coding/db-docker/postgres_server/docker-compose.yml -p postgres_db up -d
-    elif [ "$1" = "stop" ]; then
-        docker rm -f postgres_db
-    elif [ "$1" = "run" ]; then
-        docker exec -it postgres_db psql -U $user $db
-    elif [ "$1" = "exec" ]; then
-        docker exec -it postgres_db psql -U $user -d $db -f $file
-    else
-        echo "Invalid command"
-    fi
-}
-
-# Github cli
-function gh_work() {
-  # Get the current GitHub user
-  current_user=$(gh auth status --hostname github.com | grep Logged | awk '{print $7}' | head -n 1)
-
-  echo "Current User is $current_user"
-  if [ "$current_user" = "Prathamesh-Chavan-Noovosoft" ]; then
-
-    if [ "$1" = "repo" ] && [ "$2" = "create" ]; then
-
-    # Determine the correct SSH hostname
-    ssh_hostname="github.noovosoft"
-
-    echo "Disclaimer: You are using your work account. Remote will be set as your work git hostname (github.com-work)."
-
-    # Prompt for the repository name
-    echo -n "Enter the repository name ($(basename $PWD)): "
-    read repo_name
-
-    # Create the repository
-    gh repo create $repo_name
-
-    # Use the current folder name if no name is provided
-    if [ -z "$repo_name" ]; then
-      repo_name=$(basename "$PWD")
-    fi
-
-    # Set the remote URL
-    git remote set-url origin git@$ssh_hostname:$current_user/$repo_name.git
-    echo "$(git remote -v)"
-
-    else
-      echo "Disclaimer: You are using gh from your work account."
-      command gh "$@"
-    fi
-
-  else
-    echo "You are not signed in into Prathamesh-Chavan-Noovosoft! Login with your work account to continue."
-  fi
-}
-
-# run_fastfetch
-function run_fastfetch() {
-  # Define the path of your temp file
-  TMPFILE="$HOME/.last_fetch_run"
-
-  # Check if the temp file exists and if it was modified in the last 2 minutes
-  if [[ ! -e "$TMPFILE" || "$(find "$TMPFILE" -mmin +2)" ]]; then
-      # Run fetch, outside tmux
-    if [[ -z "$TMUX" ]]; then
-        fastfetch
-    fi
-      # Touch the temp file to update its last modified time
-      touch "$TMPFILE"
-  fi
-
-}
-
-# My configs
+# move this to nvim-lazy and remove this
 alias nvim-code="NVIM_APPNAME=nvim-code nvim"
 alias nvcode="NVIM_APPNAME=nvim-code nvim"
 
+# move relevant things to nvim nvim-lazy, nvim-ghost and remove this
 alias nvim-super="NVIM_APPNAME=nvim-super nvim"
 alias nvsuper="NVIM_APPNAME=nvim-super nvim"
 
-alias nvim-noice="NVIM_APPNAME=nvim-noice nvim"
-alias nvnoice="NVIM_APPNAME=nvim-noice nvim"
-
-alias nvim-ide="NVIM_APPNAME=nvim-ide nvim"
-alias nvide="NVIM_APPNAME=nvim-ide nvim"
-
-alias nvim-front="NVIM_APPNAME=nvim-front nvim"
-alias nvfront="NVIM_APPNAME=nvim-front nvim"
-
-# Transfer everything here
-alias nvim-alt="NVIM_APPNAME=nvim-alt nvim"
-alias nvalt="NVIM_APPNAME=nvim-alt nvim"
-
-# Create new tmux session in current directory
-function tn() {
-  tmux new -s "$(basename "$PWD")"
-}
+# move to nvim and remove this
+alias nvim-grim="NVIM_APPNAME=nvim-grim nvim"
+alias nvgrim="NVIM_APPNAME=nvim-grim nvim"
 
 # Configs' launcher function
 function nvims() {
-  items=("default" "nvim-code" "nvim-super" "nvim-noice" "nvim-ide" "nvim-front" "nvim-alt")
+  items=("default" "nvim-lazy" "nvim-ghost" "nvim-super" "nvim-grim" "nvim-code")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config - " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
@@ -353,9 +348,6 @@ function nvims() {
   NVIM_APPNAME=$config nvim $@
 }
 bindkey -s "^a" "nvims\n"
-
-# ASCII Shibang #!
-# shibang
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/falconcodes/google-cloud-sdk/path.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/path.zsh.inc'; fi
@@ -369,3 +361,6 @@ if [ -f '/home/falconcodes/google-cloud-sdk/completion.zsh.inc' ]; then . '/home
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# ASCII Shibang #!
+# shibang

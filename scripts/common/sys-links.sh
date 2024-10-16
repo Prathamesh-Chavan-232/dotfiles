@@ -11,6 +11,6 @@ create_symlink_stow() {
     fi
 
     # Use stow to create symlinks
-    print_log "$GREEN" "[+] Sym-linking Folder :: $dir"
+    print_log "$GREEN" "[+] Sym-linking Folder :: $dir -> $target_dir"
     stow -vt "$target_dir" "$dir"
 }

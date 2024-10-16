@@ -2,13 +2,12 @@
 source "./scripts/common/loggers.sh"
 source "./scripts/common/sys-links.sh"
 
-# Create symlinks for zsh
-create_symlink_stow "zsh" "$HOME"
+# Define an array of directories with source and target paths
+declare -A SYMLINKS=(
+    ["nvim-ghost"]="$HOME/.config/nvim-ghost"
+)
 
-# Define the directories to be symlinked
-DOT_FOLDERS="nvim-grim"
-
-# Create symlinks for remaining folders
-for folder in $DOT_FOLDERS; do
-    create_symlink_stow "$folder" "$HOME/.config/$folder"
-done
+# Loop over the array to create symlinks
+for dir in "${!SYMLINKS[@]}"; do
+    create_symlink_stow "$dir" "${SYMLINKS[$dir]}"
+done 
