@@ -1,0 +1,114 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+" the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+"" -- Options --
+" Leader keys
+let mapleader = " "
+
+" Line numbers
+set number
+set rnu
+
+" Editor behaviour
+set history=100
+set backspace=start,eol,indent
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" Searching
+set fileencoding=utf-8
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+" Scrolling & text wrap
+set scrolloff=8
+set sidescrolloff=8
+
+" Combine words with '-' in them
+set isfname+=@-@
+set iskeyword+=-
+
+"" -- Mappings --
+" Buffers
+nnoremap <S-h> :action PreviousTab<CR>
+nnoremap <S-l> :action NextTab<CR>
+nnoremap <Tab> :action NextTab<CR>
+nnoremap <S-Tab> :action PreviousTab<CR>
+nnoremap <C-w> :bd<CR>
+
+" Splits
+nnoremap <leader>sv :vsp<CR>
+nnoremap <leader>sh :sp<CR>
+
+" Unmap <C-w> from splits
+nunmap <C-w>w
+
+" Split navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Make cursor stay at the center of the screen
+nnoremap J mzJz
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap <leader>nh :nohl<CR>
+
+" Copy pasting to system clipboard
+nnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+vnoremap <leader>y "+y
+vnoremap <leader>Y "+Y
+
+" Delete & Paste without yanking
+vnoremap p "_dP
+xnoremap <leader>p "_dP
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" Indent lines
+vnoremap < <gv
+vnoremap > >gv
+
+" Exit Insert Mode
+inoremap jk <ESC>
+inoremap kj <ESC>
+inoremap <C-c> <Esc>
+
+" Find files
+nnoremap <leader>ff :action GotoFile<CR>
+
+" File tree navigation
+" nnoremap <leader>e :action ToggleProjectToolWindow<CR>
+
+" Handlers
+sethandler <C-c> a:vim
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+map <leader>gb <Action>(Annotate)
+map <leader>e <Action>(ToggleProjectToolWindow)
+
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
