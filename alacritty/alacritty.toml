@@ -19,3 +19,6 @@ bindings = [
 { key = "K", mods = "Command", chars = "t"},
 ]
 
+[cursor]
+[cursor.style]
+shape = "Block"
