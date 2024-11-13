@@ -1,3 +1,15 @@
+[org/fedorahosted/background-logo-extension]
+logo-always-visible=true
+logo-border=uint32 100
+logo-opacity=uint32 255
+logo-position='bottom-right'
+logo-size=6.0526315789473681
+
+[org/gnome/Extensions]
+window-height=1021
+window-maximized=false
+window-width=1904
+
 [org/gnome/TextEditor]
 custom-font='Monospace 12'
 highlight-current-line=true
@@ -26,15 +38,15 @@ window-size=[1896, 1024]
 
 [org/gnome/calendar]
 active-view='month'
-window-maximized=false
-window-size=(1904, 600)
+window-maximized=true
+window-size=(948, 1021)
 
 [org/gnome/com/mattjakeman/ExtensionManager]
 last-used-version='0.4.3'
 
 [org/gnome/control-center]
-last-panel='multitasking'
-window-state=(1896, 1008, false)
+last-panel='background'
+window-state=(1904, 1021, false)
 
 [org/gnome/desktop/app-folders]
 folder-children=['Utilities', 'YaST', 'Pardus']
@@ -58,8 +70,8 @@ translate=true
 [org/gnome/desktop/background]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///home/falconcodes/Wallpapers/astronaut-nord.png'
-picture-uri-dark='file:///home/falconcodes/Wallpapers/astronaut-nord.png'
+picture-uri='file:///home/falconcodes/.config/background'
+picture-uri-dark='file:///home/falconcodes/.config/background'
 primary-color='#241f31'
 secondary-color='#000000'
 show-desktop-icons=false
@@ -79,12 +91,13 @@ enable-hot-corners=false
 font-antialiasing='grayscale'
 font-hinting='slight'
 gtk-theme='falconcodes-rose-pine'
+icon-theme='Adwaita'
 monospace-font-name='Source Code Pro 10'
 show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-power-panel', 'org-freedesktop-problems-applet', 'gnome-datetime-panel', 'org-gnome-software', 'gnome-network-panel', 'google-chrome', 'com-spotify-client', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gnome-evince', 'org-gnome-extensions', 'alacritty']
+application-children=['gnome-power-panel', 'org-freedesktop-problems-applet', 'gnome-datetime-panel', 'org-gnome-software', 'gnome-network-panel', 'google-chrome', 'com-spotify-client', 'org-gnome-extensions-desktop', 'org-gnome-baobab', 'org-gnome-evince', 'org-gnome-extensions', 'alacritty', 'org-gnome-nautilus']
 
 [org/gnome/desktop/notifications/application/alacritty]
 application-id='Alacritty.desktop'
@@ -118,6 +131,9 @@ application-id='org.gnome.Extensions.desktop.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-extensions]
 application-id='org.gnome.Extensions.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-nautilus]
+application-id='org.gnome.Nautilus.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-software]
 application-id='org.gnome.Software.desktop'
@@ -193,8 +209,8 @@ inverted-colors=false
 show-sidebar=false
 sidebar-page='thumbnails'
 sidebar-size=150
-sizing-mode='free'
-window-ratio=(1.5392156862745099, 1.2727272727272727)
+sizing-mode='fit-width'
+window-ratio=(0.98750000000000004, 0.92817679558011046)
 zoom=0.5
 
 [org/gnome/evolution-data-server]
@@ -221,10 +237,14 @@ migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 
 [org/gnome/nautilus/window-state]
-initial-size=(942, 1024)
+initial-size=(1904, 1021)
 maximized=false
 
 [org/gnome/nm-applet/eap/301320e8-6be4-4e3b-a7ab-738be99822fe]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/7941aa6e-f2a5-3aaf-9d13-bd1353be890b]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
@@ -856,8 +876,8 @@ name='Open VS Code'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6]
 binding='<Super>t'
-command='gnome-terminal'
-name='Open Gnome terminal'
+command='alacritty'
+name='Open Alacritty'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7]
 binding='<Super>b'
@@ -869,35 +889,105 @@ idle-dim=false
 
 [org/gnome/shell]
 app-picker-layout=[{'org.fedoraproject.MediaWriter.desktop': <{'position': <0>}>, 'org.gnome.Contacts.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'libreoffice-calc.desktop': <{'position': <5>}>, 'libreoffice-impress.desktop': <{'position': <6>}>, 'org.gnome.Totem.desktop': <{'position': <7>}>, 'org.gnome.Calculator.desktop': <{'position': <8>}>, 'libreoffice-writer.desktop': <{'position': <9>}>, 'simple-scan.desktop': <{'position': <10>}>, 'org.gnome.Settings.desktop': <{'position': <11>}>, 'gnome-system-monitor.desktop': <{'position': <12>}>, 'org.gnome.Boxes.desktop': <{'position': <13>}>, 'org.gnome.Terminal.desktop': <{'position': <14>}>, 'Utilities': <{'position': <15>}>, 'org.gnome.Rhythmbox3.desktop': <{'position': <16>}>, 'yelp.desktop': <{'position': <17>}>, 'org.gnome.TextEditor.desktop': <{'position': <18>}>, 'org.gnome.Cheese.desktop': <{'position': <19>}>, 'org.gnome.Tour.desktop': <{'position': <20>}>}]
-enabled-extensions=['background-logo@fedorahosted.org', 'blur-my-shell@aunetx', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'just-perfection-desktop@just-perfection', 'forge@jmmaranan.com', 'mediacontrols@cliffniff.github.com', 'no-overview@fthx']
-favorite-apps=['org.mozilla.firefox.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
-last-selected-power-profile='power-saver'
+disabled-extensions=@as []
+enabled-extensions=['blur-my-shell@aunetx', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'just-perfection-desktop@just-perfection', 'forge@jmmaranan.com', 'mediacontrols@cliffniff.github.com', 'no-overview@fthx', 'dash-to-dock@micxgx.gmail.com', 'background-logo@fedorahosted.org']
+favorite-apps=['org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'Alacritty.desktop', 'com.spotify.Client.desktop', 'code.desktop']
+last-selected-power-profile='performance'
 welcome-dialog-last-shown-version='45.0'
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true
 
 [org/gnome/shell/extensions/blur-my-shell]
+pipelines={'pipeline_default': {'name': <'Pixelized Blur'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_98445726568162'>, 'params': <@a{sv} {}>}>, <{'type': <'pixelize'>, 'id': <'effect_89986524421311'>, 'params': <{'factor': <22>}>}>]>}, 'pipeline_87316442529291': {'name': <'Monte Carlo Blur & Noise'>, 'effects': <[<{'type': <'monte_carlo_blur'>, 'id': <'effect_17084166065839'>, 'params': <@a{sv} {}>}>, <{'type': <'noise'>, 'id': <'effect_52263734940669'>, 'params': <{'noise': <0.59999999999999998>, 'lightness': <1.51>}>}>]>}, 'pipeline_55465807870584': {'name': <'Monte Carlo Blur'>, 'effects': <[<{'type': <'monte_carlo_blur'>, 'id': <'effect_62541108435078'>, 'params': <@a{sv} {}>}>]>}, 'pipeline_83003505652217': {'name': <'Gausian Blur'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_77272056038740'>, 'params': <@a{sv} {}>}>]>}, 'pipeline_75467253671037': {'name': <'Monte Carlo Blur + Noise + Pixelized'>, 'effects': <[<{'type': <'monte_carlo_blur'>, 'id': <'effect_17084166065839'>, 'params': <@a{sv} {}>}>, <{'type': <'pixelize'>, 'id': <'effect_45381756108201'>, 'params': <{'factor': <32>}>}>, <{'type': <'noise'>, 'id': <'effect_52263734940669'>, 'params': <{'noise': <0.59999999999999998>, 'lightness': <1.51>}>}>]>}, 'pipeline_53034698353031': {'name': <'Dash'>, 'effects': <[<{'type': <'corner'>, 'id': <'effect_63057579688682'>, 'params': <{'radius': <32>}>}>]>}}
 settings-version=2
 
 [org/gnome/shell/extensions/blur-my-shell/appfolder]
 brightness=0.59999999999999998
-sigma=30
+sigma=40
+
+[org/gnome/shell/extensions/blur-my-shell/applications]
+blur=true
+blur-on-overview=true
+dynamic-opacity=true
+enable-all=true
+opacity=255
+sigma=20
+whitelist=@as []
+
+[org/gnome/shell/extensions/blur-my-shell/coverflow-alt-tab]
+pipeline='pipeline_default'
 
 [org/gnome/shell/extensions/blur-my-shell/dash-to-dock]
 blur=true
-brightness=0.59999999999999998
-sigma=30
+brightness=0.40000000000000002
+override-background=true
+pipeline='pipeline_53034698353031'
+sigma=35
 static-blur=true
 style-dash-to-dock=0
+unblur-in-overview=false
+
+[org/gnome/shell/extensions/blur-my-shell/dash-to-panel]
+blur-original-panel=true
+
+[org/gnome/shell/extensions/blur-my-shell/hidetopbar]
+compatibility=true
+
+[org/gnome/shell/extensions/blur-my-shell/lockscreen]
+pipeline='pipeline_default'
+
+[org/gnome/shell/extensions/blur-my-shell/overview]
+pipeline='pipeline_83003505652217'
+style-components=3
 
 [org/gnome/shell/extensions/blur-my-shell/panel]
-brightness=0.59999999999999998
-sigma=30
+brightness=1.0
+force-light-text=false
+override-background=false
+override-background-dynamically=false
+pipeline='pipeline_default'
+sigma=0
+static-blur=false
+style-panel=2
+unblur-in-overview=false
+
+[org/gnome/shell/extensions/blur-my-shell/screenshot]
+pipeline='pipeline_default'
 
 [org/gnome/shell/extensions/blur-my-shell/window-list]
 brightness=0.59999999999999998
 sigma=30
+
+[org/gnome/shell/extensions/dash-to-dock]
+always-center-icons=false
+apply-custom-theme=false
+apply-glossy-effect=false
+background-color='rgb(205,214,244)'
+background-opacity=0.80000000000000004
+click-action='focus-minimize-or-previews'
+custom-background-color=false
+custom-theme-customize-running-dots=false
+custom-theme-shrink=false
+dash-max-icon-size=48
+disable-overview-on-startup=true
+dock-position='BOTTOM'
+extend-height=false
+height-fraction=0.80000000000000004
+hot-keys=false
+icon-size-fixed=false
+multi-monitor=true
+preferred-monitor=-2
+preferred-monitor-by-connector='eDP-1'
+preview-size-scale=0.10000000000000001
+running-indicator-dominant-color=true
+running-indicator-style='DASHES'
+scroll-action='cycle-windows'
+show-apps-at-top=true
+show-trash=false
+show-windows-preview=true
+unity-backlit-items=false
+workspace-agnostic-urgent-windows=true
 
 [org/gnome/shell/extensions/forge]
 auto-split-enabled=true
@@ -905,13 +995,14 @@ css-last-update=uint32 37
 css-updated='1711835424608'
 float-always-on-top-enabled=false
 focus-border-toggle=true
+move-pointer-focus-enabled=false
 preview-hint-enabled=true
 split-border-toggle=false
 stacked-tiling-mode-enabled=true
 tabbed-tiling-mode-enabled=false
 tiling-mode-enabled=true
 window-gap-hidden-on-single=false
-window-gap-size=uint32 6
+window-gap-size=uint32 4
 window-gap-size-increment=uint32 1
 workspace-skip-tile=''
 
@@ -956,6 +1047,57 @@ window-swap-up=['<Control><Super>k']
 window-toggle-always-float=['<Shift><Super>c']
 window-toggle-float=['<Control><Super>f']
 workspace-active-tile-toggle=['<Control><Super>w']
+
+[org/gnome/shell/extensions/just-perfection]
+accessibility-menu=false
+activities-button=true
+alt-tab-icon-size=0
+alt-tab-small-icon-size=0
+alt-tab-window-preview-size=0
+animation=4
+background-menu=true
+clock-menu-position=0
+clock-menu-position-offset=1
+controls-manager-spacing-size=0
+dash=true
+dash-app-running=false
+dash-icon-size=0
+dash-separator=true
+double-super-to-appgrid=true
+keyboard-layout=false
+looking-glass-height=0
+max-displayed-search-results=0
+notification-banner-position=2
+osd=true
+overlay-key=true
+panel=true
+panel-button-padding-size=0
+panel-in-overview=true
+panel-indicator-padding-size=0
+panel-notification-icon=true
+panel-size=32
+power-icon=true
+quick-settings=true
+quick-settings-dark-mode=true
+ripple-box=true
+search=true
+show-apps-button=false
+startup-status=0
+theme=false
+top-panel-position=0
+window-demands-attention-focus=true
+window-maximized-on-create=false
+window-picker-icon=false
+window-preview-caption=true
+window-preview-close-button=true
+workspace=true
+workspace-background-corner-size=0
+workspace-peek=true
+workspace-popup=true
+workspace-switcher-should-show=true
+workspace-switcher-size=0
+workspace-wrap-around=true
+workspaces-in-app-grid=false
 
 [org/gnome/shell/extensions/pop-shell]
 active-hint=true
@@ -1038,13 +1180,14 @@ locations=@av []
 locations=@av []
 
 [org/gnome/software]
-check-timestamp=int64 1714706363
+check-timestamp=int64 1731517197
 first-run=false
-flatpak-purge-timestamp=int64 1720877191
-install-timestamp=int64 1713451810
-packagekit-historical-updates-timestamp=uint64 1713451810
-update-notification-timestamp=int64 1713451970
-upgrade-notification-timestamp=int64 1714706363
+flatpak-purge-timestamp=int64 1731236682
+install-timestamp=int64 1731515945
+packagekit-historical-updates-timestamp=uint64 1731515945
+security-timestamp=int64 1731229564036967
+update-notification-timestamp=int64 1731517121
+upgrade-notification-timestamp=int64 1731147051
 
 [org/gnome/system/location]
 enabled=true
@@ -1060,6 +1203,10 @@ visible-name='falconcodes'
 
 [org/gnome/tweaks]
 show-extensions-notice=false
+
+[org/gtk/gtk4/settings/color-chooser]
+custom-colors=[(0.80392158031463623, 0.83921569585800171, 0.95686274766921997, 1.0), (0.07799992710351944, 0.81780004501342773, 0.89999997615814209, 1.0), (0.89999997615814209, 0.07799992710351944, 0.07799992710351944, 1.0), (0.89999997615814209, 0.077999979257583618, 0.077999979257583618, 1.0), (0.86000001430511475, 0.10033334046602249, 0.10033334046602249, 0.0), (0.0, 0.0, 0.0, 0.0)]
+selected-color=(true, 0.80392158031463623, 0.83921569585800171, 0.95686274766921997, 1.0)
 
 [org/gtk/gtk4/settings/file-chooser]
 date-format='regular'
