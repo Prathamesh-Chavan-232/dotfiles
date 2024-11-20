@@ -327,6 +327,10 @@ alias nvghost="NVIM_APPNAME=nvim-ghost nvim"
 alias nvim-code="NVIM_APPNAME=nvim-code nvim"
 alias nvcode="NVIM_APPNAME=nvim-code nvim"
 
+# move this to nvim-lazy and remove this
+alias nvim-vallen="NVIM_APPNAME=nvim-vallen nvim"
+alias nvvallen="NVIM_APPNAME=nvim-vallen nvim"
+
 # move relevant things to nvim nvim-lazy, nvim-ghost and remove this
 alias nvim-super="NVIM_APPNAME=nvim-super nvim"
 alias nvsuper="NVIM_APPNAME=nvim-super nvim"
