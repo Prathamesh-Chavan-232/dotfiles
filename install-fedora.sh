@@ -9,67 +9,67 @@ LIGHT_PURPLE='\e[1;35m' # Light Purple Color
 NC='\033[0m'            # No Color
 
 print_header() {
-	local color=$1
-	local timestamp=$(date +"%Y-%m-%d %H:%M:%S")
-	echo ""
-	echo -e "${color}==== $2 [$timestamp] ====${NC}"
-	echo ""
+    local color=$1
+    local timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+    echo ""
+    echo -e "${color}==== $2 [$timestamp] ====${NC}"
+    echo ""
 }
 print_log() {
-	local color=$1
-	local timestamp=$(date +"%Y-%m-%d %H:%M:%S")
-	echo ""
-	echo -e "${color}$2                              [$timestamp]${NC}"
+    local color=$1
+    local timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+    echo ""
+    echo -e "${color}$2                              [$timestamp]${NC}"
 }
 print_subheader() {
-	local color=$1
-	echo -e "${color}$2${NC}"
+    local color=$1
+    echo -e "${color}$2${NC}"
 }
 
 # Installer
 install_packages() {
-	local package_manager="$1"
-	shift
-	local package_list=("$@")
+    local package_manager="$1"
+    shift
+    local package_list=("$@")
 
-	case "$package_manager" in
-	"dnf")
-		install_command="sudo dnf install -y"
-		check_command="dnf list installed"
-		;;
-	"flatpak")
-		install_command="flatpak install -y"
-		check_command="flatpak list --app --columns=application"
-		;;
-	*)
-		print_subheader "$RED" "Unsupported package manager: $package_manager"
-		exit 1
-		;;
-	esac
+    case "$package_manager" in
+    "dnf")
+        install_command="sudo dnf install -y"
+        check_command="dnf list installed"
+        ;;
+    "flatpak")
+        install_command="flatpak install -y"
+        check_command="flatpak list --app --columns=application"
+        ;;
+    *)
+        print_subheader "$RED" "Unsupported package manager: $package_manager"
+        exit 1
+        ;;
+    esac
 
-	for package in "${package_list[@]}"; do
-		if $check_command | grep -q "^$package\$"; then
-			print_subheader "$LIGHT_PURPLE" "$package is already installed."
-		else
-			$install_command "$package"
-			print_log "$GREEN" "$package installed successfully."
-		fi
-	done
+    for package in "${package_list[@]}"; do
+        if $check_command | grep -q "^$package\$"; then
+            print_subheader "$LIGHT_PURPLE" "$package is already installed."
+        else
+            $install_command "$package"
+            print_log "$GREEN" "$package installed successfully."
+        fi
+    done
 }
 
 # Function to create symlinks for a directory
 create_symlinks() {
-	local dir="$1"
-	local target_dir="$2"
+    local dir="$1"
+    local target_dir="$2"
 
-	if [ ! -d "$target_dir" ]; then
-		echo "Target directory $target_dir does not exist. Creating..."
-		mkdir -p "$target_dir"
-	fi
+    if [ ! -d "$target_dir" ]; then
+        echo "Target directory $target_dir does not exist. Creating..."
+        mkdir -p "$target_dir"
+    fi
 
-	# Use stow to create symlinks
-	print_log "$GREEN" "[+] Symlining Folder :: $dir"
-	stow -vt "$target_dir" "$dir"
+    # Use stow to create symlinks
+    print_log "$GREEN" "[+] Symlining Folder :: $dir"
+    stow -vt "$target_dir" "$dir"
 }
 
 # Adding third party repositories
@@ -98,15 +98,15 @@ cargo install --git https://github.com/MordechaiHadad/bob.git
 print_header "$GREEN" "Installing Docker"
 # Uninstall old versions
 sudo dnf remove docker \
-	docker-client \
-	docker-client-latest \
-	docker-common \
-	docker-latest \
-	docker-latest-logrotate \
-	docker-logrotate \
-	docker-selinux \
-	docker-engine-selinux \
-	docker-engine
+    docker-client \
+    docker-client-latest \
+    docker-common \
+    docker-latest \
+    docker-latest-logrotate \
+    docker-logrotate \
+    docker-selinux \
+    docker-engine-selinux \
+    docker-engine
 
 # Set up the repository
 print_subheader "$GREEN" "Setting up repositories"
@@ -204,11 +204,11 @@ tpm_dir="$HOME/.tmux/plugins/tpm"
 # Install Tmux Plugin Manager
 # Check if TPM directory already exists
 if [ -d "$tpm_dir" ] && [ "$(ls -A "$tpm_dir")" ]; then
-	print_subheader "$LIGHT_PURPLE" "Tmux Plugin Manager (TPM) is already installed at $tpm_dir."
+    print_subheader "$LIGHT_PURPLE" "Tmux Plugin Manager (TPM) is already installed at $tpm_dir."
 else
-	# TPM directory doesn't exist or is empty, clone the repository
-	git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
-	print_subheader "$GREEN" "TPM installed successfully at $tpm_dir."
+    # TPM directory doesn't exist or is empty, clone the repository
+    git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
+    print_subheader "$GREEN" "TPM installed successfully at $tpm_dir."
 fi
 
 # Install zsh plugin Manager
@@ -233,37 +233,37 @@ DOT_FOLDERS="alacritty kitty nvim nvim-alt nvchad tmux starship"
 
 # Create symlinks for remaining folders
 for folder in $DOT_FOLDERS; do
-	create_symlinks "$folder" "$HOME/.config/$folder"
+    create_symlinks "$folder" "$HOME/.config/$folder"
 done
 
 # Add github account SSH Keys
 print_header "${GREEN}" "Adding Github Accounts SSH keys"
 # Personal account
 if [ ! -f ~/.ssh/id_github_personal ]; then
-	print_log "${GREEN}" "Creating SSH key for personal account..."
-	ssh-keygen -t ed25519 -f ~/.ssh/id_github_personal
-	ssh-add ~/.ssh/id_github_personal
-	print_log "${GREEN}" "Personal account SSH key created successfully."
+    print_log "${GREEN}" "Creating SSH key for personal account..."
+    ssh-keygen -t ed25519 -f ~/.ssh/id_github_personal
+    ssh-add ~/.ssh/id_github_personal
+    print_log "${GREEN}" "Personal account SSH key created successfully."
 else
-	print_log "${YELLOW}" "Personal account SSH key already exists."
+    print_log "${YELLOW}" "Personal account SSH key already exists."
 fi
 
 # Work account
 if [ ! -f ~/.ssh/id_github_noovosoft ]; then
-	print_log "${GREEN}" "Creating SSH key for work account..."
-	ssh-keygen -t ed25519 -f ~/.ssh/id_github_noovosoft
-	ssh-add ~/.ssh/id_github_noovosoft
-	print_log "${GREEN}" "Work account SSH key created successfully."
+    print_log "${GREEN}" "Creating SSH key for work account..."
+    ssh-keygen -t ed25519 -f ~/.ssh/id_github_noovosoft
+    ssh-add ~/.ssh/id_github_noovosoft
+    print_log "${GREEN}" "Work account SSH key created successfully."
 else
-	print_log "${YELLOW}" "Work account SSH key already exists."
+    print_log "${YELLOW}" "Work account SSH key already exists."
 fi
 
 # Adding config file
 print_subheader "${GREEN}" "Adding SSH keys config"
 if [ ! -f ~/.ssh/config ]; then
-	cp github-ssh/config ~/.ssh/
+    cp github-ssh/config ~/.ssh/
 else
-	print_log "${YELLOW}" "A Config file already exists."
+    print_log "${YELLOW}" "A Config file already exists."
 fi
 
 print_subheader "${GREEN}" "SSH keys setup completed."
@@ -273,11 +273,11 @@ print_header "$GREEN" "Changing the default shell to zsh."
 current_shell=$(basename "$SHELL")
 
 if [ "$current_shell" = "zsh" ]; then
-	print_subheader "$LIGHT_PURPLE" "Zsh is already the default shell."
+    print_subheader "$LIGHT_PURPLE" "Zsh is already the default shell."
 else
-	print_subheader "$GREEN" "Changing default shell to Zsh..."
-	chsh -s "$(which zsh)"
-	print_log "$GREEN" "Default shell changed to Zsh."
+    print_subheader "$GREEN" "Changing default shell to Zsh..."
+    chsh -s "$(which zsh)"
+    print_log "$GREEN" "Default shell changed to Zsh."
 fi
 
 # Add current user to plugdev - For USB debugging & Tethering
@@ -293,13 +293,13 @@ read response
 response_lower=$(echo "$response" | tr '[:upper:]' '[:lower:]')
 
 if [[ $response_lower == "y" ]]; then
-	print_subheader "[+] Porting GNOME settings,shortcuts and extensions..."
-	dconf load -f / <gnome-settings.dconf
+    print_subheader "[+] Porting GNOME settings,shortcuts and extensions..."
+    dconf load -f / <gnome-settings.dconf
 
 elif [[ $response_lower == "n" ]]; then
-	print_log "$RED" "Skipping GNOME Settings installation."
+    print_log "$RED" "Skipping GNOME Settings installation."
 else
-	echo "Invalid response. Please enter 'Y/y' or 'N/n'."
+    echo "Invalid response. Please enter 'Y/y' or 'N/n'."
 fi
 
 print_subheader "$LIGHT_PURPLE" "Note: Tmux Plugin Manager is installed, Please press Prefix + I in a tmux session to load all the plugins"
@@ -320,12 +320,12 @@ read response
 response_lower=$(echo "$response" | tr '[:upper:]' '[:lower:]')
 
 if [[ $response_lower == "y" ]]; then
-	print_subheader "[+] Reloading shell..."
-	exec >/dev/tty 2>&1 # Stop logging to text file before reloading the shell
-	exec $SHELL -l
+    print_subheader "[+] Reloading shell..."
+    exec >/dev/tty 2>&1 # Stop logging to text file before reloading the shell
+    exec $SHELL -l
 elif [[ $response_lower == "n" ]]; then
-	print_log "$RED" "Please reload the shell to see the changes in effect."
+    print_log "$RED" "Please reload the shell to see the changes in effect."
 else
-	echo "Invalid response. Please enter 'Y/y' or 'N/n'."
+    echo "Invalid response. Please enter 'Y/y' or 'N/n'."
 fi
 # Fin.
