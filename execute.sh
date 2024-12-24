@@ -2,15 +2,11 @@
 source "./scripts/common/loggers.sh"
 source "./scripts/common/sys-links.sh"
 
-# Define an array of directories with source and target paths
-declare -A SYMLINKS=(
-    ["nvim-ghost"]="$HOME/.config/nvim-ghost"
-    ["other-nvims/nvim-code"]="$HOME/.config/nvim-code"
-    ["other-nvims/nvim-super"]="$HOME/.config/nvim-super"
-    ["other-nvims/nvim-front"]="$HOME/.config/nvim-front"
-)
+# Define the directories to be symlinked
+DOT_FOLDERS="nvim nvim-grimm"
 
-# Loop over the array to create symlinks
-for dir in "${!SYMLINKS[@]}"; do
-    create_symlink_stow "$dir" "${SYMLINKS[$dir]}"
+# Create symlinks for remaining folders
+for folder in $DOT_FOLDERS; do
+    create_symlink_stow "$folder" "$HOME/.config/$folder"
 done
+
