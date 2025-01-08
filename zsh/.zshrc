@@ -33,6 +33,19 @@ export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 # Bob
 export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/falconcodes/google-cloud-sdk/path.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/falconcodes/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/completion.zsh.inc'; fi
+
+# bun completions
+[ -s "/Users/prathameshchavan/.bun/_bun" ] && source "/Users/prathameshchavan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # set up defaults
 export EDITOR="nvim"
 export TERMINAL="alacritty"
@@ -314,26 +327,22 @@ alias rofirc='cd ~/.config/rofi/ && nvim .'
 alias dunstrc='cd ~/.config/dunst/ && nvim .'
 
 # My configs
+# move this to nvim and remove this
 alias nvim-ghost="NVIM_APPNAME=nvim-ghost nvim"
 alias nvghost="NVIM_APPNAME=nvim-ghost nvim"
 
-# move this to nvim-lazy and remove this
+# move this to nvim and remove this
 alias nvim-code="NVIM_APPNAME=nvim-code nvim"
 alias nvcode="NVIM_APPNAME=nvim-code nvim"
 
-# move this to nvim-lazy and remove this
-alias nvim-front="NVIM_APPNAME=nvim-front nvim"
-alias nvfront="NVIM_APPNAME=nvim-front nvim"
+alias nvim-lazy="NVIM_APPNAME=nvim-code nvim"
+alias nvlazy="NVIM_APPNAME=nvim-code nvim"
+alias lazyVim="NVIM_APPNAME=nvim-code nvim"
 
-# move to nvim and remove this
-alias nvim-grimm="NVIM_APPNAME=nvim-grimm nvim"
-alias nvgrimm="NVIM_APPNAME=nvim-grimm nvim"
-
-alias nvim-nyoom="NVIM_APPNAME=nvim-nyoom nvim"
 
 # Configs' launcher function
 function nvims() {
-  items=("default" "nvim-ghost" "nvim-super" "nvim-grim" "nvim-code")
+  items=("default" "nvim-ghost" "nvim-code" "nvim-lazy")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config - " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
@@ -344,19 +353,6 @@ function nvims() {
   NVIM_APPNAME=$config nvim $@
 }
 bindkey -s "^a" "nvims\n"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/falconcodes/google-cloud-sdk/path.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/falconcodes/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/completion.zsh.inc'; fi
-
-# bun completions
-[ -s "/Users/prathameshchavan/.bun/_bun" ] && source "/Users/prathameshchavan/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 # ASCII Shibang #!
 # shibang
