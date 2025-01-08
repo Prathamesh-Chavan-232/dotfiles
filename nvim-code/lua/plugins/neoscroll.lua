@@ -9,4 +9,5 @@ return {
       cursor_scrolls_alone = true,
     })
   end,
+  enabled = false,
 }

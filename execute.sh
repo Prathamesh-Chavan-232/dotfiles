@@ -3,10 +3,9 @@ source "./scripts/common/loggers.sh"
 source "./scripts/common/sys-links.sh"
 
 # Define the directories to be symlinked
-DOT_FOLDERS="nvim nvim-grimm"
+DOT_FOLDERS="nvim-nyoom"
 
 # Create symlinks for remaining folders
 for folder in $DOT_FOLDERS; do
     create_symlink_stow "$folder" "$HOME/.config/$folder"
 done
-

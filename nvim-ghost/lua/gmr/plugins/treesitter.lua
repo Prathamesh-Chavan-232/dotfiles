@@ -6,7 +6,7 @@ return {
         require('nvim-treesitter.configs').setup {
             ensure_installed = require('gmr.configs.treesitter.parsers').install_automatically(),
             sync_install = false,
-            auto_install = false,
+            auto_install = true,
             ignore_install = {},
             highlight = {
                 enable = true,

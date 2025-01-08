@@ -298,13 +298,14 @@ alias docker-kill-all-containers='docker kill $(docker ps -q)'
 alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
 alias docker-remove-all-images='docker rmi $(docker image ls -a -q)'
 
+# Open Dotfiles quickly
+alias dots='cd ~/keep-coding/falcon-dots/ && nvim .' # dotfiles are symlinked to this directory
+
 # Open config files quickly
 alias zshrc='nvim ~/.zshrc'
 alias tmuxrc='nvim ~/.config/tmux/tmux.conf'
-# Open Dotfiles quickly
-alias dots='cd ~/keep-coding/falcon-dots/ && nvim .' # dotfiles are symlinked to this directory
+
 # Open config folders quickly
-alias nvimmrc='cd ~/.config/nvim && nvim .'
 alias alacrittyrc='cd ~/.config/alacritty/ && nvim .'
 alias polybarrc='cd ~/config/polybar/ && nvim .'
 alias i3rc='cd ~/.config/i3/ && nvim .'
@@ -313,13 +314,6 @@ alias rofirc='cd ~/.config/rofi/ && nvim .'
 alias dunstrc='cd ~/.config/dunst/ && nvim .'
 
 # My configs
-# Vimacs with nvchad
-alias nvchad="NVIM_APPNAME=nvchad nvim"
-
-# lazyVim
-alias nvim-lazy="NVIM_APPNAME=nvim-lazy nvim"
-alias nvlazy="NVIM_APPNAME=nvim-lazy nvim"
-
 alias nvim-ghost="NVIM_APPNAME=nvim-ghost nvim"
 alias nvghost="NVIM_APPNAME=nvim-ghost nvim"
 
@@ -328,20 +322,18 @@ alias nvim-code="NVIM_APPNAME=nvim-code nvim"
 alias nvcode="NVIM_APPNAME=nvim-code nvim"
 
 # move this to nvim-lazy and remove this
-alias nvim-vallen="NVIM_APPNAME=nvim-vallen nvim"
-alias nvvallen="NVIM_APPNAME=nvim-vallen nvim"
-
-# move relevant things to nvim nvim-lazy, nvim-ghost and remove this
-alias nvim-super="NVIM_APPNAME=nvim-super nvim"
-alias nvsuper="NVIM_APPNAME=nvim-super nvim"
+alias nvim-front="NVIM_APPNAME=nvim-front nvim"
+alias nvfront="NVIM_APPNAME=nvim-front nvim"
 
 # move to nvim and remove this
-alias nvim-grim="NVIM_APPNAME=nvim-grim nvim"
-alias nvgrim="NVIM_APPNAME=nvim-grim nvim"
+alias nvim-grimm="NVIM_APPNAME=nvim-grimm nvim"
+alias nvgrimm="NVIM_APPNAME=nvim-grimm nvim"
+
+alias nvim-nyoom="NVIM_APPNAME=nvim-nyoom nvim"
 
 # Configs' launcher function
 function nvims() {
-  items=("default" "nvim-lazy" "nvim-ghost" "nvim-super" "nvim-grim" "nvim-code")
+  items=("default" "nvim-ghost" "nvim-super" "nvim-grim" "nvim-code")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config - " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
