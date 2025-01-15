@@ -1,5 +1,5 @@
 import = [
-    "~/.config/alacritty/themes/rose-pine-moon.toml",
+    "~/.config/alacritty/themes/bamboo.toml",
     "~/.config/alacritty/fonts.toml"
 ]
 
