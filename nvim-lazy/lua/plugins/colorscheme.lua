@@ -1,20 +1,31 @@
--- Theme
 return {
-  "ribru17/bamboo.nvim",
+  "sainnhe/sonokai",
   lazy = false,
   priority = 1000,
   config = function()
-    local bamboo = require("bamboo")
-    bamboo.setup({
-      transparent = true,
-    })
-    bamboo.load()
-
-    -- Highlights
-    vim.cmd.hi("clear", "NormalFloat")
-    vim.cmd.hi("link", "NormalFloat", "Normal")
+    vim.g.sonokai_enable_italic = true
+    vim.g.sonokai_transparent_background = true
+    vim.cmd.colorscheme("sonokai")
   end,
 }
+
+-- return {
+--   "ribru17/bamboo.nvim",
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+-- local theme = require("bamboo")
+-- theme.setup({
+--   transparent = true,
+-- })
+-- theme.load()
+--
+--     -- Highlights
+--     vim.cmd.hi("clear", "NormalFloat")
+--     vim.cmd.hi("link", "NormalFloat", "Normal")
+--   end,
+-- }
+
 -- return {
 --   { "Mofiqul/dracula.nvim" },
 --   {
@@ -67,17 +78,5 @@ return {
 --     --     },
 --     --   })
 --     -- end,
---   },
--- }
-
--- return {
---   {
---     "sainnhe/sonokai",
---     priority = 1000,
---     config = function()
---       vim.g.simple_colors = true
---       vim.g.sonokai_enable_italic = "1"
---       vim.g.sonokai_style = "andromeda"
---     end,
 --   },
 -- }

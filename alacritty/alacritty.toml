@@ -1,7 +1,3 @@
-import = [
-    "~/.config/alacritty/themes/bamboo.toml",
-    "~/.config/alacritty/fonts.toml"
-]
 
 [env]
 TERM = "xterm-256color"
@@ -22,3 +18,10 @@ bindings = [
 [cursor]
 [cursor.style]
 shape = "Block"
+
+[general]
+import = [
+    "~/.config/alacritty/themes/rose-pine.toml",
+    "~/.config/alacritty/fonts.toml"
+]
+
