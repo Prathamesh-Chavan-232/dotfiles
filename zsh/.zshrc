@@ -335,9 +335,9 @@ alias nvghost="NVIM_APPNAME=nvim-ghost nvim"
 alias nvim-code="NVIM_APPNAME=nvim-code nvim"
 alias nvcode="NVIM_APPNAME=nvim-code nvim"
 
-alias nvim-lazy="NVIM_APPNAME=nvim-code nvim"
-alias nvlazy="NVIM_APPNAME=nvim-code nvim"
-alias lazyVim="NVIM_APPNAME=nvim-code nvim"
+alias nvim-lazy="NVIM_APPNAME=nvim-lazy nvim"
+alias nvlazy="NVIM_APPNAME=nvim-lazy nvim"
+alias lazyVim="NVIM_APPNAME=nvim-lazy nvim"
 
 
 # Configs' launcher function
