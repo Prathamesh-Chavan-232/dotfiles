@@ -3,7 +3,7 @@ source "./scripts/common/loggers.sh"
 source "./scripts/common/sys-links.sh"
 
 # Define the directories to be symlinked
-DOT_FOLDERS="alacritty tmux starship nvim nvim-lazy nvim-code nvim-ghost"
+DOT_FOLDERS="alacritty tmux starship nvim nvim-lazy nvim-code nvim-ghost wezterm"
 
 # Create symlinks for remaining folders
 for folder in $DOT_FOLDERS; do

@@ -17,10 +17,10 @@ keymap("n", "<leader>wq", ":wq<CR>", opts) -- save and quit
 keymap("n", "<leader>qq", ":q!<CR>", opts) -- quit without saving
 keymap("n", "<leader>ww", ":w<CR>", opts) -- save
 keymap(
-  "n",
-  "<C-w>",
-  [[:lua if #vim.fn.getbufinfo({buflisted = 1}) > 1 then vim.cmd('bp|bd #') else vim.cmd('enew|bd #') end<CR>]],
-  opts
+	"n",
+	"<C-w>",
+	[[:lua if #vim.fn.getbufinfo({buflisted = 1}) > 1 then vim.cmd('bp|bd #') else vim.cmd('enew|bd #') end<CR>]],
+	opts
 )
 
 -- Move through word wrap
