@@ -1,5 +1,4 @@
-return {
-  {
+return { 
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     version = false,
@@ -7,7 +6,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "zig" },
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
       { "nvim-telescope/telescope-ui-select.nvim" },
       "danielfalk/smart-open.nvim",
       "kkharji/sqlite.lua",
@@ -56,5 +55,4 @@ return {
       telescope.load_extension("smart_open")
       telescope.load_extension("opener")
     end,
-  },
 }
