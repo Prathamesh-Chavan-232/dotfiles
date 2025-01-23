@@ -10,7 +10,7 @@ local conf = require('telescope.config').values
 
 -- Function to get the config path
 local function get_config_path()
-    return vim.fn.stdpath('config') .. '/lua/colorscheme.lua'
+    return vim.fn.stdpath('config') .. '/lua/config/colorscheme.lua'
 end
 
 -- Function to write colorscheme to config file

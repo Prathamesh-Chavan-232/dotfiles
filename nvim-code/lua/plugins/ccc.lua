@@ -1,4 +1,4 @@
---colorpicker for neovim
+-- colorpicker for neovim
 
 return {
   "uga-rosa/ccc.nvim",
