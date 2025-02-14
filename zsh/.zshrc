@@ -33,6 +33,10 @@ export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 # Bob
 export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
 
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/falconcodes/google-cloud-sdk/path.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -52,6 +56,7 @@ export TERMINAL="alacritty"
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 export GPG_TTY=$TTY
+
 
 # plugins
 # plug "esc/conda-zsh-completion"
@@ -209,12 +214,6 @@ function tn() {
 }
 
 # Aliases
-# Arch Maintenance
-#alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-#alias arch-mirrors="sudo reflector --verbose --latest 5 --country 'India' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
-#alias arch-maintenance="yay -Sc && sudo pacman -Scc"
-#alias arch-purge="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
-#alias arch-update="sudo pacman -Syu --nocombinedupgrade"
 
 # Networking
 # Stop after sending count ECHO_REQUEST packets #
@@ -227,9 +226,6 @@ alias sha1='openssl sha1'
 
 # Calculator
 alias bc='bc -l'
-
-# Apps
-alias musica="ncmpcpp"
 
 # Useful Terminal Commands
 # Show path
@@ -256,9 +252,8 @@ alias pscpu='ps auxf | sort -nr -k 3 | head -5'
 # Remarkable SSH
 alias remarkable_ssh='ssh root@10.11.99.1'
 alias restream='restream -p'
-# systemd
 
-alias mach_list_systemctl="systemctl list-unit-files --state=enabled"
+# systemd
 alias mach_java_mode="export SDKMAN_DIR="$HOME/.sdkman" && [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh""
 
 # VM
@@ -284,12 +279,6 @@ alias mkdir='mkdir -pv'
 # Easier to read disk
 alias df='df -h'     # human-readable sizes
 alias free='free -m' # show sizes in MB
-# pbcopy & pbpaste
-alias pbcopy='xclip -selection clipboard'
-# alias pbpaste='xclip -o'
-
-# ASCII shibang
-alias shibang='cermic 1 ~/keep-coding/falcon-dots/cermic-sh-art/images;echo ""'
 
 # Shortcuts
 # Tmux
@@ -313,19 +302,11 @@ alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
 alias docker-remove-all-images='docker rmi $(docker image ls -a -q)'
 
 # Open Dotfiles quickly
-alias dots='cd ~/keep-coding/falcon-dots/ && nvim .' # dotfiles are symlinked to this directory
+alias dots='cd ~/projects/terminal-dots/ && nvim .' # dotfiles are symlinked to this directory
 
 # Open config files quickly
 alias zshrc='nvim ~/.zshrc'
 alias tmuxrc='nvim ~/.config/tmux/tmux.conf'
-
-# Open config folders quickly
-alias alacrittyrc='cd ~/.config/alacritty/ && nvim .'
-alias polybarrc='cd ~/config/polybar/ && nvim .'
-alias i3rc='cd ~/.config/i3/ && nvim .'
-alias bspwmrc='cd ~/.config/bspwm/ && nvim .'
-alias rofirc='cd ~/.config/rofi/ && nvim .'
-alias dunstrc='cd ~/.config/dunst/ && nvim .'
 
 # My configs
 # move this to nvim and remove this
@@ -356,6 +337,3 @@ function nvims() {
 bindkey -s "^a" "nvims\n"
 
 source ~/.bash_profile
-
-# ASCII Shibang #!
-# shibang
