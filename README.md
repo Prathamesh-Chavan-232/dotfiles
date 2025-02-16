@@ -13,7 +13,7 @@ My Minimal Arch linux setup
 
 Backup and remove your old dotfiles. Read the script before executing it.
 
-### GNOME && GNOME extensions
+### GNOME & GNOME extensions
 
 #### Note
 
