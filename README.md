@@ -34,4 +34,4 @@ Backup and remove your old dotfiles. Read the script before executing it.
 ### Cloudflare DNS Servers
 
 - IPv4 - 1.1.1.1,1.0.0.1
-- IPv6 - 2606:4700:4700::111,2606:4700:4700::1001
+- IPv6 - 2606:4700:4700::1111, 2606:4700:4700::1001
