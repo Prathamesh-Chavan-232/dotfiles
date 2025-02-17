@@ -1,3 +1,5 @@
+#!/bin/bash
+source "../common/loggers.sh"
 
 # Installer
 install_packages() {
