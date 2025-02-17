@@ -80,31 +80,26 @@ return {
 			vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 		end
 
-		-- configure matlab server
-		lspconfig["matlab_ls"].setup({
+		 -- configure matlab server
+		 lspconfig["matlab_ls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-		})
-		-- configure yaml server
-		lspconfig["yamlls"].setup({
+		 })
+		 -- configure yaml server
+		 lspconfig["yamlls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-		})
-		-- configure htmx server
-		lspconfig["htmx"].setup({
+		 })
+		 -- configure htmx server
+		 lspconfig["htmx"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-		})
-		-- configure bash server
-		lspconfig["bashls"].setup({
+		 })
+		 -- configure html server
+		 lspconfig["html"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-		})
-		-- configure html server
-		lspconfig["html"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
+		 })
 
 		-- configure golang server
 		lspconfig["gopls"].setup({
