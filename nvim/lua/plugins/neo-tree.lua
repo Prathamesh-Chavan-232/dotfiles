@@ -76,13 +76,6 @@ return {
     window = {
       position = "left",
       width = 34,
-      mappings = {
-        ["o"] = "open",
-        ["<c-x>"] = "open_split",
-        ["<c-v>"] = "open_vsplit",
-        ["d"] = "trash",
-        ["D"] = "delete",
-      },
     },
     filesystem = {
       commands = {
