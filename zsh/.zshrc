@@ -336,7 +336,5 @@ function nvims() {
 }
 bindkey -s "^a" "nvims\n"
 
-source ~/.bash_profile
-
 # ASCII Shibang #!
 # shibang
