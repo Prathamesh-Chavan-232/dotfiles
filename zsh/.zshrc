@@ -310,12 +310,8 @@ alias tmuxrc='nvim ~/.config/tmux/tmux.conf'
 
 # My configs
 # move this to nvim and remove this
-alias nvim-ghost="NVIM_APPNAME=nvim-ghost nvim"
-alias nvghost="NVIM_APPNAME=nvim-ghost nvim"
-
-# move this to nvim and remove this
-alias nvim-code="NVIM_APPNAME=nvim-code nvim"
-alias nvcode="NVIM_APPNAME=nvim-code nvim"
+alias nvim-alt="NVIM_APPNAME=nvim-alt nvim"
+alias nvalt="NVIM_APPNAME=nvim-alt nvim"
 
 alias nvim-lazy="NVIM_APPNAME=nvim-lazy nvim"
 alias nvlazy="NVIM_APPNAME=nvim-lazy nvim"
@@ -324,7 +320,7 @@ alias lazyVim="NVIM_APPNAME=nvim-lazy nvim"
 
 # Configs' launcher function
 function nvims() {
-  items=("default" "nvim-ghost" "nvim-code" "nvim-lazy")
+  items=("default" "nvim-alt" "nvim-lazy")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config - " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
