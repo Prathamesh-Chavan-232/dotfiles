@@ -46,7 +46,7 @@ vim.opt.titlelen = 0 -- do not shorten title
 -- colorcolumn = "120",
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.fillchars:append({
-  stl = " ",
+	stl = " ",
 })
 
 vim.opt.shortmess:append("c")

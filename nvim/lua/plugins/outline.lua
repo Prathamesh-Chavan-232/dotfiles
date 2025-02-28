@@ -1,5 +1,3 @@
--- Code outline of a file in sidebar powered by LSP
-
 return {
   "hedyhli/outline.nvim",
   lazy = true,

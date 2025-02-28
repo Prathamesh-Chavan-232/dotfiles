@@ -1,31 +1,44 @@
--- Theme
 return {
-  'deparr/tairiki.nvim',
-  lazy = false,
-  priority = 1000, -- only necessary if you use tairiki as default theme
-  config = function()
-    require('tairiki').setup {
-      -- optional configuration here
-         transparent = true
-    }
-    require('tairiki').load() -- only necessary to use as default theme, has same behavior as ':colorscheme tairiki'
-  end,
-}
+	{
+		"ribru17/bamboo.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			local bamboo = require("bamboo")
+			bamboo.setup({
+				transparent = true,
+			})
 
--- return {
---   "daschw/leaf.nvim",
---   lazy = false,
---   priority = 1000,
---   config = function()
---     local bamboo = require("leaf")
---     bamboo.setup({
---       contrast = "medium",
---       transparent = true,
---     })
---     bamboo.load()
---
---     -- Highlights
---     vim.cmd.hi("clear", "NormalFloat")
---     vim.cmd.hi("link", "NormalFloat", "Normal")
---   end,
--- }
+			-- Highlights
+			vim.cmd.hi("clear", "NormalFloat")
+			vim.cmd.hi("link", "NormalFloat", "Normal")
+		end,
+	},
+	{
+		"deparr/tairiki.nvim",
+		lazy = false,
+		priority = 1000, -- only necessary if you use tairiki as default theme
+		config = function()
+			require("tairiki").setup({
+				-- optional configuration here
+				transparent = true,
+			})
+		end,
+	},
+	{
+		"daschw/leaf.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			local leaf = require("leaf")
+			leaf.setup({
+				contrast = "medium",
+				transparent = true,
+			})
+
+			-- Highlights
+			vim.cmd.hi("clear", "NormalFloat")
+			vim.cmd.hi("link", "NormalFloat", "Normal")
+		end,
+	},
+}

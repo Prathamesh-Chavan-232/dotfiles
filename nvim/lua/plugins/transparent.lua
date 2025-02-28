@@ -1,7 +1,7 @@
 return {
   {
     "xiyaowong/transparent.nvim",
-    enabled = false,
+    enabled = true,
     config = function()
       require("transparent").clear_prefix("WinBar")
       require("transparent").clear_prefix("ToggleTerm1")

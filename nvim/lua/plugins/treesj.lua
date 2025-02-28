@@ -1,10 +1,9 @@
---TODO: find the working of this plugin
---TODO: find a faster plugin for the same job / make this plugin faster
+--TODO:find the working of this plugin
 return {
   "Wansmer/treesj",
-  keys = { "<leader>m" },
+  keys = { "<leader>m", "<leader>j", "<leader>s" },
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   config = function()
-     require("treesj").setup({})
+    require("treesj").setup({})
   end,
 }

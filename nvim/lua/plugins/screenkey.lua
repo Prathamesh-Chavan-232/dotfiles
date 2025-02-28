@@ -1,12 +1,7 @@
--- shows your keystrokes at the bottom, not that good
-
 return {
   "NStefan002/screenkey.nvim",
   cmd = "Screenkey",
   version = "*",
-   keys = {
-    { "<leader>kt", "<cmd>Screenkey<CR>", desc = "Toggle Screen keys" }
-   },
   config = function()
     require("screenkey").setup({
       -- see :h nvim_open_win
