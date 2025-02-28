@@ -1,3 +1,3 @@
 return {
-  "m-demare/hlargs.nvim",
+	"m-demare/hlargs.nvim",
 }

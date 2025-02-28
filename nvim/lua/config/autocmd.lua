@@ -118,3 +118,31 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- resize neovim split when terminal is resized
 vim.api.nvim_command("autocmd VimResized * wincmd =")
+
+vim.api.nvim_create_user_command("FormatProject", function()
+	local file_patterns = "**/*.{js,jsx,ts,tsx,lua,html,css,json,md}"
+
+	-- Get all matching files in the current directory
+	local files = vim.fn.glob(file_patterns, false, true)
+
+	-- Track current buffer to return to it
+	local current_bufnr = vim.api.nvim_get_current_buf()
+
+	-- Format each file
+	for _, file_path in ipairs(files) do
+		-- Skip node_modules and similar directories
+		if not file_path:match("node_modules") and not file_path:match("%.git/") then
+			vim.cmd("edit " .. file_path)
+
+			-- Format using none-ls
+			vim.cmd("lua vim.lsp.buf.format({ async = false })")
+
+			-- Save the file
+			vim.cmd("write")
+		end
+	end
+
+	-- Return to the original buffer
+	vim.cmd("buffer " .. current_bufnr)
+	vim.cmd('echo "Formatted ' .. #files .. ' files"')
+end, {})

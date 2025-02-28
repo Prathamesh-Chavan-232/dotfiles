@@ -29,13 +29,13 @@ local opt = vim.opt
 -- opt.background = 'dark'
 opt.backup = false
 opt.cmdheight = 0
-opt.completeopt = { 'menu', 'menuone', 'noselect' }
+opt.completeopt = { "menu", "menuone", "noselect" }
 opt.conceallevel = 3
 opt.confirm = true
 opt.cursorline = true
 opt.expandtab = true
-opt.fillchars:append { eob = ' ' }
-opt.grepprg = 'rg --vimgrep'
+opt.fillchars:append({ eob = " " })
+opt.grepprg = "rg --vimgrep"
 -- opt.guifont = 'BlexMono Nerd Font Mono:h13'
 opt.ignorecase = true
 -- opt.inccommand = 'split'
@@ -46,7 +46,7 @@ opt.laststatus = 3
 --     tab = '│ ',
 --     trail = ' ',
 -- }
-opt.mouse = 'a'
+opt.mouse = "a"
 opt.number = true
 opt.numberwidth = 1
 opt.pumheight = 10
@@ -54,19 +54,19 @@ opt.relativenumber = true
 opt.scrolloff = 8
 opt.shiftwidth = 4
 opt.showcmd = true
-opt.showcmdloc = 'statusline'
+opt.showcmdloc = "statusline"
 opt.showmode = false
 opt.showtabline = 1
 opt.sidescroll = 3
 opt.sidescrolloff = 3
-opt.signcolumn = 'yes'
+opt.signcolumn = "yes"
 opt.smartcase = false
 opt.smartindent = true
 opt.spell = false
-opt.spelllang = 'en_us'
-opt.spelloptions = 'camel'
+opt.spelllang = "en_us"
+opt.spelloptions = "camel"
 opt.splitbelow = true
-opt.splitkeep = 'screen'
+opt.splitkeep = "screen"
 opt.splitright = true
 opt.swapfile = false
 opt.tabstop = 4
@@ -74,39 +74,39 @@ opt.timeoutlen = 800
 opt.undofile = true
 opt.undolevels = 10000
 opt.updatetime = 200
-opt.virtualedit = 'block'
+opt.virtualedit = "block"
 -- opt.wildoptions = ''
 opt.wrap = false
 
 if vim.g.neovide then
-    opt.linespace = -1
+	opt.linespace = -1
 
-    -- emulate alacritty font rendering
-    vim.g.neovide_text_gamma = 0.8
-    vim.g.neovide_text_contrast = 0.1
+	-- emulate alacritty font rendering
+	vim.g.neovide_text_gamma = 0.8
+	vim.g.neovide_text_contrast = 0.1
 
-    -- padding
-    vim.g.neovide_padding_top = 5
-    vim.g.neovide_padding_left = 4
+	-- padding
+	vim.g.neovide_padding_top = 5
+	vim.g.neovide_padding_left = 4
 
-    -- disable blur
-    vim.g.neovide_window_blurred = false
-    vim.g.neovide_floating_blur_amount_x = 0.0
-    vim.g.neovide_floating_blur_amount_y = 0.0
-    vim.g.neovide_floating_shadow = false
-    vim.g.neovide_floating_z_height = 0
-    vim.g.neovide_light_angle_degrees = 0
-    vim.g.neovide_light_radius = 0
+	-- disable blur
+	vim.g.neovide_window_blurred = false
+	vim.g.neovide_floating_blur_amount_x = 0.0
+	vim.g.neovide_floating_blur_amount_y = 0.0
+	vim.g.neovide_floating_shadow = false
+	vim.g.neovide_floating_z_height = 0
+	vim.g.neovide_light_angle_degrees = 0
+	vim.g.neovide_light_radius = 0
 
-    -- other options
-    vim.g.neovide_transparency = 1.0
-    vim.g.neovide_hide_mouse_when_typing = true
-    vim.g.neovide_underline_stroke_scale = 0.5
-    vim.g.neovide_refresh_rate = 60
-    vim.g.neovide_fullscreen = false
-    vim.g.neovide_remember_window_size = false
+	-- other options
+	vim.g.neovide_transparency = 1.0
+	vim.g.neovide_hide_mouse_when_typing = true
+	vim.g.neovide_underline_stroke_scale = 0.5
+	vim.g.neovide_refresh_rate = 60
+	vim.g.neovide_fullscreen = false
+	vim.g.neovide_remember_window_size = false
 
-    vim.cmd [[
+	vim.cmd([[
         " system clipboard
         nmap <c-c> "+y
         vmap <c-c> "+y
@@ -115,8 +115,8 @@ if vim.g.neovide then
         cnoremap <c-v> <c-r>+
         " use <c-r> to insert original character without triggering things like auto-pairs
         inoremap <c-r> <c-v>
-    ]]
+    ]])
 
-    -- fzf looks weird without this
-    vim.fn.setcellwidths { { 0x2002, 0x2002, 2 } }
+	-- fzf looks weird without this
+	vim.fn.setcellwidths({ { 0x2002, 0x2002, 2 } })
 end

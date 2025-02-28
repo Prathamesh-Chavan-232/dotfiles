@@ -1,6 +1,1 @@
-vim.keymap.set(
-    'n',
-    '<leader>ct',
-    '<cmd>ColorizerToggle<cr>',
-    { desc = 'Toggle nvim-colorizer.lua ' }
-)
+vim.keymap.set("n", "<leader>ct", "<cmd>ColorizerToggle<cr>", { desc = "Toggle nvim-colorizer.lua " })

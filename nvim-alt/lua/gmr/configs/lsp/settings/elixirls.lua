@@ -1,5 +1,5 @@
 local config = {
-    cmd = { 'elixir-ls' },
+	cmd = { "elixir-ls" },
 }
 
 return config
