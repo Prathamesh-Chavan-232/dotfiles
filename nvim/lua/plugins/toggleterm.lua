@@ -6,7 +6,7 @@ return {
 	"akinsho/toggleterm.nvim",
 	cmd = "ToggleTerm",
 	keys = {
-		{ "<A-t>", "<cmd>ToggleTerm size=" .. size() .. "<cr>", desc = "Toggle Terminal", mode = "n" },
+		{ "<C-\\>", "<cmd>ToggleTerm size=" .. size() .. "<cr>", desc = "Toggle Terminal", mode = "n" },
 		{ "<A-t>", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal", mode = "t" },
 	},
 	opts = {

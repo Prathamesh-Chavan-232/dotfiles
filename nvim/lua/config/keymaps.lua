@@ -16,12 +16,6 @@ keymap("n", "<C-s>", vim.cmd.write, opts) -- ctrl s to save
 keymap("n", "<leader>wq", ":wq<CR>", opts) -- save and quit
 keymap("n", "<leader>qq", ":q!<CR>", opts) -- quit without saving
 keymap("n", "<leader>ww", ":w<CR>", opts) -- save
-keymap(
-	"n",
-	"<C-w>",
-	[[:lua if #vim.fn.getbufinfo({buflisted = 1}) > 1 then vim.cmd('bp|bd #') else vim.cmd('enew|bd #') end<CR>]],
-	opts
-)
 
 -- Move through word wrap
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
