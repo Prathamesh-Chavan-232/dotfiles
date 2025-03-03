@@ -1,16 +1,15 @@
 return {
-	"alexghergh/nvim-tmux-navigation",
-	config = function()
-		require("nvim-tmux-navigation").setup({
-			disable_when_zoomed = true, -- defaults to false
-			keybindings = {
-				left = "<C-h>",
-				down = "<C-j>",
-				up = "<C-k>",
-				right = "<C-l>",
-				last_active = "<C-\\>",
-				next = "<C-Space>",
-			},
-		})
-	end,
+	"christoomey/vim-tmux-navigator",
+	lazy = false,
+	keys = {
+		{ "<C-\\>", "<cmd>TmuxNavigatePrevious<cr>", desc = "Go to the previous pane" },
+
+		{ "<C-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "Got to the left pane" },
+
+		{ "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Got to the down pane" },
+
+		{ "<C-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Got to the up pane" },
+
+		{ "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Got to the right pane" },
+	},
 }
