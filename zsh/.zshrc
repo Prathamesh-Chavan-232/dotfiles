@@ -21,6 +21,7 @@ export PATH="$PATH:$ANDROID_SDK_ROOT"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH="$PATH:$HOME/.local/bin"
 
 # Node version manager
 export NVM_DIR="$HOME/.nvm"
@@ -293,16 +294,11 @@ alias ....='z ../../'
 alias ..2='z ../../'
 alias .....='z ../../../'
 alias ..3='z ../../../'
-# cd into projects easily
-alias work="cd ~/keep-coding/work/"
 
 # Docker
 alias docker-kill-all-containers='docker kill $(docker ps -q)'
 alias docker-remove-all-containers='docker rm $(docker ps -a -q)'
 alias docker-remove-all-images='docker rmi $(docker image ls -a -q)'
-
-# Open Dotfiles quickly
-alias dots='cd ~/projects/terminal-dots/ && nvim .' # dotfiles are symlinked to this directory
 
 # Open config files quickly
 alias zshrc='nvim ~/.zshrc'

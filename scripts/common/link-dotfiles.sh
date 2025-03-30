@@ -1,3 +1,5 @@
+#!/bin/bash
+
 link_dotfiles() {
     print_header "$LIGHT_PURPLE" "Backing up existing config files"
     mv ~/.zshrc ~/.zshrc.bak
@@ -8,7 +10,7 @@ link_dotfiles() {
     create_symlink "zsh" "$HOME"
 
     # Create symlinks for remaining folders
-    DOT_FOLDERS="nvim"
+    DOT_FOLDERS="nvim nvim-alt nvim-lazy tmux vim"
     for folder in $DOT_FOLDERS; do
       create_symlink "$folder" "$HOME/.config/$folder"
     done

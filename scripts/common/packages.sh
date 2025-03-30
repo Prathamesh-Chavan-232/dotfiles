@@ -1,5 +1,4 @@
 #!/bin/bash
-source "loggers.sh"
 
 install_neovim() {
     # Installing Neovim

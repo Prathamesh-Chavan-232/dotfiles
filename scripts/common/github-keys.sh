@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source "loggers.sh"
-
 setup_github_keys() {
     # Add github account SSH Keys
     print_header "${GREEN}" "Adding Github Accounts SSH keys"
@@ -36,15 +34,4 @@ setup_github_keys() {
     print_subheader "${GREEN}" "SSH keys setup completed."
 }
 
-# This part allows the script to be sourced without executing
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    # Script is being run directly
-
-    # Source the necessary dependencies
-    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    source "$SCRIPT_DIR/loggers.sh"
-
-    # Execute the main function
-    setup_github_keys
-fi
 
