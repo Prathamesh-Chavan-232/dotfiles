@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = { "*.cpp", "*.cc" },
 	callback = function()
-		vim.keymap.set("n", "<leader>e", ":terminal ./a.out<CR>", { silent = true })
+		vim.keymap.set("n", "<leader>rf", ":terminal ./a.out<CR>", { silent = true })
 		-- vim.keymap.set("n", "<Leader>e", ":!./sfml-app<CR>",
 		--    { silent = true })
 	end,
