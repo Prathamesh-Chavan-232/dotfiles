@@ -1,29 +1,10 @@
+-- Shorten function name
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- Set leader key to space
 vim.g.mapleader = " "
-
--- Increment/decrement
--- keymap.set("n", "+", "<C-a>")
--- keymap.set("n", "-", "<C-x>")
-
--- Save with root permission (not working for now)
---vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
-
--- Diagnostics
-keymap("n", "<C-n>", function()
-	vim.diagnostic.goto_next()
-end, opts)
-
-keymap("n", "<leader>r", function()
-	require("craftzdog.hsl").replaceHexWithHSL()
-end)
-
-keymap("n", "<leader>i", function()
-	require("craftzdog.lsp").toggleInlayHints()
-end)
 
 -- General keymaps
 keymap("n", "gx", ":!open <c-r><c-a><CR>", opts) -- open URL under cursor
@@ -37,14 +18,14 @@ keymap("n", "<leader>qq", ":q!<CR>", opts) -- quit without saving
 keymap("n", "<leader>ww", ":w<CR>", opts) -- save
 
 -- Move through word wrap
-keymap("n", "k", "v:count == 4 ? 'gk' : 'k'", { expr = true, silent = true })
-keymap("n", "j", "v:count == 4 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Move lines up & down like Vscode
-keymap("n", "<A-j>", ":m .+5<CR>==", opts)
-keymap("n", "<A-k>", ":m .2<CR>==", opts)
-keymap({ "v", "x" }, "<A-j>", ":m '>+5<CR>gv=gv", opts)
-keymap({ "v", "x" }, "<A-k>", ":m '<2<CR>gv=gv", opts)
+keymap("n", "<A-j>", ":m .+1<CR>==", opts)
+keymap("n", "<A-k>", ":m .-2<CR>==", opts)
+keymap({ "v", "x" }, "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap({ "v", "x" }, "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- Keep cursor at same place on J
 keymap("n", "J", "mzJ`z", opts)
@@ -72,27 +53,8 @@ keymap("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
 keymap({ "n", "v" }, "<leader>y", '"+y', opts)
 keymap({ "n", "v" }, "<leader>Y", '"+Y', opts)
 
--- Select all
-keymap("n", "<C-a>", "gg<S-v>G")
-
--- Delete a word backwards
-keymap("n", "dw", 'vb"_d')
-
--- Do Yank, Cut, Delete without affecting the registers
-keymap("n", "x", '"_x')
-keymap("n", "<leader>p", '"4p')
-keymap("n", "<leader>P", '"4P')
-keymap("v", "<leader>p", '"4p')
-keymap("n", "<leader>c", '"_c')
-keymap("n", "<leader>C", '"_C')
-keymap("v", "<leader>c", '"_c')
-keymap("v", "<leader>C", '"_C')
-keymap("n", "<leader>d", '"_d')
-
-keymap("n", "<leader>D", '"_D')
-keymap("v", "<leader>d", '"_d')
-keymap("v", "<leader>D", '"_D')
-keymap("n", "<leader>d", [["_d]], opts)
+-- Delete without losing previous yank
+keymap({ "n", "v" }, "<leader>d", [["_d]], opts)
 
 -- Paste over something without losing it
 keymap("x", "<leader>p", [["_dP]], opts)
@@ -106,14 +68,9 @@ keymap("n", "<leader>=", "<cmd>!chmod +x %<CR>", { silent = true })
 -- Buffer Management
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<leader>bd", ":bclose<CR>", opts)
 
--- Split window
-keymap("n", "ss", ":split<Return>", opts)
-keymap("n", "sv", ":vsplit<Return>", opts)
 -- Tab management
--- New tab
-keymap("n", "te", ":tabedit")
-
 keymap("n", "<leader>to", ":tabnew<CR>", opts) -- open a new tab
 keymap("n", "<leader>td", ":tabclose<CR>", opts)
 keymap("n", "<leader>tn", ":tabn<CR>", opts) -- next tab
@@ -128,10 +85,22 @@ keymap("n", "<leader>sd", ":close<CR>", opts) -- close split window
 keymap("n", "<leader>se", "<C-w>=", opts) -- make split windows equal width
 
 -- Resize window with arrow keys
-keymap("n", "<C-Up>", ":resize 2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +6<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize 2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +6<CR>", opts)
+keymap("n", "<C-Up>", ":resize -2<CR>", opts)
+keymap("n", "<C-Down>", ":resize +2<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+
+-- Window navigation
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- Terminal navigation
+keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
+keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
+keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Quickfix keymaps
 keymap("n", "<leader>qo", ":copen<CR>", opts) -- open quickfix list
@@ -150,25 +119,16 @@ keymap("n", "<leader>mr", ":FlutterReload<CR>", opts)
 keymap("n", "<leader>mR", ":FlutterRestart<CR>", opts)
 keymap("n", "<leader>mq", ":FlutterQuit<CR>", opts)
 
-keymap("n", "<leader>ts", "<cmd>set spell!<CR>", { desc = "Toggle spell check" })
-keymap("n", "<leader>th", "<cmd>set hlsearch!<CR>", { desc = "Toggle highlights (hlsearch)" })
+vim.keymap.set("n", "<leader>ts", "<cmd>set spell!<CR>", { desc = "Toggle spell check" })
+vim.keymap.set("n", "<leader>th", "<cmd>set hlsearch!<CR>", { desc = "Toggle highlights (hlsearch)" })
 
-keymap("n", "]b", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
-keymap("n", "[b", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
+vim.keymap.set("n", "]b", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
+vim.keymap.set("n", "[b", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
 
--- -- Disable continuations
-keymap("n", "<leader>o", "o<Esc>^Da", opts)
-keymap("n", "<leader>O", "O<Esc>^Da", opts)
+vim.keymap.set("n", "<leader>lo", "<cmd>lopen<CR>", { desc = "Open location list" })
+vim.keymap.set("n", "<leader>lc", "<cmd>lclose<CR>", { desc = "Close location list" })
+vim.keymap.set("n", "<leader>ln", "<cmd>lnext<CR>", { desc = "Next location list item" })
+vim.keymap.set("n", "<leader>lp", "<cmd>lprev<CR>", { desc = "Previous location list item" })
 
-keymap("n", "<C-m>", "<C-i>", opts)
-keymap("n", "<leader>lo", "<cmd>lopen<CR>", { desc = "Open location list" })
-keymap("n", "<leader>lc", "<cmd>lclose<CR>", { desc = "Close location list" })
-keymap("n", "<leader>ln", "<cmd>lnext<CR>", { desc = "Next location list item" })
-keymap("n", "<leader>lp", "<cmd>lprev<CR>", { desc = "Previous location list item" })
-
--- Visual keymaps
--- keymap("v", "<C-s>", ":sort<CR>") -- Sort highlighted text in visual mode with Control+S
-
-vim.api.nvim_create_user_command("ToggleAutoformat", function()
-	require("craftzdog.lsp").toggleAutoformat()
-end, {})
+-- Visual vim.keymap.sets
+-- vim.keymap.set("v", "<C-s>", ":sort<CR>") -- Sort highlighted text in visual mode with Control+S

@@ -2,63 +2,6 @@
 # Zap Plugin Manager
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-# source $HOME/keep-coding/personal/fast-project-package/fast-project.sh
-
-export PATH="$PATH:/opt/homebrew/bin"
-
-# pnpm
-export PNPM_HOME="/home/falconcodes/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# Flutter
-export PATH="$PATH:/opt/flutter"
-export ANDROID_SDK_ROOT="/home/falconcodes/Android/Sdk"
-export PATH="$PATH:$ANDROID_SDK_ROOT"
-export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
-export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
-export PATH=$PATH:$HOME/.cargo/bin
-export PATH="$PATH:$HOME/.local/bin"
-
-# Node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# smart tmux sessions
-export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
-
-# Bob
-export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
-
-# Go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/falconcodes/google-cloud-sdk/path.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/falconcodes/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/completion.zsh.inc'; fi
-
-# bun completions
-[ -s "/Users/prathameshchavan/.bun/_bun" ] && source "/Users/prathameshchavan/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# set up defaults
-export EDITOR="nvim"
-export TERMINAL="alacritty"
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
-export GPG_TTY=$TTY
-
-
 # plugins
 # plug "esc/conda-zsh-completion"
 # plug "MAHcodes/distro-prompt"
@@ -97,9 +40,18 @@ setopt HIST_IGNORE_DUPS  # Do not write events to history that are duplicates of
 setopt HIST_FIND_NO_DUPS # When searching history don't display results already cycled through twice
 setopt COMPLETE_IN_WORD  # Complete from both ends of a word.
 
+
+# Set up defaults
 HISTFILE=~/.cache/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
+
+export EDITOR="nvim"
+# export TERMINAL="alacritty"
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+export GPG_TTY=$TTY
+
 
 # Keybinds
 # vi mode
@@ -305,21 +257,15 @@ alias zshrc='nvim ~/.zshrc'
 alias tmuxrc='nvim ~/.config/tmux/tmux.conf'
 
 # My configs
-# move this to nvim and remove this
-alias nvim-alt="NVIM_APPNAME=nvim-alt nvim"
-alias nvalt="NVIM_APPNAME=nvim-alt nvim"
-
-alias nvim-lazy="NVIM_APPNAME=nvim-lazy nvim"
-alias nvlazy="NVIM_APPNAME=nvim-lazy nvim"
-alias lazyVim="NVIM_APPNAME=nvim-lazy nvim"
-
+alias nv="NVIM_APPNAME=nvim-alt nvim"
+alias nvim-code="NVIM_APPNAME=nvim-alt nvim"
 
 # Configs' launcher function
 function nvims() {
-  items=("default" "nvim-alt" "nvim-lazy")
+  items=("default" "nvim" "nvim-code")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config - " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
-    echo "Nothing selected"
+    echo "Nothing selected lol"
     return 0
   elif [[ $config == "default" ]]; then
     config=""
@@ -327,6 +273,67 @@ function nvims() {
   NVIM_APPNAME=$config nvim $@
 }
 bindkey -s "^a" "nvims\n"
+
+# source $HOME/keep-coding/personal/fast-project-package/fast-project.sh
+
+
+# Export to path
+
+# pnpm
+export PNPM_HOME="/home/falconcodes/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Flutter
+export PATH="$PATH:/opt/flutter"
+export ANDROID_SDK_ROOT="/home/falconcodes/Android/Sdk"
+export PATH="$PATH:$ANDROID_SDK_ROOT"
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH="$PATH:$HOME/.local/bin"
+
+# Node version manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# smart tmux sessions
+export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+
+# Bob
+export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
+
+# Go
+export PATH=$PATH:/usr/local/go/bin
+
+# # The next line updates PATH for the Google Cloud SDK.
+# if [ -f '/home/falconcodes/google-cloud-sdk/path.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/path.zsh.inc'; fi
+#
+# # The next line enables shell command completion for gcloud.
+# if [ -f '/home/falconcodes/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/falconcodes/google-cloud-sdk/completion.zsh.inc'; fi
+#
+# # Bun completions
+# [ -s "/Users/prathameshchavan/.bun/_bun" ] && source "/Users/prathameshchavan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+
+# Restart your shell for the changes to take effect.
+
+# Load pyenv-virtualenv automatically by adding
+# the following to ~/.bashrc:
+
+eval "$(pyenv virtualenv-init -)"
 
 # ASCII Shibang #!
 # shibang

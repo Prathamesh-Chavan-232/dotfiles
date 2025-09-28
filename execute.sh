@@ -6,8 +6,13 @@ source "./scripts/common/link-dotfiles.sh"
 source "./scripts/common/github-keys.sh"
 source "./scripts/common/packages.sh"
 
-link_dotfiles
-setup_github_keys
+# Create symlinks for remaining folders
+DOT_FOLDERS="nvim nvim-code"
+for folder in $DOT_FOLDERS; do
+  create_symlink "$folder" "$HOME/.config/$folder"
+done
 
+# link_dotfiles
+# setup_github_keys
 # install_neovim
 # install_plugin_managers
