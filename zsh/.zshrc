@@ -337,3 +337,5 @@ eval "$(pyenv virtualenv-init -)"
 
 # ASCII Shibang #!
 # shibang
+eval "$(pyenv init -)"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
