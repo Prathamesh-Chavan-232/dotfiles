@@ -7,7 +7,7 @@ source "./scripts/common/github-keys.sh"
 source "./scripts/common/packages.sh"
 
 # Create symlinks for remaining folders
-DOT_FOLDERS="nvim nvim-code"
+DOT_FOLDERS="tmux nvim nvim-code wezterm"
 for folder in $DOT_FOLDERS; do
   create_symlink "$folder" "$HOME/.config/$folder"
 done
