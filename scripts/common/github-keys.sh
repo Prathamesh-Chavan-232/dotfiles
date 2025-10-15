@@ -14,16 +14,6 @@ setup_github_keys() {
         print_log "${YELLOW}" "Personal account SSH key already exists."
     fi
 
-    # Work account
-    if [ ! -f ~/.ssh/id_github_noovosoft ]; then
-        print_log "${GREEN}" "Creating SSH key for work account..."
-        ssh-keygen -t ed25519 -f ~/.ssh/id_github_noovosoft
-        ssh-add ~/.ssh/id_github_noovosoft
-        print_log "${GREEN}" "Work account SSH key created successfully."
-    else
-        print_log "${YELLOW}" "Work account SSH key already exists."
-    fi
-
     # Adding config file
     print_subheader "${GREEN}" "Adding SSH keys config"
     if [ ! -f ~/.ssh/config ]; then
