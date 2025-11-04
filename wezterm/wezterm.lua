@@ -32,7 +32,7 @@ config.font = wezterm.font("JetBrains Mono Regular")
 config.cell_width = 0.9
 config.window_background_opacity = 0.85
 config.prefer_egl = true
-config.font_size = 18.0
+config.font_size = 16.0
 
 config.window_padding = {
 	left = 0,
