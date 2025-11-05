@@ -52,12 +52,12 @@ return {
 			suggestion = {
 				auto_trigger = true,
 				keymap = {
-					-- accept = "<C-l>",
-					accept_word = "<M-l>",
-					accept_line = "<M-S-l>",
+					accept = "<C-CR>",
+					accept_word = "<M-CR>",
+					accept_line = "<M-S-CR>",
 					next = "<M-]>",
 					prev = "<M-[>",
-					dismiss = "<C-]>",
+					-- dismiss = "<C-]>",
 				},
 			},
 			filetypes = {
