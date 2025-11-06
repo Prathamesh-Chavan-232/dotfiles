@@ -1,6 +1,6 @@
 # Dotfiles
 
-My Minimal Arch linux setup
+My Linux setup
 
 ## Before Installing
 
