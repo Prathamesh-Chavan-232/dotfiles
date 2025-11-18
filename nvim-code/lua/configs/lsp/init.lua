@@ -1,7 +1,7 @@
 local M = {}
 
 local fzf_lua = require("fzf-lua")
-local navic_attach = require("gmr.configs.lsp.navic").attach
+local navic_attach = require("configs.lsp.navic").attach
 
 --- @param client vim.lsp.Client
 --- @param bufnr integer
@@ -60,7 +60,7 @@ function M.on_attach(client, bufnr)
 	end
 
 	if client.supports_method(methods.textDocument_documentHighlight) then
-		local augroup = vim.api.nvim_create_augroup("gmr_lsp_document_highlight", { clear = false })
+		local augroup = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
 
 		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 			group = augroup,
@@ -94,11 +94,23 @@ end
 
 function M.setup_diagnostic_config()
 	local diagnostics_icons = {
-		ERROR = "",
-		WARN = "",
-		HINT = "",
-		INFO = "",
+		ERROR = "",
+		WARN = "",
+		HINT = "",
+		INFO = "",
 	}
+
+	-- Add diagnostic signs (from lspconfig.lua)
+	local signs = {
+		{ name = "DiagnosticSignError", text = "󰅗" },
+		{ name = "DiagnosticSignWarn", text = "󰀧 " },
+		{ name = "DiagnosticSignHint", text = "󰌵 " },
+		{ name = "DiagnosticSignInfo", text = " " },
+	}
+
+	for _, sign in ipairs(signs) do
+		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+	end
 
 	vim.diagnostic.config({
 		underline = true,
@@ -113,7 +125,7 @@ function M.setup_diagnostic_config()
 				return string.format("%s %s: %s ", icon, diagnostic.source, diagnostic.message)
 			end,
 		},
-		signs = false,
+		signs = true,  -- Changed from false to true
 		float = { source = true, border = "single" },
 		update_in_insert = false,
 		severity_sort = true,
@@ -122,7 +134,7 @@ end
 
 function M.setup_handlers()
 	local methods = vim.lsp.protocol.Methods
-	local handlers = require("gmr.configs.lsp.handlers")
+	local handlers = require("configs.lsp.handlers")
 
 	vim.lsp.handlers[methods.textDocument_definition] = handlers.goto_definition()
 

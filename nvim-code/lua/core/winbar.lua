@@ -28,7 +28,7 @@ local winbar_filetype_exclude = {
 local function get_filename()
 	local filename = vim.fn.expand("%:.")
 	local extension = vim.fn.expand("%:e")
-	local utils = require("gmr.core.utils")
+	local utils = require("core.utils")
 
 	if not utils.is_nil_or_empty_string(filename) then
 		local ok, web_devicons = pcall(require, "nvim-web-devicons")
@@ -83,7 +83,7 @@ local get_navic = function()
 		return ""
 	end
 
-	if not require("gmr.core.utils").is_nil_or_empty_string(navic_location) then
+	if not require("core.utils").is_nil_or_empty_string(navic_location) then
 		return "" .. " " .. navic_location
 	end
 
@@ -104,7 +104,7 @@ local function get_winbar()
 		return
 	end
 
-	local utils = require("gmr.core.utils")
+	local utils = require("core.utils")
 	local value = get_filename()
 
 	if not utils.is_nil_or_empty_string(value) and utils.is_unsaved() then
@@ -140,7 +140,7 @@ vim.api.nvim_create_autocmd({
 	"BufWritePost",
 	"TabClosed",
 }, {
-	group = vim.api.nvim_create_augroup("gmr_winbar", { clear = true }),
+	group = vim.api.nvim_create_augroup("winbar", { clear = true }),
 	callback = function()
 		local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
 		if not status_ok then

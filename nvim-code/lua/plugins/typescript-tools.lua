@@ -3,7 +3,7 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		require("typescript-tools").setup({
-			on_attach = require("gmr.configs.lsp").on_attach,
+			on_attach = require("configs.lsp").on_attach,
 		})
 	end,
 }

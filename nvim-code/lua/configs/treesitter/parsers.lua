@@ -1,7 +1,7 @@
 local M = {}
 
 function M.install_automatically()
-	local utils = require("gmr.core.utils")
+	local utils = require("core.utils")
 
 	if vim.uv.os_uname().sysname == "Windows_NT" or utils.running_wsl() or utils.running_android() then
 		return {}

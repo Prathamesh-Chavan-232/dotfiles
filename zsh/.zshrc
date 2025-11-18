@@ -258,7 +258,7 @@ alias tmuxrc='nvim ~/.config/tmux/tmux.conf'
 
 # My configs
 alias nv="NVIM_APPNAME=nvim-alt nvim"
-alias nvim-code="NVIM_APPNAME=nvim-alt nvim"
+alias nvim-code="NVIM_APPNAME=nvim-code nvim"
 
 # Configs' launcher function
 function nvims() {

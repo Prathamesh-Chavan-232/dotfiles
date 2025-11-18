@@ -1,40 +1,23 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
+-- local term_opts = { silent = true }
 
--- Set leader key to space
-vim.g.mapleader = " "
-
+-- General keymaps
 -- Increment/decrement
 -- keymap.set("n", "+", "<C-a>")
 -- keymap.set("n", "-", "<C-x>")
 
--- Save with root permission (not working for now)
---vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
-
--- Diagnostics
-keymap("n", "<C-n>", function()
-	vim.diagnostic.goto_next()
-end, opts)
-
-keymap("n", "<leader>r", function()
-	require("craftzdog.hsl").replaceHexWithHSL()
-end)
-
-keymap("n", "<leader>i", function()
-	require("craftzdog.lsp").toggleInlayHints()
-end)
-
--- General keymaps
-keymap("n", "gx", ":!open <c-r><c-a><CR>", opts) -- open URL under cursor
 keymap("i", "jk", "<ESC>", opts) -- exit insert mode with jk
-keymap("i", "kj", "<ESC>", opts) -- exit insert mode with kj
 keymap("i", "ii", "<ESC>", opts) -- exit insert mode with ii
-keymap("i", "<C-c>", "<Esc>", opts) -- make <C-c> exit from multi-cursor edits
+
 keymap("n", "<C-s>", vim.cmd.write, opts) -- ctrl s to save
+
+keymap("i", "<C-c>", "<Esc>", opts) -- make <C-c> exit from multi-cursor edits
 keymap("n", "<leader>wq", ":wq<CR>", opts) -- save and quit
 keymap("n", "<leader>qq", ":q!<CR>", opts) -- quit without saving
 keymap("n", "<leader>ww", ":w<CR>", opts) -- save
+
+keymap("n", "gx", ":!open <c-r><c-a><CR>", opts) -- open URL under cursor
 
 -- Move through word wrap
 keymap("n", "k", "v:count == 4 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -169,6 +152,15 @@ keymap("n", "<leader>lp", "<cmd>lprev<CR>", { desc = "Previous location list ite
 -- Visual keymaps
 -- keymap("v", "<C-s>", ":sort<CR>") -- Sort highlighted text in visual mode with Control+S
 
-vim.api.nvim_create_user_command("ToggleAutoformat", function()
-	require("craftzdog.lsp").toggleAutoformat()
-end, {})
+-- Diagnostics
+keymap("n", "<C-n>", function()
+	vim.diagnostic.goto_next()
+end, opts)
+
+-- keymap("n", "<leader>r", function()
+-- 	require("craftzdog.hsl").replaceHexWithHSL()
+-- end)
+
+keymap("n", "<leader>ih", function()
+	require("craftzdog.lsp").toggleInlayHints()
+end)

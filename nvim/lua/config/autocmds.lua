@@ -12,3 +12,10 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt.conceallevel = 0
 	end,
 })
+
+vim.api.nvim_create_user_command("ToggleAutoformat", function()
+	require("craftzdog.lsp").toggleAutoformat()
+end, {})
+
+-- Save with root permission (not working for now)
+--vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})

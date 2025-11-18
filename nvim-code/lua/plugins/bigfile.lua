@@ -1,5 +1,4 @@
 -- https://github.com/ayamir/nvimdots/blob/main/lua/modules/configs/editor/bigfile.lua
-
 return {
 	{
 		"LunarVim/bigfile.nvim",
@@ -17,13 +16,12 @@ return {
 				name = "cmp",
 				opts = { defer = true },
 				disable = function()
-					local ok, cmp = pcall(require, "cmp")
+					local ok, cmp_module = pcall(require, "cmp")
 					if ok then
-						cmp.setup.buffer({ enabled = false })
+						cmp_module.setup.buffer({ enabled = false })
 					end
 				end,
 			}
-
 			local mini_indentscope = {
 				name = "mini_indentscope",
 				opts = { defer = true },

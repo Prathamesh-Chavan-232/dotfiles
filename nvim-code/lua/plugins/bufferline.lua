@@ -1,4 +1,4 @@
-local icons = require("config.icons")
+local icons = require("core.icons")
 
 return {
 	"akinsho/bufferline.nvim",

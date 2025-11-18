@@ -1,4 +1,4 @@
-local statusline_augroup = vim.api.nvim_create_augroup("gmr_statusline", { clear = true })
+local statusline_augroup = vim.api.nvim_create_augroup("statusline", { clear = true })
 
 --- @param severity integer
 --- @return integer

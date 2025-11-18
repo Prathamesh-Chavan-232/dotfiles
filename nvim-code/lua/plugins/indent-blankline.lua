@@ -2,7 +2,7 @@ return {
 	"lukas-reineke/indent-blankline.nvim",
 	event = "BufReadPre",
 	config = function()
-		local icons = require("config.icons")
+		local icons = require("core.icons")
 		require("ibl").setup({
 			indent = {
 				char = icons.ui.LineLeft,

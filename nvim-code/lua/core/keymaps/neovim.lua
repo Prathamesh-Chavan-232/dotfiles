@@ -1,6 +1,6 @@
 local running_kitty = os.getenv("TERM") == "xterm-kitty"
 
-local kitty = require("gmr.configs.kitty")
+local kitty = require("configs.kitty")
 
 -- better space
 vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "Use jk to enter in normal mode" }) -- exit insert mode with jk

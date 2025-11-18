@@ -5,7 +5,7 @@ M.to_setup = {
 	"astro",
 	"bashls",
 	"biome",
-	"bufls",
+	"buf_ls",
 	"clangd",
 	"cssls",
 	"denols",
@@ -28,7 +28,7 @@ M.to_setup = {
 	-- 'pylyzer',
 	-- 'phpactor',
 	"pyright",
-	"ruff_lsp",
+	"ruff",
 	"rust_analyzer",
 	"templ",
 	-- "solargraph",
@@ -42,6 +42,9 @@ M.to_setup = {
 	-- 'vtsls',
 	"yamlls",
 	-- 'zls',
+	"matlab_ls",
+	"htmx",
+	"prismals"
 }
 
 return M

@@ -1,11 +1,7 @@
-vim.g.mapleader = " "
-
-require("gmr.core.keymaps.colorizer")
--- require 'gmr.core.keymaps.dap'
-require("gmr.core.keymaps.fzf")
-require("gmr.core.keymaps.gitsigns")
-require("gmr.core.keymaps.grapple")
-require("gmr.core.keymaps.grapple")
--- require 'gmr.core.keymaps.neotest'
-require("gmr.core.keymaps.neovim")
-require("gmr.core.keymaps.nvim-tree")
+require("core.keymaps.colorizer")
+require('core.keymaps.dap')
+require("core.keymaps.fzf")
+require("core.keymaps.gitsigns")
+require("core.keymaps.grapple")
+require('core.keymaps.neotest')
+require("core.keymaps.neovim")

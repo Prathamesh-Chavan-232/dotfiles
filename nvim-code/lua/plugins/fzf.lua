@@ -1,6 +1,7 @@
 return {
 	"ibhagwan/fzf-lua",
-	cmd = "FzfLua",
+	-- cmd = "FzfLua",
+	event = "VeryLazy",
 	config = function()
 		local delta_syntax_theme = {
 			["dark"] = "Dracula",

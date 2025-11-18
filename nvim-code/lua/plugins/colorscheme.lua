@@ -1,53 +1,7 @@
 return {
 	{
-		"gmr458/black_white.nvim",
-		lazy = false,
-		priority = 1000,
-		build = ":BlackWhiteCompile",
-		config = function()
-			require("black_white").setup({
-				transparent_background = false,
-				cursorline = false,
-				treesitter_context_underline = true,
-			})
-			vim.cmd.colorscheme("black_white")
-		end,
-	},
-	{
-		"gmr458/cold.nvim",
-		lazy = false,
-		priority = 1000,
-		build = ":ColdCompile",
-		config = function()
-			require("cold").setup({
-				transparent_background = false,
-			})
-			vim.cmd.colorscheme("cold")
-		end,
-	},
-{
-	"gmr458/vscode_modern_theme.nvim",
-	branch = "dev",
-	lazy = false,
-	priority = 1000,
-	config = function()
-		local vscode_modern = require("vscode_modern")
-
-		vscode_modern.setup({
-			cursorline = true,
-			transparent_background = false,
-			nvim_tree_darker = true,
-			italic_keyword = false,
-			custom_dark_background = "#111111",
-			custom_statusline_dark_background = "#080808",
-		})
-
-		vim.cmd.colorscheme("vscode_modern")
-	end,
-},
-	{
 		"ribru17/bamboo.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		config = function()
 			local bamboo = require("bamboo")
@@ -62,7 +16,7 @@ return {
 	},
 	{
 		"deparr/tairiki.nvim",
-		lazy = false,
+lazy = true,
 		priority = 1000, -- only necessary if you use tairiki as default theme
 		config = function()
 			require("tairiki").setup({
@@ -73,7 +27,7 @@ return {
 	},
 	{
 		"daschw/leaf.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		config = function()
 			local leaf = require("leaf")
@@ -85,6 +39,50 @@ return {
 			-- Highlights
 			vim.cmd.hi("clear", "NormalFloat")
 			vim.cmd.hi("link", "NormalFloat", "Normal")
+		end,
+	},
+	{
+		"gmr458/black_white.nvim",
+		lazy = true,
+		priority = 1000,
+		build = ":BlackWhiteCompile",
+		config = function()
+			require("black_white").setup({
+				transparent_background = false,
+				cursorline = false,
+				treesitter_context_underline = true,
+			})
+		end,
+	},
+	{
+		"gmr458/cold.nvim",
+		lazy = true,
+		priority = 1000,
+		build = ":ColdCompile",
+		config = function()
+			require("cold").setup({
+				transparent_background = false,
+			})
+		end,
+	},
+	{
+		"gmr458/vscode_modern_theme.nvim",
+		branch = "dev",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			local vscode_modern = require("vscode_modern")
+
+			vscode_modern.setup({
+				cursorline = true,
+				transparent_background = false,
+				nvim_tree_darker = true,
+				italic_keyword = false,
+				custom_dark_background = "#111111",
+				custom_statusline_dark_background = "#080808",
+			})
+
+			vim.cmd.colorscheme("vscode_modern")
 		end,
 	},
 }

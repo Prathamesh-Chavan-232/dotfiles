@@ -3,6 +3,7 @@ return {
 	cmd = "Telescope",
 	version = false,
 	lazy = true,
+	-- enabled = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
@@ -32,6 +33,7 @@ return {
 		vim.keymap.set("n", "<leader>fo", function()
 			telescope.extensions.smart_open.smart_open()
 		end, { noremap = true, silent = true })
+
 		telescope.setup({
 			file_ignore_patterns = { "%.git/." },
 			defaults = {

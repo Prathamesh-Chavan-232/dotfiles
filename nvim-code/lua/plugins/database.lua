@@ -17,7 +17,7 @@ return {
 		},
 		config = function()
 			local function db_completion()
-				require("plugins.completion.cmp").setup.buffer({
+				require("cmp").setup.buffer({
 					sources = { { name = "vim-dadbod-completion" } },
 				})
 			end
