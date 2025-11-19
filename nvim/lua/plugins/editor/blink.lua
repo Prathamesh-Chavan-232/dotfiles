@@ -5,20 +5,18 @@ return {
 			menu = {
 				winblend = vim.o.pumblend,
 			},
+			list = {
+				selection = { preselect = false, auto_insert = false },
+			},
 		},
 		signature = {
 			window = {
 				winblend = vim.o.pumblend,
 			},
 		},
-
 		keymap = {
 			preset = "default",
-			-- ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-			-- ["<C-e>"] = { "hide" }, -- Hide completion
-			["<C-y>"] = { "select_and_accept" }, -- Accept completion
-
-			-- Tab behavior - navigate without auto-selecting
+			["<C-e>"] = { "show", "hide" }, -- Hide completion
 			["<C-n>"] = {
 				function(cmp)
 					if cmp.is_visible() then
@@ -39,7 +37,6 @@ return {
 				"snippet_backward",
 				"fallback",
 			},
-
 			["<CR>"] = { "accept", "fallback" },
 		},
 	},
