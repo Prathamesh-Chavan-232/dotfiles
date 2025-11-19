@@ -17,6 +17,21 @@ return {
 							desc = "Goto Definition",
 							has = "definition",
 						},
+						{
+							"gD",
+							function()
+								require("telescope.builtin").lsp_type_definitions({ reuse_win = false })
+							end,
+							desc = "Goto Type Definition",
+						},
+						{
+							"gr",
+							function()
+								require("telescope.builtin").lsp_references({ reuse_win = false })
+							end,
+							desc = "Goto References",
+							has = "references",
+						},
 					},
 				},
 				cssls = {},
@@ -25,7 +40,7 @@ return {
 						return require("lspconfig.util").root_pattern(".git")(...)
 					end,
 				},
-				ts_ls = {
+				vtsls = {
 					root_dir = function(...)
 						return require("lspconfig.util").root_pattern(".git")(...)
 					end,
@@ -33,7 +48,7 @@ return {
 					settings = {
 						typescript = {
 							inlayHints = {
-								includeInlayParameterNameHints = "literal",
+								includeInlayParameterNameHints = "all",
 								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
 								includeInlayFunctionParameterTypeHints = true,
 								includeInlayVariableTypeHints = false,
