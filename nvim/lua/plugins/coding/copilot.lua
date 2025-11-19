@@ -5,8 +5,6 @@ return {
 			auto_trigger = true,
 			keymap = {
 				accept = "<C-CR>",
-				accept_word = "<C-S-CR>",
-				accept_line = "<M-S-CR>",
 				next = "<M-]>",
 				prev = "<M-[>",
 				dismiss = "<C-]>",
@@ -16,5 +14,6 @@ return {
 			markdown = true,
 			help = true,
 		},
+		copilot_node_command = "/Users/prathameshchavan/.nvm/versions/node/v24.5.0/bin/node",
 	},
 }
