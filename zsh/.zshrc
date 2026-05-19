@@ -233,6 +233,10 @@ alias mkdir='mkdir -pv'
 alias df='df -h'     # human-readable sizes
 alias free='free -m' # show sizes in MB
 
+# claude
+# alias claude='CLAUDE_CONFIG_DIR=~/.claude claude'          # already default, explicit is cleaner
+alias claude-personal='CLAUDE_CONFIG_DIR=~/.claude-personal claude'
+
 # Shortcuts
 # Tmux
 # The alias `tmux='tmux -u'` is setting up an alias for the `tmux` command. In this case, when you type `tmux` in the terminal, it will actually execute `tmux -u`. The `-u` flag in `tmux -u` stands for "update-environment" and it ensures that the environment variables are updated when a new session is created or an existing session is attached. This can be useful to make sure that the environment variables are consistent across different tmux sessions.
@@ -272,10 +276,9 @@ function nvims() {
   fi
   NVIM_APPNAME=$config nvim $@
 }
+
 bindkey -s "^a" "nvims\n"
-
 # source $HOME/keep-coding/personal/fast-project-package/fast-project.sh
-
 
 # Export to path
 
