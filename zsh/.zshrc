@@ -234,7 +234,6 @@ alias df='df -h'     # human-readable sizes
 alias free='free -m' # show sizes in MB
 
 # claude
-# alias claude='CLAUDE_CONFIG_DIR=~/.claude claude'          # already default, explicit is cleaner
 alias claude-personal='CLAUDE_CONFIG_DIR=~/.claude-personal claude'
 
 # Shortcuts
