@@ -1,58 +1,38 @@
-vim.g.mapleader = " "
+-- General editor options.
+local opt = vim.opt
 
-vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
+opt.number = true
+opt.relativenumber = true
+opt.mouse = "a"
+opt.showmode = false -- statusline shows the mode
+opt.clipboard = "unnamedplus" -- use the system clipboard
 
-vim.opt.number = true
-vim.opt.relativenumber = true
+opt.breakindent = true
+opt.undofile = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.signcolumn = "yes"
+opt.updatetime = 250
+opt.timeoutlen = 400
 
-vim.opt.title = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.hlsearch = true
-vim.opt.backup = false
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
-vim.opt.laststatus = 3
-vim.opt.expandtab = true
-vim.opt.scrolloff = 10
-vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
-vim.opt.inccommand = "split"
-vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
-vim.opt.smarttab = true
-vim.opt.breakindent = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.wrap = false -- No Wrap lines
-vim.opt.backspace = { "start", "eol", "indent" }
-vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
-vim.opt.wildignore:append({ "*/node_modules/*" })
-vim.opt.splitbelow = true -- Put new windows below current
-vim.opt.splitright = true -- Put new windows right of current
-vim.opt.splitkeep = "cursor"
-vim.opt.mouse = ""
+opt.splitright = true
+opt.splitbelow = true
+opt.inccommand = "split" -- live preview of :substitute
+opt.cursorline = true
+opt.scrolloff = 8
+opt.termguicolors = true
 
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
+-- Indentation: 2 spaces by default.
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.smartindent = true
 
--- Add asterisks in block comments
-vim.opt.formatoptions:append({ "r" })
+opt.wrap = false
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
-vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
-vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
-
-if vim.fn.has("nvim-0.8") == 1 then
-	vim.opt.cmdheight = 0
-end
-
--- File types
-vim.filetype.add({
-	extension = {
-		mdx = "mdx",
-	},
-})
-
-vim.g.lazyvim_prettier_needs_config = true
-vim.g.lazyvim_picker = "telescope"
-vim.g.lazyvim_cmp = "blink.cmp"
+opt.pumheight = 12 -- max items shown in the completion popup
+opt.confirm = true -- ask to save instead of failing on :q with unsaved changes
+opt.fillchars = { eob = " " }

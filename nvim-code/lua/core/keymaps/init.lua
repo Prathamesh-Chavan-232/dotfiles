@@ -1,7 +1,0 @@
-require("core.keymaps.colorizer")
-require('core.keymaps.dap')
-require("core.keymaps.fzf")
-require("core.keymaps.gitsigns")
-require("core.keymaps.grapple")
-require('core.keymaps.neotest')
-require("core.keymaps.neovim")
