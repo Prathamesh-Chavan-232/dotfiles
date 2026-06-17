@@ -40,6 +40,10 @@ setopt HIST_IGNORE_DUPS  # Do not write events to history that are duplicates of
 setopt HIST_FIND_NO_DUPS # When searching history don't display results already cycled through twice
 setopt COMPLETE_IN_WORD  # Complete from both ends of a word.
 
+# Disable terminal flow control so Ctrl+S/Ctrl+Q are free for keybindings
+# (lets Cmd+S -> Ctrl+S work without freezing the terminal at the prompt).
+stty -ixon 2>/dev/null
+
 
 # Set up defaults
 HISTFILE=~/.cache/.zsh_history

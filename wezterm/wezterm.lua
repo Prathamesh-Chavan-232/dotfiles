@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local act = wezterm.action
+local is_mac = wezterm.target_triple:find("darwin") ~= nil
 -- local mux = wezterm.mux
 -- This will hold the configuration.
 local config = wezterm.config_builder()
@@ -125,6 +126,21 @@ config.keys = {
 		end),
 	},
 }
+
+-- macOS: translate Cmd+<key> into the Ctrl byte nvim already maps, so
+-- "app-style" shortcuts use Cmd on Mac while the nvim config stays on Ctrl
+-- (and on Windows Ctrl reaches nvim directly, so no WezTerm change is needed).
+-- Vim's own Ctrl motions are unaffected.
+if is_mac then
+	local cmd_to_ctrl = { "s" } -- add more letters here as needed
+	for _, k in ipairs(cmd_to_ctrl) do
+		table.insert(config.keys, {
+			key = k,
+			mods = "CMD",
+			action = act.SendKey({ key = k, mods = "CTRL" }),
+		})
+	end
+end
 
 -- For example, changing the color scheme:
 config.color_scheme = "Cloud (terminal.sexy)"
