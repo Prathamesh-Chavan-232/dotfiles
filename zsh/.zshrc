@@ -302,10 +302,17 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH="$PATH:$HOME/.local/bin"
 
-# Node version manager
+# Node version manager (lazy — nvm.sh is sourced on first nvm/node/npm/npx/corepack call)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+_load_nvm() {
+  unset -f nvm node npm npx corepack 2>/dev/null
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+for _c in nvm node npm npx corepack; do
+  eval "${_c}() { _load_nvm; ${_c} \"\$@\"; }"
+done
+unset _c
 
 # smart tmux sessions
 export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
@@ -329,19 +336,14 @@ export PATH=$PATH:/usr/local/go/bin
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# pyenv
+# pyenv (shims on PATH immediately so python/pip work; full init lazy on first `pyenv`)
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
+pyenv() {
+  unset -f pyenv
+  eval "$(command pyenv init - zsh)"
+  eval "$(command pyenv virtualenv-init -)"
+  pyenv "$@"
+}
 
-# Restart your shell for the changes to take effect.
-
-# Load pyenv-virtualenv automatically by adding
-# the following to ~/.bashrc:
-
-eval "$(pyenv virtualenv-init -)"
-
-# ASCII Shibang #!
-# shibang
-eval "$(pyenv init -)"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
