@@ -43,9 +43,11 @@ config.window_padding = {
 }
 
 -- tabs
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 config.use_fancy_tab_bar = false
--- config.tab_bar_at_bottom = true
+config.tab_bar_at_bottom = true
+config.show_tab_index_in_tab_bar = true
+config.tab_max_width = 32
 
 -- config.inactive_pane_hsb = {
 -- 	saturation = 0.0,
@@ -55,24 +57,102 @@ config.use_fancy_tab_bar = false
 -- This is where you actually apply your config choices
 --
 
--- color scheme toggling
-wezterm.on("toggle-colorscheme", function(window, pane)
-	local overrides = window:get_config_overrides() or {}
-	if overrides.color_scheme == "Zenburn" then
-		overrides.color_scheme = "Cloud (terminal.sexy)"
-	else
-		overrides.color_scheme = "Zenburn"
+-- Theme list — cycle through with Ctrl+Shift+Alt+E / Ctrl+Shift+Alt+R
+local themes = {
+	"Cloud (terminal.sexy)",
+	"Catppuccin Mocha",
+	"Tokyo Night",
+	"Kanagawa (Gogh)",
+	"Gruvbox dark, medium (base16)",
+	"Everforest Dark Hard (Gogh)",
+	"Solarized Dark (Gogh)",
+	"rose-pine",
+	"Dracula",
+	"Nord (Gogh)",
+	"Zenburn",
+}
+
+-- Font list — cycle through with Ctrl+Shift+Alt+F / Ctrl+Shift+Alt+G
+local fonts = {
+	"JetBrains Mono Regular",
+	"FiraCode Nerd Font Mono",
+	"Monocraft Nerd Font",
+	"Hack Regular",
+	"mononoki Regular",
+	"Iosevka",
+}
+
+local function current_theme_index(overrides)
+	local current = overrides.color_scheme or config.color_scheme
+	for i, name in ipairs(themes) do
+		if name == current then
+			return i
+		end
 	end
+	return 1
+end
+
+local function current_font_index(overrides)
+	local current_font = overrides._font_name or fonts[1]
+	for i, name in ipairs(fonts) do
+		if name == current_font then
+			return i
+		end
+	end
+	return 1
+end
+
+wezterm.on("cycle-theme-next", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	local idx = current_theme_index(overrides) % #themes + 1
+	overrides.color_scheme = themes[idx]
 	window:set_config_overrides(overrides)
+	window:toast_notification("wezterm", "Theme: " .. themes[idx], nil, 2000)
+end)
+
+wezterm.on("cycle-theme-prev", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	local idx = current_theme_index(overrides)
+	idx = idx - 1
+	if idx < 1 then
+		idx = #themes
+	end
+	overrides.color_scheme = themes[idx]
+	window:set_config_overrides(overrides)
+	window:toast_notification("wezterm", "Theme: " .. themes[idx], nil, 2000)
+end)
+
+wezterm.on("cycle-font-next", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	local idx = current_font_index(overrides) % #fonts + 1
+	overrides.font = wezterm.font(fonts[idx])
+	overrides._font_name = fonts[idx]
+	window:set_config_overrides(overrides)
+	window:toast_notification("wezterm", "Font: " .. fonts[idx], nil, 2000)
+end)
+
+wezterm.on("cycle-font-prev", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	local idx = current_font_index(overrides)
+	idx = idx - 1
+	if idx < 1 then
+		idx = #fonts
+	end
+	overrides.font = wezterm.font(fonts[idx])
+	overrides._font_name = fonts[idx]
+	window:set_config_overrides(overrides)
+	window:toast_notification("wezterm", "Font: " .. fonts[idx], nil, 2000)
 end)
 
 -- keymaps
 config.keys = {
-	{
-		key = "E",
-		mods = "CTRL|SHIFT|ALT",
-		action = wezterm.action.EmitEvent("toggle-colorscheme"),
-	},
+	-- Theme cycling
+	{ key = "E", mods = "CTRL|SHIFT|ALT", action = wezterm.action.EmitEvent("cycle-theme-next") },
+	{ key = "R", mods = "CTRL|SHIFT|ALT", action = wezterm.action.EmitEvent("cycle-theme-prev") },
+	-- Font cycling
+	{ key = "F", mods = "CTRL|SHIFT|ALT", action = wezterm.action.EmitEvent("cycle-font-next") },
+	{ key = "G", mods = "CTRL|SHIFT|ALT", action = wezterm.action.EmitEvent("cycle-font-prev") },
+	-- Pane
 	{
 		key = "h",
 		mods = "CTRL|SHIFT|ALT",
@@ -89,42 +169,41 @@ config.keys = {
 			size = { Percent = 50 },
 		}),
 	},
-	{
-		key = "U",
-		mods = "CTRL|SHIFT",
-		action = act.AdjustPaneSize({ "Left", 5 }),
-	},
-	{
-		key = "I",
-		mods = "CTRL|SHIFT",
-		action = act.AdjustPaneSize({ "Down", 5 }),
-	},
-	{
-		key = "O",
-		mods = "CTRL|SHIFT",
-		action = act.AdjustPaneSize({ "Up", 5 }),
-	},
-	{
-		key = "P",
-		mods = "CTRL|SHIFT",
-		action = act.AdjustPaneSize({ "Right", 5 }),
-	},
+	{ key = "U", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Left", 5 }) },
+	{ key = "I", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Down", 5 }) },
+	{ key = "O", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Up", 5 }) },
+	{ key = "P", mods = "CTRL|SHIFT", action = act.AdjustPaneSize({ "Right", 5 }) },
 	{ key = "9", mods = "CTRL", action = act.PaneSelect },
 	{ key = "L", mods = "CTRL", action = act.ShowDebugOverlay },
+	-- Opacity toggle
 	{
 		key = "O",
 		mods = "CTRL|ALT",
-		-- toggling opacity
 		action = wezterm.action_callback(function(window, _)
 			local overrides = window:get_config_overrides() or {}
 			if overrides.window_background_opacity == 1.0 then
-				overrides.window_background_opacity = 0.9
+				overrides.window_background_opacity = 0.85
 			else
 				overrides.window_background_opacity = 1.0
 			end
 			window:set_config_overrides(overrides)
 		end),
 	},
+	-- Tab management
+	{ key = "t", mods = "ALT|SHIFT", action = act.SpawnTab("CurrentPaneDomain") },
+	{ key = "w", mods = "ALT|SHIFT", action = act.CloseCurrentTab({ confirm = true }) },
+	{ key = "h", mods = "ALT|SHIFT", action = act.ActivateTabRelative(-1) },
+	{ key = "l", mods = "ALT|SHIFT", action = act.ActivateTabRelative(1) },
+	-- Jump to tab by number
+	{ key = "1", mods = "ALT", action = act.ActivateTab(0) },
+	{ key = "2", mods = "ALT", action = act.ActivateTab(1) },
+	{ key = "3", mods = "ALT", action = act.ActivateTab(2) },
+	{ key = "4", mods = "ALT", action = act.ActivateTab(3) },
+	{ key = "5", mods = "ALT", action = act.ActivateTab(4) },
+	{ key = "6", mods = "ALT", action = act.ActivateTab(5) },
+	{ key = "7", mods = "ALT", action = act.ActivateTab(6) },
+	{ key = "8", mods = "ALT", action = act.ActivateTab(7) },
+	{ key = "9", mods = "ALT", action = act.ActivateTab(-1) },
 }
 
 -- macOS: translate Cmd+<key> into the Ctrl byte nvim already maps, so

@@ -95,6 +95,7 @@ run_installation() {
 
   system_update
 
+  install_system_packages
   install_dev_tools
   install_python_env
   install_nodejs_env
@@ -103,7 +104,6 @@ run_installation() {
   install_docker
   install_docker_desktop
 
-  install_system_packages
   install_editors
   install_browsers
 

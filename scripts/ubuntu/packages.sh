@@ -38,6 +38,7 @@ install_system_packages() {
     confirm "- Zsh (shell)?" && system_packages+=("zsh")
     confirm "- Stow (dotfile manager)?" && system_packages+=("stow")
     confirm "- Ripgrep (search tool)?" && system_packages+=("ripgrep")
+    confirm "- Unzip (For extracting zip files)?" && system_packages+=("unzip")
     confirm "- Fzf (fuzzy finder)?" && system_packages+=("fzf")
     confirm "- Fd (find alternative)?" && system_packages+=("fd-find")
     confirm "- Bat (cat alternative)?" && system_packages+=("bat")

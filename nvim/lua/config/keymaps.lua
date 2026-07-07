@@ -52,3 +52,75 @@ map({ "n", "v" }, "<leader>D", [["_d]], { desc = "Delete (no yank)" })
 map("x", "<leader>p", [["_dP]], { desc = "Paste (keep register)" })
 
 -- (Line diagnostics float is on <leader>cd via LSP; <leader>e is neo-tree.)
+-- Clear search highlights
+map("n", "<leader>nh", ":nohl<CR>")
+
+-- Replace current word
+map("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Yank to system clipboard
+map({ "n", "v" }, "<leader>y", '"+y')
+map({ "n", "v" }, "<leader>Y", '"+Y')
+
+-- Select all
+map("n", "<C-a>", "gg<S-v>G")
+
+-- Delete a word backwards
+map("n", "dw", 'vb"_d')
+
+-- Do Yank, Cut, Delete without affecting the registers
+map("n", "x", '"_x')
+map("n", "<leader>p", '"4p')
+map("n", "<leader>P", '"4P')
+map("v", "<leader>p", '"4p')
+map("n", "<leader>c", '"_c')
+map("n", "<leader>C", '"_C')
+map("v", "<leader>c", '"_c')
+map("v", "<leader>C", '"_C')
+map("n", "<leader>d", '"_d')
+
+map("n", "<leader>D", '"_D')
+map("v", "<leader>d", '"_d')
+map("v", "<leader>D", '"_D')
+map("n", "<leader>d", [["_d]])
+
+-- Paste in visual mode
+map("v", "p", '"_dP')
+
+-- Paste over something without losing it
+-- map("x", "<leader>p", [["_dP]])
+
+-- Make bash script executable
+map("n", "<leader>=", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Quickfix maps
+map("n", "<leader>qo", ":copen<CR>") -- open quickfix list
+map("n", "<leader>qf", ":cfirst<CR>") -- jump to first quickfix list item
+map("n", "<leader>qn", ":cnext<CR>") -- jump to next quickfix list item
+map("n", "<leader>qp", ":cprev<CR>") -- jump to prev quickfix list item
+map("n", "<leader>ql", ":clast<CR>") -- jump to last quickfix list item
+map("n", "<leader>qc", ":cclose<CR>") -- close quickfix list
+
+-- Switch Transparency
+map("n", "<C-A-z>", ":TransparentToggle<CR>")
+
+-- -- Disable continuations
+map("n", "<leader>o", "o<Esc>^Da")
+map("n", "<leader>O", "O<Esc>^Da")
+
+map("n", "<C-m>", "<C-i>")
+map("n", "<leader>lo", "<cmd>lopen<CR>", { desc = "Open location list" })
+map("n", "<leader>lc", "<cmd>lclose<CR>", { desc = "Close location list" })
+map("n", "<leader>ln", "<cmd>lnext<CR>", { desc = "Next location list item" })
+map("n", "<leader>lp", "<cmd>lprev<CR>", { desc = "Previous location list item" })
+
+-- Visual maps
+-- map("v", "<C-s>", ":sort<CR>") -- Sort highlighted text in visual mode with Control+S
+
+-- Close buffer in normal mode (Ctrl+W deletes word in insert mode by default)
+map("n", "<C-w>", "<cmd>bd<CR>")
+
+-- map("n", "<leader>r", function()
+-- 	require("craftzdog.hsl").replaceHexWithHSL()
+-- end)
+

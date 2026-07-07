@@ -1,0 +1,74 @@
+# whkd config — komorebi keybindings.
+# Modifier convention: Win (Super / Mod4) is the WM modifier.
+# Avoids Alt entirely so Neovim/tmux/wezterm Alt-bindings keep working.
+# See dotfiles/windows/README of plan for full conflict audit.
+
+.shell powershell
+
+# ───── apps & system ─────
+win + d                  : Start-Process "$Env:LOCALAPPDATA\FlowLauncher\Flow.Launcher.exe"
+win + return             : Start-Process wt
+win + e                  : Start-Process explorer
+win + shift + q          : komorebic close
+
+# ───── focus (hjkl, semicolon replaces 'l' because Win+L locks the PC) ─────
+win + h                  : komorebic focus left
+win + j                  : komorebic focus down
+win + k                  : komorebic focus up
+win + oem_1              : komorebic focus right     # oem_1 = semicolon key
+
+# ───── move window ─────
+win + shift + h          : komorebic move left
+win + shift + j          : komorebic move down
+win + shift + k          : komorebic move up
+win + shift + oem_1      : komorebic move right
+
+# ───── layout ─────
+win + oem_5              : komorebic cycle-layout next     # oem_5 = backslash
+win + shift + space      : komorebic toggle-float
+win + f                  : komorebic toggle-monocle
+win + shift + m          : komorebic minimize
+
+# ───── stacking ─────
+win + shift + left       : komorebic stack left
+win + shift + right      : komorebic stack right
+win + shift + up         : komorebic stack up
+win + shift + down       : komorebic stack down
+win + u                  : komorebic unstack
+win + oem_comma          : komorebic cycle-stack next
+win + oem_period         : komorebic cycle-stack previous
+
+# ───── resize ─────
+win + ctrl + h           : komorebic resize-edge left increase
+win + ctrl + oem_1       : komorebic resize-edge right increase
+win + ctrl + k           : komorebic resize-edge top increase
+win + ctrl + j           : komorebic resize-edge bottom increase
+
+# ───── workspaces ─────
+win + 1                  : komorebic focus-workspace 0
+win + 2                  : komorebic focus-workspace 1
+win + 3                  : komorebic focus-workspace 2
+win + 4                  : komorebic focus-workspace 3
+win + 5                  : komorebic focus-workspace 4
+win + 6                  : komorebic focus-workspace 5
+win + 7                  : komorebic focus-workspace 6
+win + 8                  : komorebic focus-workspace 7
+win + 9                  : komorebic focus-workspace 8
+
+win + shift + 1          : komorebic move-to-workspace 0
+win + shift + 2          : komorebic move-to-workspace 1
+win + shift + 3          : komorebic move-to-workspace 2
+win + shift + 4          : komorebic move-to-workspace 3
+win + shift + 5          : komorebic move-to-workspace 4
+win + shift + 6          : komorebic move-to-workspace 5
+win + shift + 7          : komorebic move-to-workspace 6
+win + shift + 8          : komorebic move-to-workspace 7
+win + shift + 9          : komorebic move-to-workspace 8
+
+win + oem_4              : komorebic cycle-workspace previous   # oem_4 = [
+win + oem_6              : komorebic cycle-workspace next       # oem_6 = ]
+
+# ───── WM lifecycle ─────
+win + shift + p          : komorebic toggle-pause
+win + shift + c          : komorebic reload-configuration
+win + shift + e          : komorebic stop
