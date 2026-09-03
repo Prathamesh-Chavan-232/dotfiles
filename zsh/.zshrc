@@ -3,8 +3,8 @@
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
 # plugins
-# plug "esc/conda-zsh-completion"
-# plug "MAHcodes/distro-prompt"
+plug "esc/conda-zsh-completion"
+plug "MAHcodes/distro-prompt"
 plug "zap-zsh/completions"
 plug "zsh-users/zsh-autosuggestions"
 plug "hlissner/zsh-autopair"
@@ -13,8 +13,8 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
 
 eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
-# eval "`pip3 completion --zsh`"
+# eval "$(starship init zsh)"
+eval "`pip3 completion --zsh`"
 
 # load current theme colors
 autoload -U colors && colors
@@ -22,7 +22,7 @@ autoload -U colors && colors
 # custom prompts
 
 # username@hostname directory info
-# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 #directory info
 # PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
@@ -346,4 +346,5 @@ pyenv() {
   pyenv "$@"
 }
 
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+fastfetch

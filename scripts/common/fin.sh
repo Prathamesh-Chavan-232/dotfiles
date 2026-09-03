@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 fin() {
     print_subheader "$LIGHT_PURPLE" "Note: Tmux Plugin Manager is installed, Please press Prefix + I in a tmux session to load all the plugins"
     print_subheader "$RED" "Note: Android Sdk, Android cmd-line tools and Android emulators are not installed."

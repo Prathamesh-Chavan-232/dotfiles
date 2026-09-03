@@ -5,6 +5,7 @@ return {
     require("mini.pairs").setup() -- auto-close brackets/quotes
     require("mini.surround").setup() -- sa/sd/sr add/delete/replace surroundings
     require("mini.ai").setup() -- richer text objects (ci(, ca", etc.)
+    require("mini.bufremove").setup() -- delete buffers without closing windows
 
     -- JSX/TSX-aware commenting: mini.comment defers commentstring to
     -- ts-context-commentstring (see plugins/ts-context-commentstring.lua).

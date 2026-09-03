@@ -51,3 +51,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
 })
+
+-- Fix Kitty.conf reload issue.
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = vim.fn.expand("~") .. "/.config/kitty/kitty.conf",
+  command = "silent !pkill -USR1 -x kitty",
+})

@@ -1,10 +1,9 @@
--- Selectable colorschemes (applied/persisted by config/theme.lua + themery).
--- No config here; solarized-osaka's options are set in config/theme.lua before
--- it is applied.
-return {
-  { "craftzdog/solarized-osaka.nvim" },
-  { "folke/tokyonight.nvim" },
-  { "catppuccin/nvim", name = "catppuccin" },
-  { "ellisonleao/gruvbox.nvim" },
-  { "rose-pine/neovim", name = "rose-pine" },
-}
+-- Selectable colorschemes, generated from config/themes.lua (the single source
+-- of truth). Theme options are applied by config/theme.lua, which calls each
+-- entry's setup() with the persisted transparency flag before the colorscheme
+-- loads.
+local specs = {}
+for _, theme in ipairs(require("config.themes")) do
+  specs[#specs + 1] = { theme.src, name = theme.name }
+end
+return specs

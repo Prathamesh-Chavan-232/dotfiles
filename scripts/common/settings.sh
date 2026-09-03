@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Setup shell
 setup_zsh() {
     if confirm "Change default shell to Zsh?"; then

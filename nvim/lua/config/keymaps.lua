@@ -28,7 +28,9 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window w
 -- Buffers.
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete buffer" })
+map("n", "<leader>bd", function()
+  require("mini.bufremove").delete(0, false)
+end, { desc = "Delete buffer" })
 
 -- Move lines (VSCode-style).
 map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move line down" })
@@ -118,7 +120,9 @@ map("n", "<leader>lp", "<cmd>lprev<CR>", { desc = "Previous location list item" 
 -- map("v", "<C-s>", ":sort<CR>") -- Sort highlighted text in visual mode with Control+S
 
 -- Close buffer in normal mode (Ctrl+W deletes word in insert mode by default)
-map("n", "<C-w>", "<cmd>bd<CR>")
+map("n", "<C-w>", function()
+  require("mini.bufremove").delete(0, false)
+end, { desc = "Delete buffer" })
 
 -- map("n", "<leader>r", function()
 -- 	require("craftzdog.hsl").replaceHexWithHSL()
