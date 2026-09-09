@@ -23,12 +23,7 @@ autoload -U colors && colors
 # Starship drives the prompt; its config lives in ~/.config/starship.toml,
 # stowed from this repo. Starship is not in the Fedora repos, so it may be absent
 # on a fresh machine — fall back to the original bracket prompt when it is.
-if command -v starship >/dev/null 2>&1; then
-  eval "$(starship init zsh)"
-else
-  # username@hostname directory info
-  PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-fi
+eval "$(starship init zsh)"
 
 #directory info
 # PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
