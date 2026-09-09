@@ -1,15 +1,145 @@
-format = """$username$hostname$directory$character"""
-right_format = """$all"""
+# Starship prompt — replicates the classic bracket prompt
+#   [user@host ~/path]$
+# and adds git / language / container / shell-state modules inline, between the
+# closing "]" and the "$". Every module renders only when it is relevant.
+#
+# Colours mirror the original hand-written PS1: that prompt wrapped everything in
+# %B (bold), so every segment here is bold too.
+#
+# Stowed to ~/.config/starship.toml by scripts/common/link-dotfiles.sh.
+
+add_newline = false
+command_timeout = 1000
+
+# Modules NOT listed here never run, so there is no need to disable the dozens of
+# cloud/tooling modules starship ships with.
+format = """\
+$username\
+$hostname\
+$directory\
+$git_branch$git_state$git_status\
+$nodejs$conda$python$rust$golang$java$php\
+$docker_context$kubernetes\
+$cmd_duration$jobs$status\
+$character\
+"""
+
+
+# ── the bracket prompt itself ────────────────────────────────────────────────
+
+# red "[", yellow user, green "@"
 [username]
-format = "[$user]($style)@"
 show_always = true
+format = '[\[](bold red)[$user](bold yellow)[@](bold green)'
 
+# blue hostname; trim_at = '' keeps the full name, matching zsh's %M
 [hostname]
-format = "[$hostname]($style) "
 ssh_only = false
+trim_at = ''
+format = '[$hostname](bold blue) '
 
+# magenta path, red "]".
+# truncation_length = 1 + fish_style_pwd_dir_length = 1 collapses every parent
+# directory to a single letter: ~/coding/dotfiles -> ~/c/dotfiles
 [directory]
-format = "[$path]($style) "
 truncation_length = 1
+fish_style_pwd_dir_length = 1
+truncate_to_repo = false
+home_symbol = '~'
+read_only = ' '
+read_only_style = 'bold red'
+format = '[$path](bold magenta)[$read_only]($read_only_style)[\]](bold red)'
 
+# bold "$"; red when the last command failed, yellow in vi normal mode
+# (.zshrc sets `bindkey -v`).
+[character]
+format = ' $symbol '
+success_symbol = '[\$](bold)'
+error_symbol   = '[\$](bold red)'
+vicmd_symbol   = '[\$](bold yellow)'
 
+# ── git ──────────────────────────────────────────────────────────────────────
+
+[git_branch]
+symbol = ' '
+format = '[$symbol$branch](bold green)'
+
+# The leading space sits inside the group, so a clean tree renders nothing at all.
+[git_status]
+format = '[ $all_status$ahead_behind](bold red)'
+conflicted = '='
+untracked  = '?${count}'
+stashed    = '\$${count}'
+modified   = '!${count}'
+staged     = '+${count}'
+renamed    = '»${count}'
+deleted    = '✘${count}'
+ahead      = '⇡${count}'
+behind     = '⇣${count}'
+diverged   = '⇕⇡${ahead_count}⇣${behind_count}'
+up_to_date = ''
+
+# mid-rebase / merge / bisect, with progress when git reports it
+[git_state]
+format = ' [\($state( $progress_current/$progress_total)\)](bold yellow)'
+
+# ── language runtimes ────────────────────────────────────────────────────────
+
+[nodejs]
+symbol = ' '
+format = ' [$symbol($version)](bold green)'
+
+[conda]
+symbol = ' '
+format = ' [$symbol$environment](bold green)'
+
+[python]
+symbol = ' '
+format = ' [$symbol$pyenv_prefix($version)( \($virtualenv\))](bold yellow)'
+
+[rust]
+symbol = ' '
+format = ' [$symbol($version)](bold red)'
+
+[golang]
+symbol = ' '
+format = ' [$symbol($version)](bold cyan)'
+
+[java]
+symbol = ' '
+format = ' [$symbol($version)](bold red)'
+
+[php]
+symbol = ' '
+format = ' [$symbol($version)](bold blue)'
+
+# ── containers ───────────────────────────────────────────────────────────────
+
+# Hidden while the context is "default", so it only speaks up when it matters.
+[docker_context]
+symbol = ' '
+format = ' [$symbol$context](bold blue)'
+
+# Disabled by default in starship; opted in here.
+[kubernetes]
+disabled = false
+symbol = '󱃾 '
+format = ' [$symbol$context( \($namespace\))](bold cyan)'
+
+# ── shell state ──────────────────────────────────────────────────────────────
+
+[cmd_duration]
+min_time = 2000
+format = ' [$duration](bold yellow)'
+
+[jobs]
+symbol = ' '
+number_threshold = 1
+symbol_threshold = 1
+format = ' [$symbol$number](bold magenta)'
+
+# Also disabled by default; opted in here.
+[status]
+disabled = false
+symbol = '✘'
+format = ' [$symbol$status](bold red)'

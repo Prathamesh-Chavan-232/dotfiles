@@ -15,11 +15,8 @@ link_dotfiles() {
             print_header "$LIGHT_PURPLE" "Backing up existing config files"
             [ -f "$HOME/.zshrc" ] && mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
             [ -d "$HOME/.config/nvim" ] && mv "$HOME/.config/nvim" "$HOME/.config/nvim.bak"
-            [ -d "$HOME/.config/nvim-code" ] && mv "$HOME/.config/nvim-code" "$HOME/.config/nvim-code.bak"
-            [ -d "$HOME/.config/nvim-alt" ] && mv "$HOME/.config/nvim-alt" "$HOME/.config/nvim-alt.bak"
-            [ -d "$HOME/.config/nvim-lazy" ] && mv "$HOME/.config/nvim-lazy" "$HOME/.config/nvim-lazy.bak"
             [ -d "$HOME/.config/tmux" ] && mv "$HOME/.config/tmux" "$HOME/.config/tmux.bak"
-            [ -d "$HOME/.config/vim" ] && mv "$HOME/.config/vim" "$HOME/.config/vim.bak"
+            [ -f "$HOME/.config/starship.toml" ] && mv "$HOME/.config/starship.toml" "$HOME/.config/starship.toml.bak"
         fi
 
         echo ""
@@ -32,19 +29,10 @@ link_dotfiles() {
         if confirm "- Zsh config?" && [ -d "zsh" ]; then
             create_symlink "zsh" "$HOME"
         fi
-
-        # Vim
-        if confirm "- Vim config?" && [ -d "vim" ]; then
-            create_symlink "vim" "$HOME"
-        fi
         
         # Neovim configs
         if confirm "- Neovim config?" && [ -d "nvim" ]; then
             create_symlink "nvim" "$HOME/.config/nvim"
-        fi
-        
-        if confirm "- Neovim-code config?" && [ -d "nvim-code" ]; then
-            create_symlink "nvim-code" "$HOME/.config/nvim-code"
         fi
         
         # Tmux
@@ -55,6 +43,11 @@ link_dotfiles() {
         # Wezterm
         if confirm "- Wezterm config?" && [ -d "wezterm" ]; then
             create_symlink "wezterm" "$HOME/.config/wezterm"
+        fi
+
+        # Starship (package holds a bare starship.toml, so stow into ~/.config)
+        if confirm "- Starship config?" && [ -d "starship" ]; then
+            create_symlink "starship" "$HOME/.config"
         fi
         
         print_log "$GREEN" "Dotfiles linking completed!"

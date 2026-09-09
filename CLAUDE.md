@@ -47,7 +47,7 @@ Each top-level directory is a stow package. `scripts/common/link-dotfiles.sh` us
 | `nvim-code` | `~/.config/nvim-code` |
 | `tmux` | `~/.config/tmux` |
 | `wezterm` | `~/.config/wezterm` |
-| `starship` | Starship prompt config |
+| `starship` | `~/.config` (holds `starship.toml`) |
 | `github-ssh` | SSH config for GitHub |
 
 ### Neovim Config (`nvim/`)
